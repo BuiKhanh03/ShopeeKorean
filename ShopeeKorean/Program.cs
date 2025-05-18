@@ -14,7 +14,7 @@ var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 app.Urls.Add($"http://*:{port}");
-app.MapGet("/health", () => Results.Ok("Healthy"));
+app.MapGet("/", () => "App is running!");
 
 app.UseHttpsRedirection();
 
