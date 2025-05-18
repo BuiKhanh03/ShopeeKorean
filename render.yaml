@@ -1,7 +1,7 @@
 ﻿databases:
-  - name: shopee-db
-    databaseName: shopee
-    user: postgres
+  - name: shopee-korean-db
+    databaseName: shopeekorean
+    user: shopse_korean_user
     plan: free  # PostgreSQL miễn phí
 
 services:
@@ -11,5 +11,5 @@ services:
     envVars:
       - key: ConnectionStrings__Default
         fromDatabase:
-          name: shopee-db
+          name: shopee-korean-db
           property: connectionString
