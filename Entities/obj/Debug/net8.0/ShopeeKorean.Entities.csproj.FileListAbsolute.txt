@@ -1,0 +1,11 @@
+D:\Net\core\ShopeeKorean\Entities\bin\Debug\net8.0\ShopeeKorean.Entities.deps.json
+D:\Net\core\ShopeeKorean\Entities\bin\Debug\net8.0\ShopeeKorean.Entities.dll
+D:\Net\core\ShopeeKorean\Entities\bin\Debug\net8.0\ShopeeKorean.Entities.pdb
+D:\Net\core\ShopeeKorean\Entities\obj\Debug\net8.0\ShopeeKorean.Entities.GeneratedMSBuildEditorConfig.editorconfig
+D:\Net\core\ShopeeKorean\Entities\obj\Debug\net8.0\ShopeeKorean.Entities.AssemblyInfoInputs.cache
+D:\Net\core\ShopeeKorean\Entities\obj\Debug\net8.0\ShopeeKorean.Entities.AssemblyInfo.cs
+D:\Net\core\ShopeeKorean\Entities\obj\Debug\net8.0\ShopeeKorean.Entities.csproj.CoreCompileInputs.cache
+D:\Net\core\ShopeeKorean\Entities\obj\Debug\net8.0\ShopeeKorean.Entities.dll
+D:\Net\core\ShopeeKorean\Entities\obj\Debug\net8.0\refint\ShopeeKorean.Entities.dll
+D:\Net\core\ShopeeKorean\Entities\obj\Debug\net8.0\ShopeeKorean.Entities.pdb
+D:\Net\core\ShopeeKorean\Entities\obj\Debug\net8.0\ref\ShopeeKorean.Entities.dll
