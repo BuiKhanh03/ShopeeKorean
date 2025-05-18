@@ -1,0 +1,8 @@
+[build]
+builder = "dockerfile"
+dockerfilePath = "ShopeeKorean/DockerFile"
+
+[deploy]
+startCommand = "./ShopeeKorean"
+restartPolicyType = "always"
+healthcheckPath = "/health"

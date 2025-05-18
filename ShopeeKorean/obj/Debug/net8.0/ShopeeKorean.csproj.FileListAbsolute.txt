@@ -171,3 +171,6 @@ D:\Net\core\ShopeeKorean\ShopeeKorean\obj\Debug\net8.0\refint\ShopeeKorean.dll
 D:\Net\core\ShopeeKorean\ShopeeKorean\obj\Debug\net8.0\ShopeeKorean.pdb
 D:\Net\core\ShopeeKorean\ShopeeKorean\obj\Debug\net8.0\ShopeeKorean.genruntimeconfig.cache
 D:\Net\core\ShopeeKorean\ShopeeKorean\obj\Debug\net8.0\ref\ShopeeKorean.dll
+D:\Net\core\ShopeeKorean\ShopeeKorean\bin\Debug\net8.0\Npgsql.dll
+D:\Net\core\ShopeeKorean\ShopeeKorean\bin\Debug\net8.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+D:\Net\core\ShopeeKorean\ShopeeKorean\obj\Debug\net8.0\ShopeeKorean.sourcelink.json
