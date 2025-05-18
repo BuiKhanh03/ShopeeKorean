@@ -2,7 +2,7 @@ using ShopeeKorean.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 var port = Environment.GetEnvironmentVariable("PORT") ?? "5000";
-builder.WebHost.UseUrls($"http//*:{port}");
+
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -13,6 +13,7 @@ builder.Services.ConfigureLoggerService();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
+app.Urls.Add($"http://*:{port}");
 app.MapGet("/health", () => Results.Ok("Healthy"));
 
 app.UseHttpsRedirection();
