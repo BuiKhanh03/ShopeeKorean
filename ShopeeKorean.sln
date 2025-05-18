@@ -3,21 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35004.147
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopeeKorean", "ShopeeKorean\ShopeeKorean.csproj", "{9419734E-A468-48CD-AF01-6687F7F0B842}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopeeKorean", "ShopeeKorean\ShopeeKorean.csproj", "{9419734E-A468-48CD-AF01-6687F7F0B842}"
 	ProjectSection(ProjectDependencies) = postProject
 		{014BB16A-42B9-454D-9A44-DA80F73E4758} = {014BB16A-42B9-454D-9A44-DA80F73E4758}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopeeKorean.Contracts", "Contracts\ShopeeKorean.Contracts.csproj", "{E997AFD7-D378-4280-9ACA-0A3DBC49A8D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopeeKorean.Contracts", "Contracts\ShopeeKorean.Contracts.csproj", "{E997AFD7-D378-4280-9ACA-0A3DBC49A8D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopeeKorean.LoggerService", "LoggerService\ShopeeKorean.LoggerService.csproj", "{014BB16A-42B9-454D-9A44-DA80F73E4758}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopeeKorean.LoggerService", "LoggerService\ShopeeKorean.LoggerService.csproj", "{014BB16A-42B9-454D-9A44-DA80F73E4758}"
 	ProjectSection(ProjectDependencies) = postProject
 		{E997AFD7-D378-4280-9ACA-0A3DBC49A8D7} = {E997AFD7-D378-4280-9ACA-0A3DBC49A8D7}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopeeKorean.Entities", "Entities\ShopeeKorean.Entities.csproj", "{4925D10F-EE55-47B6-9877-3703E04525D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopeeKorean.Entities", "Entities\ShopeeKorean.Entities.csproj", "{4925D10F-EE55-47B6-9877-3703E04525D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopeeKorean.Repository", "Repository\ShopeeKorean.Repository.csproj", "{B011F9FC-E51B-4E03-B926-F9F327C120BE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopeeKorean.Repository", "Repository\ShopeeKorean.Repository.csproj", "{B011F9FC-E51B-4E03-B926-F9F327C120BE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

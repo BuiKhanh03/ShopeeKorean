@@ -11,10 +11,11 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("c1205f86-925c-4bca-bb7e-c8ecc7a1eb4c")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("ShopeeKorean")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+beebcc71f717236d1d8683aa25ff1cf4de964d25")]
 [assembly: System.Reflection.AssemblyProductAttribute("ShopeeKorean")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ShopeeKorean")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

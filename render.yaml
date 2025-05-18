@@ -1,0 +1,15 @@
+﻿databases:
+  - name: shopee-korean-db
+    databaseName: shopeekorean
+    user: shopse_korean_user
+    plan: free  # PostgreSQL miễn phí
+
+services:
+  - type: web
+    name: shopee-korean-dotnet-backend
+    runtime: docker # Hoặc docker nếu dùng .NET Core
+    envVars:
+      - key: ConnectionStrings__Default
+        fromDatabase:
+          name: shopee-korean-db
+          property: connectionString
