@@ -1,8 +1,6 @@
 [build]
-builder = "docker"
-dockerfile = "ShopeeKorean/Dockerfile"
+builder = "nixpacks"
+builder = "docker"  # Chỉ dùng nếu bạn có Dockerfile
 
 [deploy]
-startCommand = "./ShopeeKorean"
-restartPolicyType = "always"
-healthcheckPath = "/health"
+start_command = "dotnet ShopeeKorean.dll"
