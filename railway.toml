@@ -6,3 +6,4 @@ dockerfilePath = "ShopeeKorean/Dockerfile"
 startCommand = "dotnet ShopeeKorean.dll"
 restartPolicyType = "always"
 healthcheckPath = "/health"
+healthcheckTimeout = 120
