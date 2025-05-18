@@ -3,6 +3,6 @@ builder = "dockerfile"
 dockerfilePath = "ShopeeKorean/Dockerfile"
 
 [deploy]
-startCommand = "./ShopeeKorean"
+startCommand = "dotnet ShopeeKorean.dll"
 restartPolicyType = "always"
 healthcheckPath = "/health"
