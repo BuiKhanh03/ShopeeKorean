@@ -1,6 +1,6 @@
 [build]
 builder = "dockerfile"
-dockerfilePath = "ShopeeKorean/DockerFile"
+dockerfilePath="./ShopeeKorean/Dockerfile"
 
 [deploy]
 startCommand = "./ShopeeKorean"
