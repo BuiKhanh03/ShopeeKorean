@@ -1,6 +1,7 @@
 using ShopeeKorean.Controllers.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
+
 var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
 builder.WebHost.UseUrls($"http://*:{port}");
 
@@ -24,3 +25,4 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
