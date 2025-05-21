@@ -1,7 +1,10 @@
-using ShopeeKorean.Extensions;
+using ShopeeKorean.Controllers.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
-var port = Environment.GetEnvironmentVariable("PORT") ?? "5000";
+
+var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+builder.WebHost.UseUrls($"http://*:{port}");
+
 
 // Add services to the container
 builder.Services.AddControllers();
@@ -11,13 +14,15 @@ builder.Services.ConfigureLoggerService();
 
 var app = builder.Build();
 
+app.UseHealthChecks("/health");
+
 // Configure middleware
 app.UseHttpsRedirection();
 app.UseCors("CorsPolicy");
 app.UseAuthorization();
 
-app.MapGet("/", () => "App is running!");
 
 app.MapControllers();
 
-app.Run($"http://0.0.0.0:{port}");
+app.Run();
+

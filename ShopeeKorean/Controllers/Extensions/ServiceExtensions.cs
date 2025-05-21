@@ -2,11 +2,12 @@
 using LoggerService;
 using System.Security.Cryptography.X509Certificates;
 
-namespace ShopeeKorean.Extensions
+namespace ShopeeKorean.Controllers.Extensions
 {
     public static class ServiceExtensions
     {
-        public static void ConfigureCors(this IServiceCollection services) {
+        public static void ConfigureCors(this IServiceCollection services)
+        {
             services.AddCors(options =>
             {
                 options.AddPolicy("CorsPolicy", builder =>
@@ -15,7 +16,8 @@ namespace ShopeeKorean.Extensions
                 .AllowAnyHeader());
             });
         }
-        public static void ConfigureIISIntegration(this IServiceCollection services) {
+        public static void ConfigureIISIntegration(this IServiceCollection services)
+        {
             services.Configure<IISOptions>(options =>
             {
 

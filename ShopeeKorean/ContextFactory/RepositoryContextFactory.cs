@@ -14,11 +14,9 @@ namespace ShopeeKorean.ContextFactory
                 .Build();
 
             var builder = new DbContextOptionsBuilder<RepositoryContext>()
-                .UseNpgsql(
-                    configuration.GetConnectionString("postgresqlConnection"), 
+               .UseSqlServer(configuration.GetConnectionString("sqlConnection"), 
                     b => b.MigrationsAssembly("ShopeeKorean") 
                 );
-
             return new RepositoryContext(builder.Options);
         }
     }
