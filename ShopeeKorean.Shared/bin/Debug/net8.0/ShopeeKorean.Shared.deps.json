@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "ShopeeKorean.Shared/1.0.0": {
+        "runtime": {
+          "ShopeeKorean.Shared.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ShopeeKorean.Shared/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

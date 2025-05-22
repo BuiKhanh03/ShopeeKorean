@@ -8,6 +8,7 @@ D:\Net\core\ShopeeKorean\LoggerService\obj\Debug\net8.0\ShopeeKorean.LoggerServi
 D:\Net\core\ShopeeKorean\LoggerService\obj\Debug\net8.0\ShopeeKorean.LoggerService.AssemblyInfoInputs.cache
 D:\Net\core\ShopeeKorean\LoggerService\obj\Debug\net8.0\ShopeeKorean.LoggerService.AssemblyInfo.cs
 D:\Net\core\ShopeeKorean\LoggerService\obj\Debug\net8.0\ShopeeKorean.LoggerService.csproj.CoreCompileInputs.cache
+D:\Net\core\ShopeeKorean\LoggerService\obj\Debug\net8.0\ShopeeKorean.LoggerService.sourcelink.json
 D:\Net\core\ShopeeKorean\LoggerService\obj\Debug\net8.0\ShopeeKo.55EC4862.Up2Date
 D:\Net\core\ShopeeKorean\LoggerService\obj\Debug\net8.0\ShopeeKorean.LoggerService.dll
 D:\Net\core\ShopeeKorean\LoggerService\obj\Debug\net8.0\refint\ShopeeKorean.LoggerService.dll

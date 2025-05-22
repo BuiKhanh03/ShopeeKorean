@@ -8,6 +8,9 @@ D:\Net\core\ShopeeKorean\ShopeeKorean\bin\Debug\net8.0\ShopeeKorean.pdb
 D:\Net\core\ShopeeKorean\ShopeeKorean\bin\Debug\net8.0\Azure.Core.dll
 D:\Net\core\ShopeeKorean\ShopeeKorean\bin\Debug\net8.0\Azure.Identity.dll
 D:\Net\core\ShopeeKorean\ShopeeKorean\bin\Debug\net8.0\Humanizer.dll
+D:\Net\core\ShopeeKorean\ShopeeKorean\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+D:\Net\core\ShopeeKorean\ShopeeKorean\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+D:\Net\core\ShopeeKorean\ShopeeKorean\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 D:\Net\core\ShopeeKorean\ShopeeKorean\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
 D:\Net\core\ShopeeKorean\ShopeeKorean\bin\Debug\net8.0\Microsoft.Build.Locator.dll
 D:\Net\core\ShopeeKorean\ShopeeKorean\bin\Debug\net8.0\Microsoft.CodeAnalysis.dll
@@ -28,6 +31,8 @@ D:\Net\core\ShopeeKorean\ShopeeKorean\bin\Debug\net8.0\Microsoft.Extensions.Conf
 D:\Net\core\ShopeeKorean\ShopeeKorean\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
 D:\Net\core\ShopeeKorean\ShopeeKorean\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 D:\Net\core\ShopeeKorean\ShopeeKorean\bin\Debug\net8.0\Microsoft.Extensions.DependencyModel.dll
+D:\Net\core\ShopeeKorean\ShopeeKorean\bin\Debug\net8.0\Microsoft.Extensions.Identity.Core.dll
+D:\Net\core\ShopeeKorean\ShopeeKorean\bin\Debug\net8.0\Microsoft.Extensions.Identity.Stores.dll
 D:\Net\core\ShopeeKorean\ShopeeKorean\bin\Debug\net8.0\Microsoft.Extensions.Logging.dll
 D:\Net\core\ShopeeKorean\ShopeeKorean\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
 D:\Net\core\ShopeeKorean\ShopeeKorean\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
@@ -45,6 +50,8 @@ D:\Net\core\ShopeeKorean\ShopeeKorean\bin\Debug\net8.0\Microsoft.Win32.SystemEve
 D:\Net\core\ShopeeKorean\ShopeeKorean\bin\Debug\net8.0\Mono.TextTemplating.dll
 D:\Net\core\ShopeeKorean\ShopeeKorean\bin\Debug\net8.0\NLog.dll
 D:\Net\core\ShopeeKorean\ShopeeKorean\bin\Debug\net8.0\NLog.Extensions.Logging.dll
+D:\Net\core\ShopeeKorean\ShopeeKorean\bin\Debug\net8.0\Npgsql.dll
+D:\Net\core\ShopeeKorean\ShopeeKorean\bin\Debug\net8.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
 D:\Net\core\ShopeeKorean\ShopeeKorean\bin\Debug\net8.0\System.ClientModel.dll
 D:\Net\core\ShopeeKorean\ShopeeKorean\bin\Debug\net8.0\System.CodeDom.dll
 D:\Net\core\ShopeeKorean\ShopeeKorean\bin\Debug\net8.0\System.Composition.AttributedModel.dll
@@ -147,16 +154,19 @@ D:\Net\core\ShopeeKorean\ShopeeKorean\bin\Debug\net8.0\ShopeeKorean.Contracts.dl
 D:\Net\core\ShopeeKorean\ShopeeKorean\bin\Debug\net8.0\ShopeeKorean.Entities.dll
 D:\Net\core\ShopeeKorean\ShopeeKorean\bin\Debug\net8.0\ShopeeKorean.LoggerService.dll
 D:\Net\core\ShopeeKorean\ShopeeKorean\bin\Debug\net8.0\ShopeeKorean.Repository.dll
+D:\Net\core\ShopeeKorean\ShopeeKorean\bin\Debug\net8.0\ShopeeKorean.Shared.dll
 D:\Net\core\ShopeeKorean\ShopeeKorean\bin\Debug\net8.0\ShopeeKorean.LoggerService.pdb
 D:\Net\core\ShopeeKorean\ShopeeKorean\bin\Debug\net8.0\ShopeeKorean.Repository.pdb
 D:\Net\core\ShopeeKorean\ShopeeKorean\bin\Debug\net8.0\ShopeeKorean.Contracts.pdb
 D:\Net\core\ShopeeKorean\ShopeeKorean\bin\Debug\net8.0\ShopeeKorean.Entities.pdb
+D:\Net\core\ShopeeKorean\ShopeeKorean\bin\Debug\net8.0\ShopeeKorean.Shared.pdb
 D:\Net\core\ShopeeKorean\ShopeeKorean\obj\Debug\net8.0\ShopeeKorean.csproj.AssemblyReference.cache
 D:\Net\core\ShopeeKorean\ShopeeKorean\obj\Debug\net8.0\ShopeeKorean.GeneratedMSBuildEditorConfig.editorconfig
 D:\Net\core\ShopeeKorean\ShopeeKorean\obj\Debug\net8.0\ShopeeKorean.AssemblyInfoInputs.cache
 D:\Net\core\ShopeeKorean\ShopeeKorean\obj\Debug\net8.0\ShopeeKorean.AssemblyInfo.cs
 D:\Net\core\ShopeeKorean\ShopeeKorean\obj\Debug\net8.0\ShopeeKorean.csproj.CoreCompileInputs.cache
 D:\Net\core\ShopeeKorean\ShopeeKorean\obj\Debug\net8.0\ShopeeKorean.MvcApplicationPartsAssemblyInfo.cache
+D:\Net\core\ShopeeKorean\ShopeeKorean\obj\Debug\net8.0\ShopeeKorean.sourcelink.json
 D:\Net\core\ShopeeKorean\ShopeeKorean\obj\Debug\net8.0\staticwebassets.build.json
 D:\Net\core\ShopeeKorean\ShopeeKorean\obj\Debug\net8.0\staticwebassets.development.json
 D:\Net\core\ShopeeKorean\ShopeeKorean\obj\Debug\net8.0\staticwebassets\msbuild.ShopeeKorean.Microsoft.AspNetCore.StaticWebAssets.props
@@ -171,6 +181,3 @@ D:\Net\core\ShopeeKorean\ShopeeKorean\obj\Debug\net8.0\refint\ShopeeKorean.dll
 D:\Net\core\ShopeeKorean\ShopeeKorean\obj\Debug\net8.0\ShopeeKorean.pdb
 D:\Net\core\ShopeeKorean\ShopeeKorean\obj\Debug\net8.0\ShopeeKorean.genruntimeconfig.cache
 D:\Net\core\ShopeeKorean\ShopeeKorean\obj\Debug\net8.0\ref\ShopeeKorean.dll
-D:\Net\core\ShopeeKorean\ShopeeKorean\bin\Debug\net8.0\Npgsql.dll
-D:\Net\core\ShopeeKorean\ShopeeKorean\bin\Debug\net8.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
-D:\Net\core\ShopeeKorean\ShopeeKorean\obj\Debug\net8.0\ShopeeKorean.sourcelink.json

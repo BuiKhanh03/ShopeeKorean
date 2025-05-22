@@ -5,6 +5,7 @@ D:\Net\core\ShopeeKorean\Contracts\obj\Debug\net8.0\ShopeeKorean.Contracts.Gener
 D:\Net\core\ShopeeKorean\Contracts\obj\Debug\net8.0\ShopeeKorean.Contracts.AssemblyInfoInputs.cache
 D:\Net\core\ShopeeKorean\Contracts\obj\Debug\net8.0\ShopeeKorean.Contracts.AssemblyInfo.cs
 D:\Net\core\ShopeeKorean\Contracts\obj\Debug\net8.0\ShopeeKorean.Contracts.csproj.CoreCompileInputs.cache
+D:\Net\core\ShopeeKorean\Contracts\obj\Debug\net8.0\ShopeeKorean.Contracts.sourcelink.json
 D:\Net\core\ShopeeKorean\Contracts\obj\Debug\net8.0\ShopeeKorean.Contracts.dll
 D:\Net\core\ShopeeKorean\Contracts\obj\Debug\net8.0\refint\ShopeeKorean.Contracts.dll
 D:\Net\core\ShopeeKorean\Contracts\obj\Debug\net8.0\ShopeeKorean.Contracts.pdb
