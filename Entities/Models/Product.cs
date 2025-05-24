@@ -12,7 +12,8 @@
         public string Brand { get; set; } = string.Empty;
         public User Seller { get; set; }
         public Category Category { get; set; }
-        public List<CartItem> CartItems { get; set; } = new List<CartItem> { };
+        public OrderItem OrderItem { get; set; }
+        public ICollection<CartItem> CartItems { get; set; } = new List<CartItem> { };
         public ICollection<Review> Reviews { get; set; } = new List<Review>();
         public ICollection<ProductImage> ProductImages { get; set; } = new List<ProductImage>();
         public ICollection<Coupon> Coupons { get; set; } = new List<Coupon>();

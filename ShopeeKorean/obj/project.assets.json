@@ -5224,9 +5224,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Net\\core\\ShopeeKorean\\ShopeeKorean\\ShopeeKorean.csproj",
-      "projectName": "ShopeeKorean",
-      "projectPath": "D:\\Net\\core\\ShopeeKorean\\ShopeeKorean\\ShopeeKorean.csproj",
+      "projectUniqueName": "D:\\Net\\core\\ShopeeKorean\\ShopeeKorean\\ShopeeKorean.Application.csproj",
+      "projectName": "ShopeeKorean.Application",
+      "projectPath": "D:\\Net\\core\\ShopeeKorean\\ShopeeKorean\\ShopeeKorean.Application.csproj",
       "packagesPath": "C:\\Users\\Buikh\\.nuget\\packages\\",
       "outputPath": "D:\\Net\\core\\ShopeeKorean\\ShopeeKorean\\obj\\",
       "projectStyle": "PackageReference",
@@ -5308,7 +5308,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.312/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.313/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

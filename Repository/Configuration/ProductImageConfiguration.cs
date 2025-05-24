@@ -17,7 +17,7 @@ namespace ShopeeKorean.Repository.Configuration
 
             entity.HasOne(e => e.Product)
                 .WithMany(e => e.ProductImages)
-                .HasForeignKey(e => e.Product)
+                .HasForeignKey(e => e.ProductId)
                 .HasConstraintName("FK_Product_Image");
         }
     }

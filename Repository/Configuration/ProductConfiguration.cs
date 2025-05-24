@@ -9,6 +9,7 @@ namespace ShopeeKorean.Repository.Configuration
         protected override void ModelCreating(EntityTypeBuilder<Product> entity)
         {
             entity.HasKey(e => e.Id).HasName("product_id_primary");
+
             entity.ToTable("Product");
 
             entity.HasIndex(e => e.SellerId, "produc_sellerId_index");
@@ -16,9 +17,7 @@ namespace ShopeeKorean.Repository.Configuration
             entity.HasIndex(e => e.Name, "product_name_index");
 
             entity.Property(e => e.Id).ValueGeneratedOnAdd().HasDefaultValueSql("NEWID()");
-            entity.Property(e => e.Id)
-                .ValueGeneratedOnAdd()
-                .HasDefaultValue("NEWID()");
+
             entity.Property(e => e.Name).HasMaxLength(255);
 
             entity.HasOne(e => e.Seller)

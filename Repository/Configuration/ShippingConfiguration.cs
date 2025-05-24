@@ -13,7 +13,7 @@ namespace ShopeeKorean.Repository.Configuration
             entity.ToTable("Shipping");
 
             entity.Property(e => e.Id).ValueGeneratedOnAdd().HasDefaultValueSql("NEWID()");
-            entity.Property(e => e.Id).ValueGeneratedOnAdd().HasDefaultValue("NEWID()");
+
             entity.Property(e => e.TrackingNumber).HasMaxLength(255);
             entity.Property(e => e.Carrier).HasMaxLength(255);
             entity.Property(e => e.ShippingStatus).HasMaxLength(255);

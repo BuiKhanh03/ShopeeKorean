@@ -23,12 +23,14 @@ namespace ShopeeKorean.Repository.Configuration
 
             entity.HasOne(e => e.Product)
                   .WithMany(e => e.Reviews)
-                  .HasForeignKey(e => e.ProductId);
+                  .HasForeignKey(e => e.ProductId)
+                  .HasConstraintName("FK_Review_Product");
 
             entity.HasOne(r => r.User)
                   .WithMany(u => u.Reviews)
                   .HasForeignKey(r => r.UserId)
-                  .HasConstraintName("FK_Review_User");
+                  .HasConstraintName("FK_Review_User")
+                  .OnDelete(DeleteBehavior.Restrict); ;
 
 
         }

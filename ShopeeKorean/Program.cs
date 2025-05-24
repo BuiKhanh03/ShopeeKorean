@@ -7,11 +7,12 @@ builder.WebHost.UseUrls($"http://*:{port}");
 
 
 // Add services to the container
-builder.Services.AddControllers();
 builder.Services.ConfigureCors();
-builder.Services.ConfigureIISIntegration();
-builder.Services.ConfigureLoggerService();
+builder.Services.AddControllers();
 builder.Services.AddHealthChecks();
+builder.Services.ConfigureLoggerService();
+builder.Services.ConfigureIISIntegration();
+builder.Services.ConfigureSqlContext(builder.Configuration);
 
 var app = builder.Build();
 
