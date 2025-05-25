@@ -21,6 +21,8 @@
   <ItemGroup>
     <ProjectReference Include="..\LoggerService\ShopeeKorean.LoggerService.csproj" />
     <ProjectReference Include="..\Repository\ShopeeKorean.Repository.csproj" />
+    <ProjectReference Include="..\ShopeeKorean.Presentation\ShopeeKorean.Presentation.csproj" />
+    <ProjectReference Include="..\ShopeeKorean.Services\ShopeeKorean.Service.csproj" />
   </ItemGroup>
 
   <ItemGroup>

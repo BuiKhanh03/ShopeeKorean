@@ -13,9 +13,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Net\\core\\ShopeeKorean\\Contracts\\ShopeeKorean.Contracts.csproj",
-      "projectName": "ShopeeKorean.Contracts",
-      "projectPath": "D:\\Net\\core\\ShopeeKorean\\Contracts\\ShopeeKorean.Contracts.csproj",
+      "projectUniqueName": "D:\\Net\\core\\ShopeeKorean\\Contracts\\ShopeeKorean.Repository.Contracts.csproj",
+      "projectName": "ShopeeKorean.Repository.Contracts",
+      "projectPath": "D:\\Net\\core\\ShopeeKorean\\Contracts\\ShopeeKorean.Repository.Contracts.csproj",
       "packagesPath": "C:\\Users\\Buikh\\.nuget\\packages\\",
       "outputPath": "D:\\Net\\core\\ShopeeKorean\\Contracts\\obj\\",
       "projectStyle": "PackageReference",

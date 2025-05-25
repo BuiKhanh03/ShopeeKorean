@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "UdGPqBOv3Zk=",
+  "success": true,
+  "projectFilePath": "D:\\Net\\core\\ShopeeKorean\\ShopeeKorean.Services\\ShopeeKorean.Service.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Buikh\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.36\\microsoft.windowsdesktop.app.ref.6.0.36.nupkg.sha512",
+    "C:\\Users\\Buikh\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.36\\microsoft.netcore.app.ref.6.0.36.nupkg.sha512",
+    "C:\\Users\\Buikh\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.36\\microsoft.aspnetcore.app.ref.6.0.36.nupkg.sha512"
+  ],
+  "logs": []
+}

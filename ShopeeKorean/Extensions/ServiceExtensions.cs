@@ -1,10 +1,13 @@
 ﻿using Contracts;
-using LoggerService;
-using Microsoft.EntityFrameworkCore;
 using Repository;
-using System.Security.Cryptography.X509Certificates;
+using LoggerService;
+using ShopeeKorean.Service;
+using ShopeeKorean.Contracts;
+using ShopeeKorean.Repository;
+using Microsoft.EntityFrameworkCore;
+using ShopeeKorean.Service.Contracts;
 
-namespace ShopeeKorean.Controllers.Extensions
+namespace ShopeeKorean.Application.Extensions
 {
     public static class ServiceExtensions
     {
@@ -26,7 +29,10 @@ namespace ShopeeKorean.Controllers.Extensions
         {
             otps.EnableRetryOnFailure();
         }));
-        
+
         public static void ConfigureLoggerService(this IServiceCollection services) => services.AddSingleton<ILoggerManager, LoggerManager>();
+
+        public static void ConfigureRepositoryManager(this IServiceCollection services) => services.AddScoped<IRepositoryManager, RepositoryManager>();
+        public static void ConfigureServiceManager(this IServiceCollection services) => services.AddScoped<IServiceManager, ServiceManager>();
     }
 }

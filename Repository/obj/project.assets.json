@@ -343,6 +343,16 @@
           "bin/placeholder/ShopeeKorean.Entities.dll": {}
         }
       },
+      "ShopeeKorean.Repository.Contracts/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/ShopeeKorean.Repository.Contracts.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ShopeeKorean.Repository.Contracts.dll": {}
+        }
+      },
       "ShopeeKorean.Shared/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
@@ -859,6 +869,11 @@
       "path": "../Entities/ShopeeKorean.Entities.csproj",
       "msbuildProject": "../Entities/ShopeeKorean.Entities.csproj"
     },
+    "ShopeeKorean.Repository.Contracts/1.0.0": {
+      "type": "project",
+      "path": "../Contracts/ShopeeKorean.Repository.Contracts.csproj",
+      "msbuildProject": "../Contracts/ShopeeKorean.Repository.Contracts.csproj"
+    },
     "ShopeeKorean.Shared/1.0.0": {
       "type": "project",
       "path": "../ShopeeKorean.Shared/ShopeeKorean.Shared.csproj",
@@ -868,7 +883,8 @@
   "projectFileDependencyGroups": {
     "net8.0": [
       "Microsoft.EntityFrameworkCore >= 9.0.5",
-      "ShopeeKorean.Entities >= 1.0.0"
+      "ShopeeKorean.Entities >= 1.0.0",
+      "ShopeeKorean.Repository.Contracts >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -899,6 +915,9 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
+            "D:\\Net\\core\\ShopeeKorean\\Contracts\\ShopeeKorean.Repository.Contracts.csproj": {
+              "projectPath": "D:\\Net\\core\\ShopeeKorean\\Contracts\\ShopeeKorean.Repository.Contracts.csproj"
+            },
             "D:\\Net\\core\\ShopeeKorean\\Entities\\ShopeeKorean.Entities.csproj": {
               "projectPath": "D:\\Net\\core\\ShopeeKorean\\Entities\\ShopeeKorean.Entities.csproj"
             }

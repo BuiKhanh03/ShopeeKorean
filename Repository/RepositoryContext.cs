@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using ShopeeKorean.Repository.Configuration;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+
 namespace Repository
 {
     public class RepositoryContext : IdentityDbContext<User, Roles, Guid>

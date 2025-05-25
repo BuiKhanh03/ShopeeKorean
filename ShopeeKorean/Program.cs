@@ -1,4 +1,4 @@
-using ShopeeKorean.Controllers.Extensions;
+using ShopeeKorean.Application.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,7 +12,11 @@ builder.Services.AddControllers();
 builder.Services.AddHealthChecks();
 builder.Services.ConfigureLoggerService();
 builder.Services.ConfigureIISIntegration();
+builder.Services.ConfigureServiceManager();
+builder.Services.ConfigureRepositoryManager();
 builder.Services.ConfigureSqlContext(builder.Configuration);
+builder.Services.AddControllers()
+    .AddApplicationPart(typeof(ShopeeKorean.Presentation.AssemblyReference).Assembly);
 
 var app = builder.Build();
 
