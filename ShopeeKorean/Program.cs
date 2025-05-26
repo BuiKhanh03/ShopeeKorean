@@ -9,7 +9,6 @@ var builder = WebApplication.CreateBuilder(args);
 var port = Environment.GetEnvironmentVariable("PORT") ?? "5000";
 builder.WebHost.UseUrls($"http://*:{port}");
 
-
 // Add services to the container
 builder.Services.ConfigureCors();
 builder.Services.AddControllers();
@@ -38,6 +37,8 @@ builder.Services.AddSwaggerGen(c =>
         Description = "API for Shopee Korean application"
     });
 });
+
+builder.Services.AddHealthChecks();
 
 var app = builder.Build();
 var logger = app.Services.GetRequiredService<ILoggerManager>();
