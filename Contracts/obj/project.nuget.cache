@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "a8h4/zF+8sQ=",
+  "dgSpecHash": "9L/2jjPAZgE=",
   "success": true,
-  "projectFilePath": "D:\\Net\\core\\ShopeeKorean\\Contracts\\ShopeeKorean.Contracts.csproj",
+  "projectFilePath": "D:\\Net\\core\\ShopeeKorean\\Contracts\\ShopeeKorean.Repository.Contracts.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

@@ -1,0 +1,12 @@
+D:\Net\core\ShopeeKorean\Contracts\bin\Debug\net8.0\ShopeeKorean.Repository.Contracts.deps.json
+D:\Net\core\ShopeeKorean\Contracts\bin\Debug\net8.0\ShopeeKorean.Repository.Contracts.dll
+D:\Net\core\ShopeeKorean\Contracts\bin\Debug\net8.0\ShopeeKorean.Repository.Contracts.pdb
+D:\Net\core\ShopeeKorean\Contracts\obj\Debug\net8.0\ShopeeKorean.Repository.Contracts.GeneratedMSBuildEditorConfig.editorconfig
+D:\Net\core\ShopeeKorean\Contracts\obj\Debug\net8.0\ShopeeKorean.Repository.Contracts.AssemblyInfoInputs.cache
+D:\Net\core\ShopeeKorean\Contracts\obj\Debug\net8.0\ShopeeKorean.Repository.Contracts.AssemblyInfo.cs
+D:\Net\core\ShopeeKorean\Contracts\obj\Debug\net8.0\ShopeeKorean.Repository.Contracts.csproj.CoreCompileInputs.cache
+D:\Net\core\ShopeeKorean\Contracts\obj\Debug\net8.0\ShopeeKorean.Repository.Contracts.sourcelink.json
+D:\Net\core\ShopeeKorean\Contracts\obj\Debug\net8.0\ShopeeKorean.Repository.Contracts.dll
+D:\Net\core\ShopeeKorean\Contracts\obj\Debug\net8.0\refint\ShopeeKorean.Repository.Contracts.dll
+D:\Net\core\ShopeeKorean\Contracts\obj\Debug\net8.0\ShopeeKorean.Repository.Contracts.pdb
+D:\Net\core\ShopeeKorean\Contracts\obj\Debug\net8.0\ref\ShopeeKorean.Repository.Contracts.dll

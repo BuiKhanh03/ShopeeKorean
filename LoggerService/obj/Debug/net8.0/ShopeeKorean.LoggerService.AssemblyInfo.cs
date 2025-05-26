@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ShopeeKorean.LoggerService")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+064c007f510fcfc16191dc7ed8bca42079221403")]
 [assembly: System.Reflection.AssemblyProductAttribute("ShopeeKorean.LoggerService")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ShopeeKorean.LoggerService")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,0 +1,12 @@
+D:\Net\core\ShopeeKorean\ShopeeKorean.Shared\bin\Debug\net8.0\ShopeeKorean.Shared.deps.json
+D:\Net\core\ShopeeKorean\ShopeeKorean.Shared\bin\Debug\net8.0\ShopeeKorean.Shared.dll
+D:\Net\core\ShopeeKorean\ShopeeKorean.Shared\bin\Debug\net8.0\ShopeeKorean.Shared.pdb
+D:\Net\core\ShopeeKorean\ShopeeKorean.Shared\obj\Debug\net8.0\ShopeeKorean.Shared.GeneratedMSBuildEditorConfig.editorconfig
+D:\Net\core\ShopeeKorean\ShopeeKorean.Shared\obj\Debug\net8.0\ShopeeKorean.Shared.AssemblyInfoInputs.cache
+D:\Net\core\ShopeeKorean\ShopeeKorean.Shared\obj\Debug\net8.0\ShopeeKorean.Shared.AssemblyInfo.cs
+D:\Net\core\ShopeeKorean\ShopeeKorean.Shared\obj\Debug\net8.0\ShopeeKorean.Shared.csproj.CoreCompileInputs.cache
+D:\Net\core\ShopeeKorean\ShopeeKorean.Shared\obj\Debug\net8.0\ShopeeKorean.Shared.sourcelink.json
+D:\Net\core\ShopeeKorean\ShopeeKorean.Shared\obj\Debug\net8.0\ShopeeKorean.Shared.dll
+D:\Net\core\ShopeeKorean\ShopeeKorean.Shared\obj\Debug\net8.0\refint\ShopeeKorean.Shared.dll
+D:\Net\core\ShopeeKorean\ShopeeKorean.Shared\obj\Debug\net8.0\ShopeeKorean.Shared.pdb
+D:\Net\core\ShopeeKorean\ShopeeKorean.Shared\obj\Debug\net8.0\ref\ShopeeKorean.Shared.dll

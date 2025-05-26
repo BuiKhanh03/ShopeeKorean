@@ -1,0 +1,12 @@
+D:\Net\core\ShopeeKorean\ShopeeKorean.Service.Contracts\bin\Debug\net6.0\ShopeeKorean.Service.Contracts.deps.json
+D:\Net\core\ShopeeKorean\ShopeeKorean.Service.Contracts\bin\Debug\net6.0\ShopeeKorean.Service.Contracts.dll
+D:\Net\core\ShopeeKorean\ShopeeKorean.Service.Contracts\bin\Debug\net6.0\ShopeeKorean.Service.Contracts.pdb
+D:\Net\core\ShopeeKorean\ShopeeKorean.Service.Contracts\obj\Debug\net6.0\ShopeeKorean.Service.Contracts.GeneratedMSBuildEditorConfig.editorconfig
+D:\Net\core\ShopeeKorean\ShopeeKorean.Service.Contracts\obj\Debug\net6.0\ShopeeKorean.Service.Contracts.AssemblyInfoInputs.cache
+D:\Net\core\ShopeeKorean\ShopeeKorean.Service.Contracts\obj\Debug\net6.0\ShopeeKorean.Service.Contracts.AssemblyInfo.cs
+D:\Net\core\ShopeeKorean\ShopeeKorean.Service.Contracts\obj\Debug\net6.0\ShopeeKorean.Service.Contracts.csproj.CoreCompileInputs.cache
+D:\Net\core\ShopeeKorean\ShopeeKorean.Service.Contracts\obj\Debug\net6.0\ShopeeKorean.Service.Contracts.sourcelink.json
+D:\Net\core\ShopeeKorean\ShopeeKorean.Service.Contracts\obj\Debug\net6.0\ShopeeKorean.Service.Contracts.dll
+D:\Net\core\ShopeeKorean\ShopeeKorean.Service.Contracts\obj\Debug\net6.0\refint\ShopeeKorean.Service.Contracts.dll
+D:\Net\core\ShopeeKorean\ShopeeKorean.Service.Contracts\obj\Debug\net6.0\ShopeeKorean.Service.Contracts.pdb
+D:\Net\core\ShopeeKorean\ShopeeKorean.Service.Contracts\obj\Debug\net6.0\ref\ShopeeKorean.Service.Contracts.dll
