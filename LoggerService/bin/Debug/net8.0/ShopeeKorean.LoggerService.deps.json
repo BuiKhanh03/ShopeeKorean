@@ -9,7 +9,7 @@
       "ShopeeKorean.LoggerService/1.0.0": {
         "dependencies": {
           "NLog.Extensions.Logging": "5.3.5",
-          "ShopeeKorean.Contracts": "1.0.0"
+          "ShopeeKorean.Repository.Contracts": "1.0.0"
         },
         "runtime": {
           "ShopeeKorean.LoggerService.dll": {}
@@ -119,9 +119,9 @@
         }
       },
       "System.Runtime.CompilerServices.Unsafe/6.0.0": {},
-      "ShopeeKorean.Contracts/1.0.0": {
+      "ShopeeKorean.Repository.Contracts/1.0.0": {
         "runtime": {
-          "ShopeeKorean.Contracts.dll": {}
+          "ShopeeKorean.Repository.Contracts.dll": {}
         }
       }
     }
@@ -209,7 +209,7 @@
       "path": "system.runtime.compilerservices.unsafe/6.0.0",
       "hashPath": "system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
     },
-    "ShopeeKorean.Contracts/1.0.0": {
+    "ShopeeKorean.Repository.Contracts/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

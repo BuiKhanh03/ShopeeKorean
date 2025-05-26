@@ -29,11 +29,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopeeKorean.Shared", "ShopeeKorean.Shared\ShopeeKorean.Shared.csproj", "{C88D820F-FA90-41E4-AF66-C901F7F7B113}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopeeKorean.Service.Contracts", "ShopeeKorean.Service.Contracts\ShopeeKorean.Service.Contracts.csproj", "{C30B0A74-0DB6-4565-8B35-6FD96F605037}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopeeKorean.Service.Contracts", "ShopeeKorean.Service.Contracts\ShopeeKorean.Service.Contracts.csproj", "{C30B0A74-0DB6-4565-8B35-6FD96F605037}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C88D820F-FA90-41E4-AF66-C901F7F7B113} = {C88D820F-FA90-41E4-AF66-C901F7F7B113}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopeeKorean.Service", "ShopeeKorean.Services\ShopeeKorean.Service.csproj", "{EA74B12A-1AAA-4D0B-A32D-C6B0FAFC88E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopeeKorean.Service", "ShopeeKorean.Services\ShopeeKorean.Service.csproj", "{EA74B12A-1AAA-4D0B-A32D-C6B0FAFC88E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopeeKorean.Presentation", "ShopeeKorean.Presentation\ShopeeKorean.Presentation.csproj", "{DF43B32B-210E-4E29-9C7D-95170C799CA9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopeeKorean.Presentation", "ShopeeKorean.Presentation\ShopeeKorean.Presentation.csproj", "{DF43B32B-210E-4E29-9C7D-95170C799CA9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

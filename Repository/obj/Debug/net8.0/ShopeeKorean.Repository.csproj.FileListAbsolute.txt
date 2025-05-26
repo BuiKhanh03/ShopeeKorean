@@ -16,3 +16,5 @@ D:\Net\core\ShopeeKorean\Repository\obj\Debug\net8.0\ShopeeKorean.Repository.dll
 D:\Net\core\ShopeeKorean\Repository\obj\Debug\net8.0\refint\ShopeeKorean.Repository.dll
 D:\Net\core\ShopeeKorean\Repository\obj\Debug\net8.0\ShopeeKorean.Repository.pdb
 D:\Net\core\ShopeeKorean\Repository\obj\Debug\net8.0\ref\ShopeeKorean.Repository.dll
+D:\Net\core\ShopeeKorean\Repository\bin\Debug\net8.0\ShopeeKorean.Repository.Contracts.dll
+D:\Net\core\ShopeeKorean\Repository\bin\Debug\net8.0\ShopeeKorean.Repository.Contracts.pdb

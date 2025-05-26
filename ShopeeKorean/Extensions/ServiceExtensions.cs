@@ -6,6 +6,9 @@ using ShopeeKorean.Contracts;
 using ShopeeKorean.Repository;
 using Microsoft.EntityFrameworkCore;
 using ShopeeKorean.Service.Contracts;
+using ShopeeKorean.Entities.Models;
+using Microsoft.AspNetCore.Identity;
+using Newtonsoft.Json.Linq;
 
 namespace ShopeeKorean.Application.Extensions
 {
@@ -34,5 +37,21 @@ namespace ShopeeKorean.Application.Extensions
 
         public static void ConfigureRepositoryManager(this IServiceCollection services) => services.AddScoped<IRepositoryManager, RepositoryManager>();
         public static void ConfigureServiceManager(this IServiceCollection services) => services.AddScoped<IServiceManager, ServiceManager>();
+
+        public static void ConfigureIdentity(this IServiceCollection services)
+        {
+            var builder = services.AddIdentity<User, Roles>(o =>
+            {
+                o.Password.RequireDigit = true;
+                o.Password.RequireLowercase = true;
+                o.Password.RequireUppercase = true;
+                o.Password.RequireNonAlphanumeric = true;
+                o.Password.RequiredLength = 10;
+                o.User.RequireUniqueEmail = true;
+            })
+                .AddEntityFrameworkStores<RepositoryContext>()
+                .AddDefaultTokenProviders();
+            // add EntityFrameworkStores implementation with the default token providers. 
+        }
     }
 }

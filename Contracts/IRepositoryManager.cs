@@ -1,9 +1,7 @@
-﻿using Repository;
-
-namespace ShopeeKorean.Contracts
+﻿namespace ShopeeKorean.Contracts
 {
     public interface IRepositoryManager
     {
-        void Save();
+        Task SaveAsync();
     }
 }

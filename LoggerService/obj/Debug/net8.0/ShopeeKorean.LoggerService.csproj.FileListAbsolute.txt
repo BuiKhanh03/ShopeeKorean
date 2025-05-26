@@ -1,8 +1,6 @@
 D:\Net\core\ShopeeKorean\LoggerService\bin\Debug\net8.0\ShopeeKorean.LoggerService.deps.json
 D:\Net\core\ShopeeKorean\LoggerService\bin\Debug\net8.0\ShopeeKorean.LoggerService.dll
 D:\Net\core\ShopeeKorean\LoggerService\bin\Debug\net8.0\ShopeeKorean.LoggerService.pdb
-D:\Net\core\ShopeeKorean\LoggerService\bin\Debug\net8.0\ShopeeKorean.Contracts.dll
-D:\Net\core\ShopeeKorean\LoggerService\bin\Debug\net8.0\ShopeeKorean.Contracts.pdb
 D:\Net\core\ShopeeKorean\LoggerService\obj\Debug\net8.0\ShopeeKorean.LoggerService.csproj.AssemblyReference.cache
 D:\Net\core\ShopeeKorean\LoggerService\obj\Debug\net8.0\ShopeeKorean.LoggerService.GeneratedMSBuildEditorConfig.editorconfig
 D:\Net\core\ShopeeKorean\LoggerService\obj\Debug\net8.0\ShopeeKorean.LoggerService.AssemblyInfoInputs.cache
@@ -14,3 +12,5 @@ D:\Net\core\ShopeeKorean\LoggerService\obj\Debug\net8.0\ShopeeKorean.LoggerServi
 D:\Net\core\ShopeeKorean\LoggerService\obj\Debug\net8.0\refint\ShopeeKorean.LoggerService.dll
 D:\Net\core\ShopeeKorean\LoggerService\obj\Debug\net8.0\ShopeeKorean.LoggerService.pdb
 D:\Net\core\ShopeeKorean\LoggerService\obj\Debug\net8.0\ref\ShopeeKorean.LoggerService.dll
+D:\Net\core\ShopeeKorean\LoggerService\bin\Debug\net8.0\ShopeeKorean.Repository.Contracts.dll
+D:\Net\core\ShopeeKorean\LoggerService\bin\Debug\net8.0\ShopeeKorean.Repository.Contracts.pdb

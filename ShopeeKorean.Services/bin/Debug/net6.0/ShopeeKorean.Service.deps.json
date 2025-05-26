@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "ShopeeKorean.Service/1.0.0": {
+        "dependencies": {
+          "ShopeeKorean.Service.Contracts": "1.0.0"
+        },
+        "runtime": {
+          "ShopeeKorean.Service.dll": {}
+        }
+      },
+      "ShopeeKorean.Service.Contracts/1.0.0": {
+        "runtime": {
+          "ShopeeKorean.Service.Contracts.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ShopeeKorean.Service/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ShopeeKorean.Service.Contracts/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

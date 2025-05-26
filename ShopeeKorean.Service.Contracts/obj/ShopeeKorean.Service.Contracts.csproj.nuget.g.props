@@ -12,4 +12,7 @@
   <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <SourceRoot Include="C:\Users\Buikh\.nuget\packages\" />
   </ItemGroup>
+  <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <PkgTourmalineCore_AspNetCore_JwtAuthentication_ConfigurationAnalyzers Condition=" '$(PkgTourmalineCore_AspNetCore_JwtAuthentication_ConfigurationAnalyzers)' == '' ">C:\Users\Buikh\.nuget\packages\tourmalinecore.aspnetcore.jwtauthentication.configurationanalyzers\0.1.0-alpha.1</PkgTourmalineCore_AspNetCore_JwtAuthentication_ConfigurationAnalyzers>
+  </PropertyGroup>
 </Project>

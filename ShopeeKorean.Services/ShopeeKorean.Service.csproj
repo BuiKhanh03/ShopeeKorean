@@ -1,12 +1,18 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="14.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Entities\ShopeeKorean.Entities.csproj" />
+    <ProjectReference Include="..\LoggerService\ShopeeKorean.LoggerService.csproj" />
     <ProjectReference Include="..\ShopeeKorean.Service.Contracts\ShopeeKorean.Service.Contracts.csproj" />
   </ItemGroup>
 
