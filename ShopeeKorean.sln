@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35004.147
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopeeKorean.Application", "ShopeeKorean\ShopeeKorean.Application.csproj", "{9419734E-A468-48CD-AF01-6687F7F0B842}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopeeKorean", "ShopeeKorean\ShopeeKorean.csproj", "{9419734E-A468-48CD-AF01-6687F7F0B842}"
 	ProjectSection(ProjectDependencies) = postProject
 		{014BB16A-42B9-454D-9A44-DA80F73E4758} = {014BB16A-42B9-454D-9A44-DA80F73E4758}
 	EndProjectSection
