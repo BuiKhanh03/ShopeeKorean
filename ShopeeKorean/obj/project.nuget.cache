@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "gTiQKxtuKNM=",
+  "dgSpecHash": "T6vxL9bE1H8=",
   "success": true,
-  "projectFilePath": "D:\\Net\\core\\ShopeeKorean\\ShopeeKorean\\ShopeeKorean.Application.csproj",
+  "projectFilePath": "D:\\Net\\core\\ShopeeKorean\\ShopeeKorean\\ShopeeKorean.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Buikh\\.nuget\\packages\\automapper\\14.0.0\\automapper.14.0.0.nupkg.sha512",
     "C:\\Users\\Buikh\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
