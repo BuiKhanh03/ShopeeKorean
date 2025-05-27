@@ -1,14 +1,16 @@
 ﻿using Contracts;
 using Repository;
+using System.Text;
 using LoggerService;
 using ShopeeKorean.Service;
 using ShopeeKorean.Contracts;
 using ShopeeKorean.Repository;
-using Microsoft.EntityFrameworkCore;
-using ShopeeKorean.Service.Contracts;
 using ShopeeKorean.Entities.Models;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
-using Newtonsoft.Json.Linq;
+using ShopeeKorean.Service.Contracts;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace ShopeeKorean.Application.Extensions
 {
@@ -52,6 +54,32 @@ namespace ShopeeKorean.Application.Extensions
                 .AddEntityFrameworkStores<RepositoryContext>()
                 .AddDefaultTokenProviders();
             // add EntityFrameworkStores implementation with the default token providers. 
+        }
+
+        public static void ConfigureJWT(this IServiceCollection services, IConfiguration configuration)
+        {
+            var jwtSettings = configuration.GetSection("JwtSettings");
+            var secretKey = Environment.GetEnvironmentVariable(variable: "SECRET");
+
+            services.AddAuthentication(opt =>
+            {
+                opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+                .AddJwtBearer(options =>
+                {
+                    options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+                    {
+                        ValidateIssuer = true,
+                        ValidateAudience = true,
+                        ValidateLifetime = true, // The token has not expired 
+                        ValidateIssuerSigningKey = true,
+
+                        ValidIssuer = jwtSettings["validIssuer"],
+                        ValidAudience = jwtSettings["validAudience"],
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey))
+                    };
+                });
         }
     }
 }

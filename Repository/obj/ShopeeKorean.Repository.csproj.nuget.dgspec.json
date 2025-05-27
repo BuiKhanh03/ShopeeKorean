@@ -118,6 +118,10 @@
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[9.0.5, )"
+            },
+            "TourmalineCore.AspNetCore.JwtAuthentication.Identity": {
+              "target": "Package",
+              "version": "[0.1.1, )"
             }
           },
           "imports": [

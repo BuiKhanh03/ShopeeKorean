@@ -15,4 +15,7 @@
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <Import Project="$(NuGetPackageRoot)microsoft.entityframeworkcore\9.0.5\buildTransitive\net8.0\Microsoft.EntityFrameworkCore.props" Condition="Exists('$(NuGetPackageRoot)microsoft.entityframeworkcore\9.0.5\buildTransitive\net8.0\Microsoft.EntityFrameworkCore.props')" />
   </ImportGroup>
+  <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <PkgTourmalineCore_AspNetCore_JwtAuthentication_ConfigurationAnalyzers Condition=" '$(PkgTourmalineCore_AspNetCore_JwtAuthentication_ConfigurationAnalyzers)' == '' ">C:\Users\Buikh\.nuget\packages\tourmalinecore.aspnetcore.jwtauthentication.configurationanalyzers\0.1.0-alpha.1</PkgTourmalineCore_AspNetCore_JwtAuthentication_ConfigurationAnalyzers>
+  </PropertyGroup>
 </Project>

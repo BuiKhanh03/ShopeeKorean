@@ -553,7 +553,8 @@
         "dependencies": {
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.16",
           "Microsoft.EntityFrameworkCore": "9.0.5",
-          "ShopeeKorean.Shared": "1.0.0"
+          "ShopeeKorean.Shared": "1.0.0",
+          "TourmalineCore.AspNetCore.JwtAuthentication.Identity": "0.1.1"
         },
         "compile": {
           "bin/placeholder/ShopeeKorean.Entities.dll": {}
@@ -1512,7 +1513,8 @@
       "AutoMapper >= 14.0.0",
       "ShopeeKorean.Entities >= 1.0.0",
       "ShopeeKorean.LoggerService >= 1.0.0",
-      "ShopeeKorean.Service.Contracts >= 1.0.0"
+      "ShopeeKorean.Service.Contracts >= 1.0.0",
+      "TourmalineCore.AspNetCore.JwtAuthentication.Identity >= 0.1.1"
     ]
   },
   "packageFolders": {
@@ -1573,6 +1575,10 @@
           "AutoMapper": {
             "target": "Package",
             "version": "[14.0.0, )"
+          },
+          "TourmalineCore.AspNetCore.JwtAuthentication.Identity": {
+            "target": "Package",
+            "version": "[0.1.1, )"
           }
         },
         "imports": [
