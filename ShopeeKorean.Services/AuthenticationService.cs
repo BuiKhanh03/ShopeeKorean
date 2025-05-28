@@ -55,11 +55,16 @@ namespace ShopeeKorean.Service
             if (!result) _loggerManager.LogWarn($"{nameof(ValidateUser)}: Authentication failed. Wrong username or password.");
             return result;
         }
-
         private SigningCredentials GetSigningCredentials()
         {
-            var key = Encoding.UTF8.GetBytes(Environment.GetEnvironmentVariable("SETCRET"));
-            var secret = new SymmetricSecurityKey(key);
+            var key = _configuration["SECRETKEY"];
+            if (string.IsNullOrEmpty(key))
+            {
+                throw new InvalidOperationException("JWT secret key is not configured");
+            }
+
+            var keyBytes = Encoding.UTF8.GetBytes(key);
+            var secret = new SymmetricSecurityKey(keyBytes);
 
             return new SigningCredentials(secret, SecurityAlgorithms.HmacSha256);
         }

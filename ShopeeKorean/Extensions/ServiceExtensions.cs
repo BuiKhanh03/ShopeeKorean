@@ -21,9 +21,11 @@ namespace ShopeeKorean.Application.Extensions
             services.AddCors(options =>
             {
                 options.AddPolicy("CorsPolicy", builder =>
-                builder.AllowAnyOrigin()
+                 builder.WithOrigins("http://localhost:32768", "http://localhost:32769", "http://localhost:8080","https://localhost:32768")
+               //  builder.AllowAnyOrigin()
                 .AllowAnyMethod()
-                .AllowAnyHeader());
+                .AllowAnyHeader()
+                .AllowCredentials());
             });
         }
         public static void ConfigureIISIntegration(this IServiceCollection services)
@@ -59,7 +61,7 @@ namespace ShopeeKorean.Application.Extensions
         public static void ConfigureJWT(this IServiceCollection services, IConfiguration configuration)
         {
             var jwtSettings = configuration.GetSection("JwtSettings");
-            var secretKey = Environment.GetEnvironmentVariable(variable: "SECRET");
+            var secretKey = configuration["SECRETKEY"];
 
             services.AddAuthentication(opt =>
             {
