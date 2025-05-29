@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ShopeeKorean.Shared.DataTransferObjects
+namespace ShopeeKorean.Shared.DataTransferObjects.User
 {
     public record UserForAuthenticationDto
     {

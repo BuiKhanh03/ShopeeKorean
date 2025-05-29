@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ShopeeKorean.Shared.DataTransferObjects;
 using ShopeeKorean.Service.Contracts;
 using ShopeeKorean.Presentation.ActionFilters;
+using ShopeeKorean.Shared.DataTransferObjects.User;
 
 namespace ShopeeKorean.Presentation.Controllers
 {
@@ -34,8 +34,9 @@ namespace ShopeeKorean.Presentation.Controllers
         public async Task<IActionResult> Authenticate([FromBody] UserForAuthenticationDto user)
         {
             if(!await _service.AuthenticationService.ValidateUser(user)) return Unauthorized();
-            return Ok(new { Token = await _service.AuthenticationService.CreateToken() });
 
+            var tokenDto = await _service.AuthenticationService.CreateToken(populateExp: true);
+            return Ok(tokenDto);
         }
     }
 }

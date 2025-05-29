@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using ShopeeKorean.Entities.Models;
-using ShopeeKorean.Shared.DataTransferObjects;
+using ShopeeKorean.Shared.DataTransferObjects.User;
 
 namespace ShopeeKorean.Application.MappingProfile
 {

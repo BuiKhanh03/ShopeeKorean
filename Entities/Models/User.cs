@@ -9,7 +9,8 @@ namespace ShopeeKorean.Entities.Models
         public string? FirstName { get; set; }
 
         public string? LastName { get; set; }
-
+        public string? RefreshToken { get; set; }
+        public DateTime RefreshTokenExpiryTime { get; set; }
         public Cart Cart { get; set; }
 
         public virtual ICollection<Review> Reviews { get; set; } = new List<Review>();
