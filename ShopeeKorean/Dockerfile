@@ -9,7 +9,7 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["ShopeeKorean/ShopeeKorean.csproj", "ShopeeKorean/"]
+COPY ["ShopeeKorean.Application/ShopeeKorean.csproj", "ShopeeKorean/"]
 COPY ["LoggerService/ShopeeKorean.LoggerService.csproj", "LoggerService/"]
 COPY ["Contracts/ShopeeKorean.Repository.Contracts.csproj", "Contracts/"]
 COPY ["Repository/ShopeeKorean.Repository.csproj", "Repository/"]
