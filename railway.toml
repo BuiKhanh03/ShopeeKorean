@@ -1,6 +1,6 @@
 [build]
 builder = "dockerfile"
-dockerfilePath="./ShopeeKorean/Dockerfile"
+dockerfilePath="./ShopeeKorean.Application/Dockerfile"
 
 [deploy]
 startCommand = "dotnet ShopeeKorean.dll"
