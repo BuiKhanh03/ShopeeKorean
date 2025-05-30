@@ -413,6 +413,14 @@
               "target": "Package",
               "version": "[14.0.0, )"
             },
+            "MailKit": {
+              "target": "Package",
+              "version": "[4.12.1, )"
+            },
+            "MimeKit": {
+              "target": "Package",
+              "version": "[4.12.0, )"
+            },
             "TourmalineCore.AspNetCore.JwtAuthentication.Identity": {
               "target": "Package",
               "version": "[0.1.1, )"

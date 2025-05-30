@@ -22,21 +22,14 @@ builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddScoped<ValidationFilterAttribute>();
 builder.Services.ConfigureJWT(builder.Configuration);
 builder.Services.ConfigureSqlContext(builder.Configuration);
+builder.Services.AddJwtConfiguration(builder.Configuration);
+builder.Services.AddSwaggerGen();
 builder.Services.AddControllers(config =>
 {
     config.RespectBrowserAcceptHeader = true;
     config.ReturnHttpNotAcceptable = true;
 }).AddXmlDataContractSerializerFormatters()
   .AddApplicationPart(typeof(ShopeeKorean.Presentation.AssemblyReference).Assembly);
-builder.Services.AddSwaggerGen(c =>
-{
-    c.SwaggerDoc("v1", new OpenApiInfo
-    {
-        Title = "Shopee Korean API",
-        Version = "v1",
-        Description = "API for Shopee Korean application"
-    });
-});
 
 builder.Services.AddHealthChecks();
 

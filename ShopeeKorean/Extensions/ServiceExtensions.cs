@@ -11,6 +11,8 @@ using Microsoft.AspNetCore.Identity;
 using ShopeeKorean.Service.Contracts;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using ShopeeKorean.Entities.ConfigurationModels;
+using Microsoft.OpenApi.Models;
 
 namespace ShopeeKorean.Application.Extensions
 {
@@ -60,7 +62,9 @@ namespace ShopeeKorean.Application.Extensions
 
         public static void ConfigureJWT(this IServiceCollection services, IConfiguration configuration)
         {
-            var jwtSettings = configuration.GetSection("JwtSettings");
+            //Bind ánh xạ dữ liệu cấu hình vào đối tượng C#
+            var jwtConfiguration = new JwtConfiguration();
+            configuration.Bind(jwtConfiguration.Section, jwtConfiguration);
             var secretKey = configuration["SECRETKEY"];
 
             services.AddAuthentication(opt =>
@@ -77,11 +81,58 @@ namespace ShopeeKorean.Application.Extensions
                         ValidateLifetime = true, // The token has not expired 
                         ValidateIssuerSigningKey = true,
 
-                        ValidIssuer = jwtSettings["validIssuer"],
-                        ValidAudience = jwtSettings["validAudience"],
+                        ValidIssuer = jwtConfiguration.ValidIssuer,
+                        ValidAudience = jwtConfiguration.ValidAudience,
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey))
                     };
                 });
+        }
+
+        public static void AddJwtConfiguration(this IServiceCollection services, IConfiguration configuration) {
+            services.Configure<JwtConfiguration>(configuration.GetSection("JwtSettings"));
+        }
+
+        public static void ConfigureSwagger(this IServiceCollection services) {
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Title = "Shopee Korean API",
+                    Version = "v1",
+                    Description = "API for Shopee Korean application",
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Bùi Duy Khánh",
+                        Email = "buikhanh0130@gmail.com",
+                    }
+                });
+                var xmlFile = $"{typeof(Presentation.AssemblyReference).Assembly.GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    In = ParameterLocation.Header,
+                    Description = "Place to add JWT with Bearer",
+                    Name = "Authorization",
+                    Type = SecuritySchemeType.ApiKey,
+                    Scheme="Bearer"
+                });
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement()
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "Bearer"
+                            },
+                            Name = "Bearer",
+                        },
+                        new List<string>()
+                    }
+                });
+            });
         }
     }
 }
