@@ -13,6 +13,9 @@ using System.Security.Cryptography;
 using ShopeeKorean.Application.Extensions.Exceptions;
 using ShopeeKorean.Entities.ConfigurationModels;
 using Microsoft.Extensions.Options;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace ShopeeKorean.Service
 {
@@ -170,6 +173,23 @@ namespace ShopeeKorean.Service
             return principal;
         }
 
+        private async Task<IActionResult> CreateConfirmEmailUrl(string email)
+        {
+            _user = await _userManager.FindByEmailAsync(email);
+            var result = _user == null;
+            if (!result) _loggerManager.LogWarn($"{nameof(ValidateUser)}: Authentication failed. Wrong username or password.");
+
+            var token = await _userManager.GenerateEmailConfirmationTokenAsync(_user);
+            var baseUrl = _jwtConfiguration.ValidAudience;
+            var builder = new UriBuilder(baseUrl!)
+            {
+                Path = "authen/confirm-email",
+                Query = $"email={email}&token={Uri.EscapeDataString(token)}"
+            };
+            var resetPasswordUrl = builder.ToString();
+
+            return Result<string>.Ok(resetPasswordUrl);
+        }
 
     }
 }

@@ -88,9 +88,12 @@ namespace ShopeeKorean.Application.Extensions
                 });
         }
 
-        public static void AddJwtConfiguration(this IServiceCollection services, IConfiguration configuration) {
-            services.Configure<JwtConfiguration>(configuration.GetSection("JwtSettings"));
-        }
+        public static void AddJwtConfiguration(this IServiceCollection services, IConfiguration configuration) 
+          =>  services.Configure<JwtConfiguration>(configuration.GetSection("JwtSettings"));
+        
+        
+        public static void AddMailConfiguration(this IServiceCollection services, IConfiguration configuration)
+            => services.Configure<MailConfiguration>(configuration.GetSection("MailSettings"));
 
         public static void ConfigureSwagger(this IServiceCollection services) {
             services.AddSwaggerGen(c =>

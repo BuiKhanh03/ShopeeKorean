@@ -1,7 +1,6 @@
 ﻿using Contracts;
 using ShopeeKorean.Application.Extensions;
 using ShopeeKorean.Presentation.ActionFilters;
-using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,6 +22,7 @@ builder.Services.AddScoped<ValidationFilterAttribute>();
 builder.Services.ConfigureJWT(builder.Configuration);
 builder.Services.ConfigureSqlContext(builder.Configuration);
 builder.Services.AddJwtConfiguration(builder.Configuration);
+builder.Services.AddMailConfiguration(builder.Configuration);
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllers(config =>
 {
