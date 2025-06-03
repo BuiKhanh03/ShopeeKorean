@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ShopeeKorean.Shared.Extension;
 using ShopeeKorean.Service.Contracts;
 using ShopeeKorean.Presentation.ActionFilters;
 using ShopeeKorean.Shared.DataTransferObjects.User;
@@ -13,7 +14,7 @@ namespace ShopeeKorean.Presentation.Controllers
 
         public AuthenticationController(IServiceManager service) => _service = service;
 
-        [HttpPost]
+        [HttpPost("register")]
         [ServiceFilter(typeof(ValidationFilterAttribute))]
         public async Task<IActionResult> Registeruser([FromBody] UserForRegistrationDto userForRegistration)
         {
@@ -26,6 +27,10 @@ namespace ShopeeKorean.Presentation.Controllers
                 }
                 return BadRequest(ModelState);
             }
+
+            var resultUrl = await _service.AuthenticationService.CreateConfirmEmailUrl(userForRegistration.Email);
+            var url = resultUrl.GetValue<string>();
+            await _service.MailService.SendConfirmEmail(userForRegistration.Email, url);
             return StatusCode(201);
         }
 
@@ -37,6 +42,13 @@ namespace ShopeeKorean.Presentation.Controllers
 
             var tokenDto = await _service.AuthenticationService.CreateToken(populateExp: true);
             return Ok(tokenDto);
+        }
+
+        [HttpPost("confirm-email")]
+        public async Task<IActionResult> ConfirmEmail([FromBody] UserForConfirmGmailDto user)
+        {
+            var result = await _service.AuthenticationService.ConfirmEmail(user);
+            return StatusCode(201);
         }
     }
 }

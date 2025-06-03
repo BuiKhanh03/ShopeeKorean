@@ -1,7 +1,8 @@
-﻿using ShopeeKorean.Shared.ErrorModel;
-using System.Net;
+﻿using System.Net;
 using System.Text.Json;
+using ShopeeKorean.Shared.ErrorModel;
 using System.Text.Json.Serialization;
+using ShopeeKorean.Shared.RequestFeatures;
 
 namespace ShopeeKorean.Shared.ResultModel
 {
@@ -104,7 +105,7 @@ namespace ShopeeKorean.Shared.ResultModel
 
         public MetaData? Paging { get; set; } = null;
 
-        protected Result(T value, HttpStatusCode statusCode, MetaData? paging = null) : base(statusCode)
+       protected Result(T value, HttpStatusCode statusCode, MetaData? paging = null) : base(statusCode)
         {
             Value = value;
             Paging = paging;
@@ -113,8 +114,8 @@ namespace ShopeeKorean.Shared.ResultModel
         protected Result(HttpStatusCode statuscode, List<ErrorsResult> errors) : base(statuscode, errors) { }
         protected Result(HttpStatusCode statuscode, ErrorsResult errors) : base(statuscode, errors) { }
 
-        public static Result<T> Success(T value, HttpStatusCode statusCode, MetaData? paging = null)
-            => new Result<T>(value, statusCode, paging);
+       public static Result<T> Success(T value, HttpStatusCode statusCode, MetaData? paging = null)
+            => new Result<T>(value, statusCode, paging); 
         public static new Result<T> Failure(HttpStatusCode statusCode, List<ErrorsResult> errors)
            => new Result<T>(statusCode, errors);
 
@@ -125,16 +126,16 @@ namespace ShopeeKorean.Shared.ResultModel
            => new Result<TOut>(StatusCode, Errors!);
 
         public static Result<T> Ok(T value, MetaData? paging = null)
-            => new Result<T>(value, HttpStatusCode.OK, paging);
+             => new Result<T>(value, HttpStatusCode.OK, paging);
 
-        public static Result<T> Created(T value)
-            => new Result<T>(value, HttpStatusCode.Created);
+         public static Result<T> Created(T value)
+             => new Result<T>(value, HttpStatusCode.Created);
 
-        //public static implicit operator Result<T>(T value)
-        //    => Success(value, HttpStatusCode.OK);
+         //public static implicit operator Result<T>(T value)
+         //    => Success(value, HttpStatusCode.OK);
 
-        public static new Result<T> NoContent()
-            => new Result<T>(default, HttpStatusCode.NoContent);
+         public static new Result<T> NoContent()
+             => new Result<T>(default, HttpStatusCode.NoContent);
 
         public static new Result<T> NotFound(List<ErrorsResult> errors)
             => new Result<T>(HttpStatusCode.NotFound, errors);

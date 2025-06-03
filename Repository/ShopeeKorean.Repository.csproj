@@ -13,6 +13,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Contracts\ShopeeKorean.Repository.Contracts.csproj" />
     <ProjectReference Include="..\Entities\ShopeeKorean.Entities.csproj" />
+    <ProjectReference Include="..\ShopeeKorean.Shared\ShopeeKorean.Shared.csproj" />
   </ItemGroup>
 
 </Project>

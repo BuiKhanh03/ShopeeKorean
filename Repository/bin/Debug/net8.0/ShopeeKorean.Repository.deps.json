@@ -10,7 +10,8 @@
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "9.0.5",
           "ShopeeKorean.Entities": "1.0.0",
-          "ShopeeKorean.Repository.Contracts": "1.0.0"
+          "ShopeeKorean.Repository.Contracts": "1.0.0",
+          "ShopeeKorean.Shared": "1.0.0"
         },
         "runtime": {
           "ShopeeKorean.Repository.dll": {}
@@ -329,6 +330,9 @@
         }
       },
       "ShopeeKorean.Repository.Contracts/1.0.0": {
+        "dependencies": {
+          "ShopeeKorean.Entities": "1.0.0"
+        },
         "runtime": {
           "ShopeeKorean.Repository.Contracts.dll": {}
         }

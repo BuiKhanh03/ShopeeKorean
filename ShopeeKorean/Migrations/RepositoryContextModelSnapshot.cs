@@ -481,14 +481,14 @@ namespace ShopeeKorean.Application.Migrations
                         new
                         {
                             Id = new Guid("2bad4a96-6dff-4fa3-9c2e-6899264fb739"),
-                            Name = "Manager",
-                            NormalizedName = "MANAGER"
+                            Name = "SELLER",
+                            NormalizedName = "Seller"
                         },
                         new
                         {
                             Id = new Guid("7d2b39a7-3d9d-4583-acd5-985611a29a5b"),
-                            Name = "Administrator",
-                            NormalizedName = "ADMINISTRATOR"
+                            Name = "CUSTOMER",
+                            NormalizedName = "CUSTOMER"
                         });
                 });
 

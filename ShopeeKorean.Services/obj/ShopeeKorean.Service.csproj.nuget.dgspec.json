@@ -28,7 +28,11 @@
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "D:\\Net\\core\\ShopeeKorean\\Entities\\ShopeeKorean.Entities.csproj": {
+                "projectPath": "D:\\Net\\core\\ShopeeKorean\\Entities\\ShopeeKorean.Entities.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -319,6 +323,9 @@
               },
               "D:\\Net\\core\\ShopeeKorean\\ShopeeKorean.Service.Contracts\\ShopeeKorean.Service.Contracts.csproj": {
                 "projectPath": "D:\\Net\\core\\ShopeeKorean\\ShopeeKorean.Service.Contracts\\ShopeeKorean.Service.Contracts.csproj"
+              },
+              "D:\\Net\\core\\ShopeeKorean\\ShopeeKorean.Shared\\ShopeeKorean.Shared.csproj": {
+                "projectPath": "D:\\Net\\core\\ShopeeKorean\\ShopeeKorean.Shared\\ShopeeKorean.Shared.csproj"
               }
             }
           }

@@ -8,6 +8,10 @@ using ShopeeKorean.Shared.DataTransferObjects;
 using MailKit.Net.Smtp;
 using MailKit.Security;
 using ShopeeKorean.Service.Utilities;
+using AutoMapper;
+using Contracts;
+using Microsoft.AspNetCore.Identity;
+using ShopeeKorean.Entities.Models;
 
 namespace ShopeeKorean.Service
 {
@@ -15,9 +19,15 @@ namespace ShopeeKorean.Service
     {
         public readonly IRepositoryManager _repoManager;
         public readonly MailConfiguration _mail;
+        private readonly ILoggerManager _loggerManager;
+        private readonly UserManager<User> _userManager;
+        private readonly JwtConfiguration _jwtConfiguration;
+        private readonly IOptions<JwtConfiguration> _configuration;
+
         public const string ConfirmEmail = "Confirm your email";
-        public MailService(IOptions<MailConfiguration> mailConfiguration, IRepositoryManager repositoryManager)
+        public MailService(ILoggerManager loggerManager, IOptions<MailConfiguration> mailConfiguration, IRepositoryManager repositoryManager)
         {
+            _loggerManager = loggerManager;
             _repoManager = repositoryManager;
             _mail = mailConfiguration.Value;
         }
@@ -50,7 +60,7 @@ namespace ShopeeKorean.Service
             }
         }
 
-        public async Task<bool> SendConfirmEmailEmail(string ToEmail, string url)
+        public async Task<bool> SendConfirmEmail(string ToEmail, string url)
         {
             MailData mailData = new MailData()
             {

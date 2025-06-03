@@ -10,3 +10,9 @@ D:\Net\core\ShopeeKorean\Contracts\obj\Debug\net8.0\ShopeeKorean.Repository.Cont
 D:\Net\core\ShopeeKorean\Contracts\obj\Debug\net8.0\refint\ShopeeKorean.Repository.Contracts.dll
 D:\Net\core\ShopeeKorean\Contracts\obj\Debug\net8.0\ShopeeKorean.Repository.Contracts.pdb
 D:\Net\core\ShopeeKorean\Contracts\obj\Debug\net8.0\ref\ShopeeKorean.Repository.Contracts.dll
+D:\Net\core\ShopeeKorean\Contracts\bin\Debug\net8.0\ShopeeKorean.Entities.dll
+D:\Net\core\ShopeeKorean\Contracts\bin\Debug\net8.0\ShopeeKorean.Shared.dll
+D:\Net\core\ShopeeKorean\Contracts\bin\Debug\net8.0\ShopeeKorean.Entities.pdb
+D:\Net\core\ShopeeKorean\Contracts\bin\Debug\net8.0\ShopeeKorean.Shared.pdb
+D:\Net\core\ShopeeKorean\Contracts\obj\Debug\net8.0\ShopeeKorean.Repository.Contracts.csproj.AssemblyReference.cache
+D:\Net\core\ShopeeKorean\Contracts\obj\Debug\net8.0\ShopeeKo.45A8E862.Up2Date

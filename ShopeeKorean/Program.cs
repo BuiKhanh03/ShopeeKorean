@@ -1,4 +1,5 @@
 ﻿using Contracts;
+using Microsoft.OpenApi.Models;
 using ShopeeKorean.Application.Extensions;
 using ShopeeKorean.Presentation.ActionFilters;
 
@@ -23,7 +24,6 @@ builder.Services.ConfigureJWT(builder.Configuration);
 builder.Services.ConfigureSqlContext(builder.Configuration);
 builder.Services.AddJwtConfiguration(builder.Configuration);
 builder.Services.AddMailConfiguration(builder.Configuration);
-builder.Services.AddSwaggerGen();
 builder.Services.AddControllers(config =>
 {
     config.RespectBrowserAcceptHeader = true;
@@ -31,7 +31,16 @@ builder.Services.AddControllers(config =>
 }).AddXmlDataContractSerializerFormatters()
   .AddApplicationPart(typeof(ShopeeKorean.Presentation.AssemblyReference).Assembly);
 
-builder.Services.AddHealthChecks();
+builder.Services.ConfigureSwagger();
+/*builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Title = "Shopee Korean API",
+        Version = "v1",
+        Description = "API for Shopee Korean application"
+    });
+});*/
 
 var app = builder.Build();
 var logger = app.Services.GetRequiredService<ILoggerManager>();
@@ -41,11 +50,6 @@ if (app.Environment.IsProduction())
     app.UseHsts();
 
 app.UseSwagger();
-/*app.UseSwaggerUI(c =>
-{
-    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Shopee Korean API v1");
-    c.RoutePrefix = string.Empty;
-});*/
 app.UseSwaggerUI();
 
 app.UseHealthChecks("/health");
@@ -56,6 +60,7 @@ app.UseForwardedHeaders(new ForwardedHeadersOptions
 {
     ForwardedHeaders = Microsoft.AspNetCore.HttpOverrides.ForwardedHeaders.All
 });
+app.UseRouting();
 app.UseCors("CorsPolicy");
 app.UseAuthentication();
 app.UseAuthorization();

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using ShopeeKorean.Shared.DataTransferObjects.User;
+using ShopeeKorean.Shared.ResultModel;
 
 namespace ShopeeKorean.Service.Contracts
 {
@@ -9,5 +10,7 @@ namespace ShopeeKorean.Service.Contracts
         Task<bool> ValidateUser(UserForAuthenticationDto userForAuthentication);
         Task<UserTokenDto> CreateToken(bool populateExp);
         Task<UserTokenDto> RefreshToken(UserTokenDto tokenDto);
+        public Task<Result<string>> CreateConfirmEmailUrl(string email);
+        public Task<Result> ConfirmEmail(UserForConfirmGmailDto userForConfirmGmail);
     }
 }

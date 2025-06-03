@@ -204,3 +204,7 @@ D:\Net\core\ShopeeKorean\ShopeeKorean\bin\Debug\net8.0\Microsoft.OpenApi.dll
 D:\Net\core\ShopeeKorean\ShopeeKorean\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
 D:\Net\core\ShopeeKorean\ShopeeKorean\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 D:\Net\core\ShopeeKorean\ShopeeKorean\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\Net\core\ShopeeKorean\ShopeeKorean\bin\Debug\net8.0\BouncyCastle.Cryptography.dll
+D:\Net\core\ShopeeKorean\ShopeeKorean\bin\Debug\net8.0\MailKit.dll
+D:\Net\core\ShopeeKorean\ShopeeKorean\bin\Debug\net8.0\MimeKit.dll
+D:\Net\core\ShopeeKorean\ShopeeKorean\bin\Debug\net8.0\ShopeeKorean.Presentation.xml

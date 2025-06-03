@@ -24,3 +24,4 @@ D:\Net\core\ShopeeKorean\ShopeeKorean.Presentation\obj\Debug\net8.0\ShopeeKorean
 D:\Net\core\ShopeeKorean\ShopeeKorean.Presentation\obj\Debug\net8.0\refint\ShopeeKorean.Presentation.dll
 D:\Net\core\ShopeeKorean\ShopeeKorean.Presentation\obj\Debug\net8.0\ShopeeKorean.Presentation.pdb
 D:\Net\core\ShopeeKorean\ShopeeKorean.Presentation\obj\Debug\net8.0\ref\ShopeeKorean.Presentation.dll
+D:\Net\core\ShopeeKorean\ShopeeKorean.Presentation\bin\Debug\net8.0\ShopeeKorean.Presentation.xml

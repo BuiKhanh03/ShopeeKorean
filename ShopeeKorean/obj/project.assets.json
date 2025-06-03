@@ -2646,7 +2646,8 @@
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Microsoft.AspNetCore.Mvc.Core": "2.3.0",
-          "ShopeeKorean.Service": "1.0.0"
+          "ShopeeKorean.Service": "1.0.0",
+          "ShopeeKorean.Service.Contracts": "1.0.0"
         },
         "compile": {
           "bin/placeholder/ShopeeKorean.Presentation.dll": {}
@@ -2661,7 +2662,8 @@
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "9.0.5",
           "ShopeeKorean.Entities": "1.0.0",
-          "ShopeeKorean.Repository.Contracts": "1.0.0"
+          "ShopeeKorean.Repository.Contracts": "1.0.0",
+          "ShopeeKorean.Shared": "1.0.0"
         },
         "compile": {
           "bin/placeholder/ShopeeKorean.Repository.dll": {}
@@ -2673,6 +2675,9 @@
       "ShopeeKorean.Repository.Contracts/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "ShopeeKorean.Entities": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/ShopeeKorean.Repository.Contracts.dll": {}
         },
@@ -2690,6 +2695,7 @@
           "ShopeeKorean.Entities": "1.0.0",
           "ShopeeKorean.LoggerService": "1.0.0",
           "ShopeeKorean.Service.Contracts": "1.0.0",
+          "ShopeeKorean.Shared": "1.0.0",
           "TourmalineCore.AspNetCore.JwtAuthentication.Identity": "0.1.1"
         },
         "compile": {

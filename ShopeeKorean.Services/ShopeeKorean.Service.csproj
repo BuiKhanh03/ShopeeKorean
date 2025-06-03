@@ -17,6 +17,7 @@
     <ProjectReference Include="..\Entities\ShopeeKorean.Entities.csproj" />
     <ProjectReference Include="..\LoggerService\ShopeeKorean.LoggerService.csproj" />
     <ProjectReference Include="..\ShopeeKorean.Service.Contracts\ShopeeKorean.Service.Contracts.csproj" />
+    <ProjectReference Include="..\ShopeeKorean.Shared\ShopeeKorean.Shared.csproj" />
   </ItemGroup>
 
 </Project>

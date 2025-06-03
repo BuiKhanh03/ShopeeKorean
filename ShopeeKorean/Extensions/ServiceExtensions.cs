@@ -23,7 +23,7 @@ namespace ShopeeKorean.Application.Extensions
             services.AddCors(options =>
             {
                 options.AddPolicy("CorsPolicy", builder =>
-                 builder.WithOrigins("http://localhost:32768", "http://localhost:32769", "http://localhost:8080","https://localhost:32768")
+                 builder.WithOrigins("http://localhost:32768", "http://localhost:32769", "http://localhost:8080")
                //  builder.AllowAnyOrigin()
                 .AllowAnyMethod()
                 .AllowAnyHeader()
@@ -117,8 +117,9 @@ namespace ShopeeKorean.Application.Extensions
                     In = ParameterLocation.Header,
                     Description = "Place to add JWT with Bearer",
                     Name = "Authorization",
-                    Type = SecuritySchemeType.ApiKey,
-                    Scheme="Bearer"
+                    Type = SecuritySchemeType.Http,
+                    Scheme = "bearer",
+                    BearerFormat = "JWT"
                 });
                 c.AddSecurityRequirement(new OpenApiSecurityRequirement()
                 {

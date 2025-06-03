@@ -1,21 +1,20 @@
 ﻿using Contracts;
 using AutoMapper;
 using System.Text;
+using System.Security.Claims;
 using ShopeeKorean.Entities.Models;
+using System.Security.Cryptography;
+using Microsoft.Extensions.Options;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using ShopeeKorean.Service.Contracts;
-using Microsoft.Extensions.Configuration;
-using System.Security.Claims;
 using System.IdentityModel.Tokens.Jwt;
-using ShopeeKorean.Shared.DataTransferObjects.User;
-using System.Security.Cryptography;
-using ShopeeKorean.Application.Extensions.Exceptions;
+using ShopeeKorean.Shared.ResultModel;
 using ShopeeKorean.Entities.ConfigurationModels;
-using Microsoft.Extensions.Options;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Http.HttpResults;
+using ShopeeKorean.Shared.DataTransferObjects.User;
+using ShopeeKorean.Application.Extensions.Exceptions;
+using ShopeeKorean.Shared.Constant.Authentication;
+using ShopeeKorean.Service.Extensions;
 
 namespace ShopeeKorean.Service
 {
@@ -90,6 +89,36 @@ namespace ShopeeKorean.Service
 
         }
 
+        public async Task<Result> ConfirmEmail(UserForConfirmGmailDto userForConfirmGmail)
+        {
+            _user = await _userManager.FindByEmailAsync(userForConfirmGmail.Email);
+            if (_user == null) return Result.NotFound([UserErrors.GetUserNotFoundWithEmailError(userForConfirmGmail.Email)]);
+            var result = await _userManager.ConfirmEmailAsync(_user, Uri.UnescapeDataString(userForConfirmGmail.Email));
+            if (!result.Succeeded)
+                return result.InvalidResult();
+
+            await UpdateUserAsync();
+            return Result.Ok();
+        }
+
+        public async Task<Result<string>> CreateConfirmEmailUrl(string email)
+        {
+            _user = await _userManager.FindByEmailAsync(email);
+            var result = _user == null;
+            if (!result) _loggerManager.LogWarn($"{nameof(ValidateUser)}: Authentication failed. Wrong username or password.");
+
+            var token = await _userManager.GenerateEmailConfirmationTokenAsync(_user);
+            var baseUrl = _jwtConfiguration.ValidAudience;
+            var builder = new UriBuilder(baseUrl!)
+            {
+                Path = "api/authentication/confirm-email",
+                Query = $"email={email}&token={Uri.EscapeDataString(token)}"
+            };
+            var resetPasswordUrl = builder.ToString();
+
+            return Result<string>.Ok(resetPasswordUrl);
+        }
+
         private SigningCredentials GetSigningCredentials()
         {
             var key = _jwtConfiguration.SecretKey;
@@ -108,7 +137,10 @@ namespace ShopeeKorean.Service
         {
             var claims = new List<Claim>
             {
-                new Claim(ClaimTypes.Name, _user.UserName)
+                new Claim(ClaimTypes.Name, _user.UserName),
+                new Claim("UserId", _user!.Id.ToString()!),
+                new Claim("FirstName", _user!.FirstName!),
+                new Claim("LastName", _user!.LastName!)
             };
 
             var roles = await _userManager.GetRolesAsync(_user);
@@ -173,23 +205,12 @@ namespace ShopeeKorean.Service
             return principal;
         }
 
-        private async Task<IActionResult> CreateConfirmEmailUrl(string email)
+        private async Task UpdateUserAsync()
         {
-            _user = await _userManager.FindByEmailAsync(email);
-            var result = _user == null;
-            if (!result) _loggerManager.LogWarn($"{nameof(ValidateUser)}: Authentication failed. Wrong username or password.");
-
-            var token = await _userManager.GenerateEmailConfirmationTokenAsync(_user);
-            var baseUrl = _jwtConfiguration.ValidAudience;
-            var builder = new UriBuilder(baseUrl!)
-            {
-                Path = "authen/confirm-email",
-                Query = $"email={email}&token={Uri.EscapeDataString(token)}"
-            };
-            var resetPasswordUrl = builder.ToString();
-
-            return Result<string>.Ok(resetPasswordUrl);
+            await _userManager.UpdateAsync(_user);
         }
 
+
+      
     }
 }

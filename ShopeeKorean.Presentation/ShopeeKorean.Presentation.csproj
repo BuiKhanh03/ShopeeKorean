@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ShopeeKorean.Service.Contracts\ShopeeKorean.Service.Contracts.csproj" />
     <ProjectReference Include="..\ShopeeKorean.Services\ShopeeKorean.Service.csproj" />
   </ItemGroup>
 
