@@ -2,7 +2,7 @@
 
 namespace ShopeeKorean.Entities.Models
 {
-    public class Coupon
+    public class Coupon : BaseEntity<Coupon>
     {
         public Guid Id
         {

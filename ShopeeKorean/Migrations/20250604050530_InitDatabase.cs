@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ShopeeKorean.Application.Migrations
 {
     /// <inheritdoc />
-    public partial class AddRefreshToken : Migration
+    public partial class InitDatabase : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -417,8 +417,8 @@ namespace ShopeeKorean.Application.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { new Guid("2bad4a96-6dff-4fa3-9c2e-6899264fb739"), null, "Manager", "MANAGER" },
-                    { new Guid("7d2b39a7-3d9d-4583-acd5-985611a29a5b"), null, "Administrator", "ADMINISTRATOR" }
+                    { new Guid("2bad4a96-6dff-4fa3-9c2e-6899264fb739"), null, "SELLER", "Seller" },
+                    { new Guid("7d2b39a7-3d9d-4583-acd5-985611a29a5b"), null, "CUSTOMER", "CUSTOMER" }
                 });
 
             migrationBuilder.CreateIndex(

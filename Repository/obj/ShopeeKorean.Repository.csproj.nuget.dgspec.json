@@ -31,6 +31,9 @@
             "projectReferences": {
               "D:\\Net\\core\\ShopeeKorean\\Entities\\ShopeeKorean.Entities.csproj": {
                 "projectPath": "D:\\Net\\core\\ShopeeKorean\\Entities\\ShopeeKorean.Entities.csproj"
+              },
+              "D:\\Net\\core\\ShopeeKorean\\ShopeeKorean.Shared\\ShopeeKorean.Shared.csproj": {
+                "projectPath": "D:\\Net\\core\\ShopeeKorean\\ShopeeKorean.Shared\\ShopeeKorean.Shared.csproj"
               }
             }
           }

@@ -3,7 +3,7 @@ using ShopeeKorean.Shared.Enums.Status;
 
 namespace ShopeeKorean.Entities.Models
 {
-    public class PaymentRecord
+    public class PaymentRecord : BaseEntity<PaymentRecord>
     {
         public Guid Id { get; set; }
         public PaymentRecordType PaymentRecordMethod { get; set; } = PaymentRecordType.Cod;

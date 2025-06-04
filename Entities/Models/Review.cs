@@ -1,6 +1,6 @@
 ﻿namespace ShopeeKorean.Entities.Models
 {
-    public class Review
+    public class Review : BaseEntity<Review>
     {
         public Guid Id { get; set; }
         public Guid ProductId { get; set; }

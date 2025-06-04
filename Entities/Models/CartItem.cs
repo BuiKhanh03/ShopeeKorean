@@ -1,6 +1,6 @@
 ﻿namespace ShopeeKorean.Entities.Models
 {
-    public class CartItem
+    public class CartItem : BaseEntity<CartItem>
     {
         public Guid Id { get; set; }
         public Guid CartId { get; set; }

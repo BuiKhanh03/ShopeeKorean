@@ -2,7 +2,7 @@
 
 namespace ShopeeKorean.Entities.Models
 {
-    public class Order
+    public class Order : BaseEntity<Order>
     {
         public Guid Id { get; set; }
         public Guid PaymentRecordId { get; set; }

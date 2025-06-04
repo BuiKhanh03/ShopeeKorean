@@ -1,5 +1,7 @@
 ﻿using Contracts;
-using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Formatters;
+using Microsoft.Extensions.Options;
 using ShopeeKorean.Application.Extensions;
 using ShopeeKorean.Presentation.ActionFilters;
 
@@ -7,6 +9,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
 builder.WebHost.UseUrls($"http://*:{port}");
+
+NewtonsoftJsonPatchInputFormatter GetJonPatchInputFormatter() => new ServiceCollection().AddLogging().AddMvc().AddNewtonsoftJson()
+                                                                     .Services.BuildServiceProvider()
+                                                                     .GetRequiredService<IOptions<MvcOptions>>().Value.InputFormatters
+                                                                     .OfType<NewtonsoftJsonPatchInputFormatter>().First();
 
 // Add services to the container
 builder.Services.ConfigureCors();
@@ -30,6 +37,19 @@ builder.Services.AddControllers(config =>
     config.ReturnHttpNotAcceptable = true;
 }).AddXmlDataContractSerializerFormatters()
   .AddApplicationPart(typeof(ShopeeKorean.Presentation.AssemblyReference).Assembly);
+//tùy chỉnh phản hồi lỗi (custom validation response).
+//sử dụng FluentValidation hoặc validation logic riêng và không muốn ASP.NET Core tự động trả về lỗi.
+builder.Services.Configure<ApiBehaviorOptions>(options =>
+{
+    options.SuppressModelStateInvalidFilter = true;
+});
+
+builder.Services.AddControllers(config =>
+{
+    config.RespectBrowserAcceptHeader = true;
+    config.ReturnHttpNotAcceptable = true;
+    config.InputFormatters.Insert(0, GetJonPatchInputFormatter());
+}).AddXmlDataContractSerializerFormatters();
 
 builder.Services.ConfigureSwagger();
 /*builder.Services.AddSwaggerGen(c =>

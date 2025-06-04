@@ -10,6 +10,7 @@
         public decimal Price { get; set; }
         public int StockQuantity { get; set; }
         public string Brand { get; set; } = string.Empty;
+        public string Size { get; set; } = string.Empty;
         public User Seller { get; set; }
         public Category Category { get; set; }
         public OrderItem OrderItem { get; set; }

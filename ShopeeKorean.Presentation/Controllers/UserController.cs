@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using ShopeeKorean.Service.Contracts;
 using ShopeeKorean.Shared.DataTransferObjects.User;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ShopeeKorean.Presentation.Controllers
 {
@@ -10,25 +11,27 @@ namespace ShopeeKorean.Presentation.Controllers
     [ApiController]
     public class UserController : ApiControllerBase
     {
-        private readonly IServiceManager _serivce;
         public UserController(IServiceManager service) : base(service)
         {
         }
 
-        [HttpGet("profile")]
+        [HttpGet]
+        [Authorize]
         public async Task<IActionResult> GetUser()
         {
+            //HttpContext User đại diện cho người dùng hiện tại
             var userId = HttpContext.User.FindFirstValue("UserId");
             var includes = "Roles";
-            var user = await _serivce.UserService.GetUserAsync(new Guid(userId!), trackChanges: false, includes);
+            var user = await _service.UserService.GetUserAsync(new Guid(userId!), trackChanges: false, includes);
             return Ok(user);
         }
 
         [HttpPut]
+        [Authorize]
         public async Task<IActionResult> UpdateUserInfo([FromBody] UserForUpdateDto user)
         {
             var userId = HttpContext.User.FindFirstValue("UserId");
-            var resultUpdated = await _serivce.UserService.UpdateUser(new Guid(userId!), user, trackChanes: true);
+            var resultUpdated = await _service.UserService.UpdateUser(new Guid(userId!), user, trackChanes: true);
             return resultUpdated.Map(
                 onSuccess: _ => NoContent(),
                 onFailure: ProcessError

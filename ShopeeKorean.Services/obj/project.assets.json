@@ -666,7 +666,8 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
-          "ShopeeKorean.Entities": "1.0.0"
+          "ShopeeKorean.Entities": "1.0.0",
+          "ShopeeKorean.Shared": "1.0.0"
         },
         "compile": {
           "bin/placeholder/ShopeeKorean.Repository.Contracts.dll": {}

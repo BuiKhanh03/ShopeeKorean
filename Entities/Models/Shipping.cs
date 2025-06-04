@@ -2,7 +2,7 @@
 
 namespace ShopeeKorean.Entities.Models
 {
-    public class Shipping
+    public class Shipping : BaseEntity<Shipping>
     {
         public Guid Id { get; set; }
         public string TrackingNumber {  get; set; } = string.Empty;

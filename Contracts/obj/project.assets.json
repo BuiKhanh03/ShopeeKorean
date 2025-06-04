@@ -1346,7 +1346,8 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "ShopeeKorean.Entities >= 1.0.0"
+      "ShopeeKorean.Entities >= 1.0.0",
+      "ShopeeKorean.Shared >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -1379,6 +1380,9 @@
           "projectReferences": {
             "D:\\Net\\core\\ShopeeKorean\\Entities\\ShopeeKorean.Entities.csproj": {
               "projectPath": "D:\\Net\\core\\ShopeeKorean\\Entities\\ShopeeKorean.Entities.csproj"
+            },
+            "D:\\Net\\core\\ShopeeKorean\\ShopeeKorean.Shared\\ShopeeKorean.Shared.csproj": {
+              "projectPath": "D:\\Net\\core\\ShopeeKorean\\ShopeeKorean.Shared\\ShopeeKorean.Shared.csproj"
             }
           }
         }

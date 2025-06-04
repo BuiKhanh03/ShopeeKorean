@@ -7,8 +7,8 @@ namespace ShopeeKorean.Application.MappingProfile
     public class UserMappingProfile : Profile
     {
         public UserMappingProfile() { 
-        CreateMap<UserDto, User>();
-        CreateMap<UserForUpdateDto, UserDto>();
+        CreateMap<User, UserDto>().ReverseMap();
+        CreateMap<UserForUpdateDto, User>();
         }
     }
 }

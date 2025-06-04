@@ -421,6 +421,12 @@
           }
         }
       },
+      "runtime.aot.System.Reflection/4.3.0": {
+        "type": "package",
+        "compile": {
+          "ref/netstandard/_._": {}
+        }
+      },
       "System.Diagnostics.DiagnosticSource/9.0.5": {
         "type": "package",
         "compile": {
@@ -1162,6 +1168,21 @@
         "microsoft.identitymodel.tokens.nuspec"
       ]
     },
+    "runtime.aot.System.Reflection/4.3.0": {
+      "sha512": "RtPByBmixEVC003nTtg9rGk+hogh8u3Tjd2Ap9WtYchddErK+EfOWhWEWSNfrlfHSep0fPZyjLXye+bdDqeqyQ==",
+      "type": "package",
+      "path": "runtime.aot.system.reflection/4.3.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "ref/netstandard/_._",
+        "runtime.aot.system.reflection.4.3.0.nupkg.sha512",
+        "runtime.aot.system.reflection.nuspec",
+        "runtimes/aot/lib/netcore50/System.Reflection.dll"
+      ]
+    },
     "System.Diagnostics.DiagnosticSource/9.0.5": {
       "sha512": "WoI5or8kY2VxFdDmsaRZ5yaYvvb+4MCyy66eXo79Cy1uMa7qXeGIlYmZx7R9Zy5S4xZjmqvkk2V8L6/vDwAAEA==",
       "type": "package",
@@ -1328,7 +1349,8 @@
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 8.0.16",
       "Microsoft.EntityFrameworkCore >= 9.0.5",
       "ShopeeKorean.Shared >= 1.0.0",
-      "TourmalineCore.AspNetCore.JwtAuthentication.Identity >= 0.1.1"
+      "TourmalineCore.AspNetCore.JwtAuthentication.Identity >= 0.1.1",
+      "runtime.aot.System.Reflection >= 4.3.0"
     ]
   },
   "packageFolders": {
@@ -1391,6 +1413,10 @@
           "TourmalineCore.AspNetCore.JwtAuthentication.Identity": {
             "target": "Package",
             "version": "[0.1.1, )"
+          },
+          "runtime.aot.System.Reflection": {
+            "target": "Package",
+            "version": "[4.3.0, )"
           }
         },
         "imports": [

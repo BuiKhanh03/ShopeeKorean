@@ -5,6 +5,7 @@ using LoggerService;
 using ShopeeKorean.Service;
 using ShopeeKorean.Contracts;
 using ShopeeKorean.Repository;
+using Microsoft.OpenApi.Models;
 using ShopeeKorean.Entities.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
@@ -12,7 +13,6 @@ using ShopeeKorean.Service.Contracts;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using ShopeeKorean.Entities.ConfigurationModels;
-using Microsoft.OpenApi.Models;
 
 namespace ShopeeKorean.Application.Extensions
 {
@@ -65,7 +65,7 @@ namespace ShopeeKorean.Application.Extensions
             //Bind ánh xạ dữ liệu cấu hình vào đối tượng C#
             var jwtConfiguration = new JwtConfiguration();
             configuration.Bind(jwtConfiguration.Section, jwtConfiguration);
-            var secretKey = configuration["SECRETKEY"];
+            var secretKey = jwtConfiguration.SecretKey;
 
             services.AddAuthentication(opt =>
             {
@@ -118,7 +118,7 @@ namespace ShopeeKorean.Application.Extensions
                     Description = "Place to add JWT with Bearer",
                     Name = "Authorization",
                     Type = SecuritySchemeType.Http,
-                    Scheme = "bearer",
+                    Scheme = "Bearer",
                     BearerFormat = "JWT"
                 });
                 c.AddSecurityRequirement(new OpenApiSecurityRequirement()

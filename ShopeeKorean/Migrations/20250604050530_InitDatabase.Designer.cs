@@ -12,8 +12,8 @@ using Repository;
 namespace ShopeeKorean.Application.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    [Migration("20250603164309_ChangeRole")]
-    partial class ChangeRole
+    [Migration("20250604050530_InitDatabase")]
+    partial class InitDatabase
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
