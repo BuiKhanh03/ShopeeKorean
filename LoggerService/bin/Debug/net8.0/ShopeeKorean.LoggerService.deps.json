@@ -291,6 +291,7 @@
           }
         }
       },
+      "runtime.aot.System.Reflection/4.3.0": {},
       "System.Diagnostics.DiagnosticSource/9.0.5": {
         "runtime": {
           "lib/net8.0/System.Diagnostics.DiagnosticSource.dll": {
@@ -342,7 +343,8 @@
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.16",
           "Microsoft.EntityFrameworkCore": "9.0.5",
           "ShopeeKorean.Shared": "1.0.0",
-          "TourmalineCore.AspNetCore.JwtAuthentication.Identity": "0.1.1"
+          "TourmalineCore.AspNetCore.JwtAuthentication.Identity": "0.1.1",
+          "runtime.aot.System.Reflection": "4.3.0"
         },
         "runtime": {
           "ShopeeKorean.Entities.dll": {}
@@ -350,7 +352,8 @@
       },
       "ShopeeKorean.Repository.Contracts/1.0.0": {
         "dependencies": {
-          "ShopeeKorean.Entities": "1.0.0"
+          "ShopeeKorean.Entities": "1.0.0",
+          "ShopeeKorean.Shared": "1.0.0"
         },
         "runtime": {
           "ShopeeKorean.Repository.Contracts.dll": {}
@@ -557,6 +560,13 @@
       "sha512": "sha512-7XDC0J2gNTphPmYRJMZeXFhB9fONgF6SVVRw/UKVPaesekCg/i9EL67p7x9fnf7IRD/Yq5btAl3Rae1WUeIDhA==",
       "path": "nlog.extensions.logging/5.3.5",
       "hashPath": "nlog.extensions.logging.5.3.5.nupkg.sha512"
+    },
+    "runtime.aot.System.Reflection/4.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-RtPByBmixEVC003nTtg9rGk+hogh8u3Tjd2Ap9WtYchddErK+EfOWhWEWSNfrlfHSep0fPZyjLXye+bdDqeqyQ==",
+      "path": "runtime.aot.system.reflection/4.3.0",
+      "hashPath": "runtime.aot.system.reflection.4.3.0.nupkg.sha512"
     },
     "System.Diagnostics.DiagnosticSource/9.0.5": {
       "type": "package",

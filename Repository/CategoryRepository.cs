@@ -1,13 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Repository;
+﻿using Repository;
 using ShopeeKorean.Entities.Models;
+using Microsoft.EntityFrameworkCore;
 using ShopeeKorean.Repository.Contracts;
-using ShopeeKorean.Repository.Extensions.Utility;
 using ShopeeKorean.Shared.RequestFeatures;
+using ShopeeKorean.Repository.Extensions.Utility;
 
 namespace ShopeeKorean.Repository
 {
-    public class CategoryRepository : RepositoryBase<Category> ,ICategoryRepository
+    public class CategoryRepository : RepositoryBase<Category>, ICategoryRepository
     {
         public CategoryRepository(RepositoryContext repositoryContext) : base(repositoryContext) { }
         
@@ -24,14 +24,9 @@ namespace ShopeeKorean.Repository
                 );
         }
 
-        public Task<Category?> GetCategory(Guid categoryId, bool trackChanges = false, string? include = null)
+        public async Task<Category?> GetCategory(Guid categoryId, bool trackChanges = false, string? include = null)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<PagedList<Category>> GetCategoryByUser(Guid userId, bool trackChanges = false, string? include = null)
-        {
-            throw new NotImplementedException();
+            return await FindByCondition(c => c.Id.Equals(categoryId), trackChanges).IsInclude(include).SingleOrDefaultAsync();
         }
     }
 }

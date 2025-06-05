@@ -11,7 +11,8 @@
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.16",
           "Microsoft.EntityFrameworkCore": "9.0.5",
           "ShopeeKorean.Shared": "1.0.0",
-          "TourmalineCore.AspNetCore.JwtAuthentication.Identity": "0.1.1"
+          "TourmalineCore.AspNetCore.JwtAuthentication.Identity": "0.1.1",
+          "runtime.aot.System.Reflection": "4.3.0"
         },
         "runtime": {
           "ShopeeKorean.Entities.dll": {}
@@ -272,6 +273,7 @@
           }
         }
       },
+      "runtime.aot.System.Reflection/4.3.0": {},
       "System.Diagnostics.DiagnosticSource/9.0.5": {
         "runtime": {
           "lib/net8.0/System.Diagnostics.DiagnosticSource.dll": {
@@ -505,6 +507,13 @@
       "sha512": "sha512-qbf1NslutDB4oLrriYTJpy7oB1pbh2ej2lEHd2IPDQH9C74ysOdhU5wAC7KoXblldbo7YsNR2QYFOqQM/b0Rsg==",
       "path": "microsoft.identitymodel.tokens/6.10.0",
       "hashPath": "microsoft.identitymodel.tokens.6.10.0.nupkg.sha512"
+    },
+    "runtime.aot.System.Reflection/4.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-RtPByBmixEVC003nTtg9rGk+hogh8u3Tjd2Ap9WtYchddErK+EfOWhWEWSNfrlfHSep0fPZyjLXye+bdDqeqyQ==",
+      "path": "runtime.aot.system.reflection/4.3.0",
+      "hashPath": "runtime.aot.system.reflection.4.3.0.nupkg.sha512"
     },
     "System.Diagnostics.DiagnosticSource/9.0.5": {
       "type": "package",

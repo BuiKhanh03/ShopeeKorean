@@ -4,7 +4,8 @@
     {
         IAuthenticationService AuthenticationService { get; }
         IMailService MailService { get; }
-
         IUserService UserService { get; }
+        ICloudinaryService CloudinaryService { get; }
+        ICategoryService CategoryService { get; }
     }
 }

@@ -13,6 +13,8 @@ using ShopeeKorean.Service.Contracts;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using ShopeeKorean.Entities.ConfigurationModels;
+using GarageManagementAPI.Service.DataShaping;
+using ShopeeKorean.Service.DataShapping;
 
 namespace ShopeeKorean.Application.Extensions
 {
@@ -43,6 +45,7 @@ namespace ShopeeKorean.Application.Extensions
 
         public static void ConfigureRepositoryManager(this IServiceCollection services) => services.AddScoped<IRepositoryManager, RepositoryManager>();
         public static void ConfigureServiceManager(this IServiceCollection services) => services.AddScoped<IServiceManager, ServiceManager>();
+        public static void ConfigureDataShaperManager(this IServiceCollection services) => services.AddScoped<IDataShaperManager, DataShaperManager>();
 
         public static void ConfigureIdentity(this IServiceCollection services)
         {
@@ -83,7 +86,7 @@ namespace ShopeeKorean.Application.Extensions
 
                         ValidIssuer = jwtConfiguration.ValidIssuer,
                         ValidAudience = jwtConfiguration.ValidAudience,
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey))
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey!))
                     };
                 });
         }
@@ -94,6 +97,9 @@ namespace ShopeeKorean.Application.Extensions
         
         public static void AddMailConfiguration(this IServiceCollection services, IConfiguration configuration)
             => services.Configure<MailConfiguration>(configuration.GetSection("MailSettings"));
+
+        public static void AddCloudinaryConfiguration(this IServiceCollection services, IConfiguration configuration)
+            => services.Configure<CloudinaryConfiguration>(configuration.GetSection("CloudinarySettings"));
 
         public static void ConfigureSwagger(this IServiceCollection services) {
             services.AddSwaggerGen(c =>

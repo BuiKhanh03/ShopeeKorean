@@ -7,17 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="EDennis.NetCore.LinqTools" Version="1.3.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.5" />
+    <PackageReference Include="System.Linq.Dynamic.Core" Version="1.6.5" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Contracts\ShopeeKorean.Repository.Contracts.csproj" />
     <ProjectReference Include="..\Entities\ShopeeKorean.Entities.csproj" />
     <ProjectReference Include="..\ShopeeKorean.Shared\ShopeeKorean.Shared.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Extensions\Utility\" />
   </ItemGroup>
 
 </Project>

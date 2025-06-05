@@ -9,6 +9,9 @@ namespace ShopeeKorean.Entities.Models
         public string? FirstName { get; set; }
 
         public string? LastName { get; set; }
+
+        public string? ImageLink { get; set; } = "N/A";
+        public string? ImageId { get; set; } = "N/A";
         public string? RefreshToken { get; set; }
         public DateTime RefreshTokenExpiryTime { get; set; }
         public Cart Cart { get; set; }

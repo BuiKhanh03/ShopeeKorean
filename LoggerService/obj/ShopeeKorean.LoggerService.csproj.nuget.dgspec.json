@@ -129,6 +129,10 @@
             "TourmalineCore.AspNetCore.JwtAuthentication.Identity": {
               "target": "Package",
               "version": "[0.1.1, )"
+            },
+            "runtime.aot.System.Reflection": {
+              "target": "Package",
+              "version": "[4.3.0, )"
             }
           },
           "imports": [

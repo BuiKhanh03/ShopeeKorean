@@ -1,7 +1,7 @@
 ﻿using Contracts;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.Extensions.Options;
+using Microsoft.AspNetCore.Mvc.Formatters;
 using ShopeeKorean.Application.Extensions;
 using ShopeeKorean.Presentation.ActionFilters;
 
@@ -25,12 +25,14 @@ builder.Services.ConfigureLoggerService();
 builder.Services.ConfigureIISIntegration();
 builder.Services.ConfigureServiceManager();
 builder.Services.ConfigureRepositoryManager();
+builder.Services.ConfigureDataShaperManager();
 builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddScoped<ValidationFilterAttribute>();
 builder.Services.ConfigureJWT(builder.Configuration);
 builder.Services.ConfigureSqlContext(builder.Configuration);
 builder.Services.AddJwtConfiguration(builder.Configuration);
 builder.Services.AddMailConfiguration(builder.Configuration);
+builder.Services.AddCloudinaryConfiguration(builder.Configuration);
 builder.Services.AddControllers(config =>
 {
     config.RespectBrowserAcceptHeader = true;

@@ -13,7 +13,7 @@ namespace ShopeeKorean.Repository.Configuration
             entity.ToTable("ProductImage");
 
             entity.Property(e => e.Id).ValueGeneratedOnAdd().HasDefaultValueSql("NEWID()");
-            entity.Property(e => e.ImageUrl).HasMaxLength(255);
+            entity.Property(e => e.ImageLink).HasMaxLength(255);
 
             entity.HasOne(e => e.Product)
                 .WithMany(e => e.ProductImages)

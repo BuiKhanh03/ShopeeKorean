@@ -1,4 +1,5 @@
-﻿using ShopeeKorean.Entities.Models;
+﻿using System.Linq.Dynamic.Core;
+using ShopeeKorean.Entities.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace ShopeeKorean.Repository.Extensions.Utility
@@ -9,7 +10,7 @@ namespace ShopeeKorean.Repository.Extensions.Utility
         public static IQueryable<Category> SearchByName(this IQueryable<Category> category, string? name)
         {
             if (string.IsNullOrEmpty(name)) return category;
-            return category.Where(x => x.Name.ToLower().Equals(name.ToLower()));
+            return category.Where(x => x.Name.ToLower().Contains(name.ToLower()));
         }
 
         public static IQueryable<Category> IsInclude(this IQueryable<Category> category, string? fieldsString)
@@ -30,9 +31,8 @@ namespace ShopeeKorean.Repository.Extensions.Utility
         }
 
         public static IQueryable<Category> Sort(this IQueryable<Category> categories, string? orderByQueryString)
-        {
-            if (string.IsNullOrWhiteSpace(orderByQueryString))
-                return categories.OrderBy(p => p.Name);
+        { 
+            if (string.IsNullOrWhiteSpace(orderByQueryString)) return categories.OrderBy(p => p.Name);
             var orderQuery = QueryBuilder.CreateOrderQuery<Category>(orderByQueryString, Category.PropertyInfos);
             if(string.IsNullOrWhiteSpace(orderQuery)) return categories.OrderBy(ctg => ctg.Name);
             return categories.OrderBy(orderQuery);

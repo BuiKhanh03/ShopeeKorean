@@ -37,6 +37,9 @@ namespace ShopeeKorean.Entities.Models
         }
         public int UsedCount { get; set; } = 0;
 
+        public string? ImageLink { get; set; } = "N/A";
+        public string? ImageId { get; set; } = "N/A";
+
         public Product Product { get; set; }
     }
 }

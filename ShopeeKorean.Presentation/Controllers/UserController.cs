@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Http;
 using ShopeeKorean.Service.Contracts;
 using ShopeeKorean.Shared.DataTransferObjects.User;
 using Microsoft.AspNetCore.Authorization;
+using ShopeeKorean.Shared.Extension;
+using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace ShopeeKorean.Presentation.Controllers
 {
@@ -35,6 +37,24 @@ namespace ShopeeKorean.Presentation.Controllers
             return resultUpdated.Map(
                 onSuccess: _ => NoContent(),
                 onFailure: ProcessError
+                );
+        }
+
+        [HttpPost("/image")]
+        [Authorize]
+        public async Task<IActionResult> UpdateUserImage([FromForm] IFormFile fileDto)
+        {
+            var userId = HttpContext.User.FindFirstValue("UserId");
+            var uploadFileResult = await _service.CloudinaryService.UploadUserImageAsync(fileDto);
+            if (!uploadFileResult.IsSuccess)
+                return ProcessError(uploadFileResult);
+            var imageEntity = uploadFileResult.GetValue<(string? publicId, string? absoluteUrl)>();
+            var updateResult = await _service.UserService.UpdateUserImage(new Guid(userId!), trackChanges: true, imageEntity.publicId!, imageEntity.absoluteUrl!);
+            var newValue = updateResult.GetValue<(string? oldId, string? newImage)> ();
+            if (!string.IsNullOrEmpty(newValue.oldId)) await _service.CloudinaryService.RemoveImage(newValue.oldId);
+            return updateResult.Map(
+                 onSuccess: _ => Ok(newValue.newImage),
+                 onFailure: ProcessError
                 );
         }
 

@@ -179,6 +179,12 @@ namespace ShopeeKorean.Application.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasDefaultValueSql("NEWID()");
 
+                    b.Property<string>("ImageId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageLink")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(255)
@@ -188,6 +194,141 @@ namespace ShopeeKorean.Application.Migrations
                         .HasName("category_id_primary");
 
                     b.ToTable("Category", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("2bad4a96-6dff-4fa3-9c2e-6899264fb739"),
+                            ImageId = "N/A",
+                            ImageLink = "N/A",
+                            Name = "Điện thoại & Phụ kiện"
+                        },
+                        new
+                        {
+                            Id = new Guid("2bad4a96-6dff-4fa3-9c2e-6899264fb738"),
+                            ImageId = "N/A",
+                            ImageLink = "N/A",
+                            Name = "Máy tính & Laptop"
+                        },
+                        new
+                        {
+                            Id = new Guid("2bad4a96-6dff-4fa3-9c2e-6899264fb737"),
+                            ImageId = "N/A",
+                            ImageLink = "N/A",
+                            Name = "Thiết bị điện tử"
+                        },
+                        new
+                        {
+                            Id = new Guid("2bad4a96-6dff-4fa3-9c2e-6899264fb736"),
+                            ImageId = "N/A",
+                            ImageLink = "N/A",
+                            Name = "Máy ảnh & Máy quay phim"
+                        },
+                        new
+                        {
+                            Id = new Guid("2bad4a96-6dff-4fa3-9c2e-6899264fb735"),
+                            ImageId = "N/A",
+                            ImageLink = "N/A",
+                            Name = "Thời trang Nam"
+                        },
+                        new
+                        {
+                            Id = new Guid("2bad4a96-6dff-4fa3-9c2e-6899264fb734"),
+                            ImageId = "N/A",
+                            ImageLink = "N/A",
+                            Name = "Thời trang Nữ"
+                        },
+                        new
+                        {
+                            Id = new Guid("2bad4a96-6dff-4fa3-9c2e-6899264fb733"),
+                            ImageId = "N/A",
+                            ImageLink = "N/A",
+                            Name = "Mẹ & Bé"
+                        },
+                        new
+                        {
+                            Id = new Guid("2bad4a96-6dff-4fa3-9c2e-6899264fb732"),
+                            ImageId = "N/A",
+                            ImageLink = "N/A",
+                            Name = "Nhà cửa & Đời sống"
+                        },
+                        new
+                        {
+                            Id = new Guid("2bad4a96-6dff-4fa3-9c2e-6899264fb728"),
+                            ImageId = "N/A",
+                            ImageLink = "N/A",
+                            Name = "Sức khỏe & Làm đẹp"
+                        },
+                        new
+                        {
+                            Id = new Guid("2bad4a96-6dff-4fa3-9c2e-6899264fb731"),
+                            ImageId = "N/A",
+                            ImageLink = "N/A",
+                            Name = "Giày dép Nam / Nữ"
+                        },
+                        new
+                        {
+                            Id = new Guid("2bad4a96-6dff-4fa3-9c2e-6899264fb730"),
+                            ImageId = "N/A",
+                            ImageLink = "N/A",
+                            Name = "Túi xách / Balo"
+                        },
+                        new
+                        {
+                            Id = new Guid("2bad4a96-6dff-4fa3-9c2e-6899264fb721"),
+                            ImageId = "N/A",
+                            ImageLink = "N/A",
+                            Name = "Đồng hồ & Trang sức"
+                        },
+                        new
+                        {
+                            Id = new Guid("2bad4a96-6dff-4fa3-9c2e-6899264fb723"),
+                            ImageId = "N/A",
+                            ImageLink = "N/A",
+                            Name = "Thể thao & Dã ngoại"
+                        },
+                        new
+                        {
+                            Id = new Guid("2bad4a96-6dff-4fa3-9c2e-6899264fb729"),
+                            ImageId = "N/A",
+                            ImageLink = "N/A",
+                            Name = "Ô tô - Xe máy - Xe đạp"
+                        },
+                        new
+                        {
+                            Id = new Guid("2bad4a96-6dff-4fa3-9c2e-6899264fb724"),
+                            ImageId = "N/A",
+                            ImageLink = "N/A",
+                            Name = "Sách & Văn phòng phẩm"
+                        },
+                        new
+                        {
+                            Id = new Guid("2bad4a96-6dff-4fa3-9c2e-6899264fb725"),
+                            ImageId = "N/A",
+                            ImageLink = "N/A",
+                            Name = "Thực phẩm & Đồ uống"
+                        },
+                        new
+                        {
+                            Id = new Guid("2bad4a96-6dff-4fa3-9c2e-6899264fb711"),
+                            ImageId = "N/A",
+                            ImageLink = "N/A",
+                            Name = "Thiết bị gia dụng"
+                        },
+                        new
+                        {
+                            Id = new Guid("2bad4a96-6dff-4fa3-9c2e-6899264fb712"),
+                            ImageId = "N/A",
+                            ImageLink = "N/A",
+                            Name = "Pet - Đồ dùng thú cưng"
+                        },
+                        new
+                        {
+                            Id = new Guid("2bad4a96-6dff-4fa3-9c2e-6899264fb727"),
+                            ImageId = "N/A",
+                            ImageLink = "N/A",
+                            Name = "Game & Console"
+                        });
                 });
 
             modelBuilder.Entity("ShopeeKorean.Entities.Models.Coupon", b =>
@@ -199,6 +340,12 @@ namespace ShopeeKorean.Application.Migrations
 
                     b.Property<string>("Code")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageLink")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("MaxDiscount")
@@ -370,6 +517,10 @@ namespace ShopeeKorean.Application.Migrations
                     b.Property<Guid>("SellerId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("Size")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("StockQuantity")
                         .HasColumnType("int");
 
@@ -395,8 +546,10 @@ namespace ShopeeKorean.Application.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasDefaultValueSql("NEWID()");
 
-                    b.Property<string>("ImageUrl")
-                        .IsRequired()
+                    b.Property<string>("ImageId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageLink")
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
@@ -551,6 +704,12 @@ namespace ShopeeKorean.Application.Migrations
                     b.Property<string>("FirstName")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("ImageId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageLink")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
                         .HasMaxLength(50)
