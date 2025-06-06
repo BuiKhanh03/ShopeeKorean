@@ -10,3 +10,4 @@ D:\Net\core\ShopeeKorean\ShopeeKorean.Shared\obj\Debug\net8.0\ShopeeKorean.Share
 D:\Net\core\ShopeeKorean\ShopeeKorean.Shared\obj\Debug\net8.0\refint\ShopeeKorean.Shared.dll
 D:\Net\core\ShopeeKorean\ShopeeKorean.Shared\obj\Debug\net8.0\ShopeeKorean.Shared.pdb
 D:\Net\core\ShopeeKorean\ShopeeKorean.Shared\obj\Debug\net8.0\ref\ShopeeKorean.Shared.dll
+D:\Net\core\ShopeeKorean\ShopeeKorean.Shared\obj\Debug\net8.0\ShopeeKorean.Shared.csproj.AssemblyReference.cache

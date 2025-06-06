@@ -1,6 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Repository;
+﻿using Repository;
 using ShopeeKorean.Entities.Models;
+using Microsoft.EntityFrameworkCore;
 using ShopeeKorean.Repository.Contracts;
 
 namespace ShopeeKorean.Repository

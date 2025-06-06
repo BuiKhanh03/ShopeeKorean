@@ -15,7 +15,7 @@ namespace ShopeeKorean.Service
         private readonly ShopeeKorean.Entities.ConfigurationModels.CloudinaryConfiguration _configuration;
         private readonly long _maxFileSize = 10 * 1024 * 1024; //10MB
 
-        private static readonly string[] _permittedExtensions = { ".jpg", ".jpeg", "png" };
+        private static readonly string[] _permittedExtensions = { ".jpg", ".jpeg", ".png" };
         private static readonly string[] _permittedmimeTypes = { "image/jpg", "image/jpeg", "image/png" };
 
         private const string _userFolder = "User";

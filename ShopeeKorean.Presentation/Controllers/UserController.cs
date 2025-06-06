@@ -5,7 +5,7 @@ using ShopeeKorean.Service.Contracts;
 using ShopeeKorean.Shared.DataTransferObjects.User;
 using Microsoft.AspNetCore.Authorization;
 using ShopeeKorean.Shared.Extension;
-using Microsoft.AspNetCore.Http.HttpResults;
+using ShopeeKorean.Shared.DataTransferObjects.Image;
 
 namespace ShopeeKorean.Presentation.Controllers
 {
@@ -40,12 +40,13 @@ namespace ShopeeKorean.Presentation.Controllers
                 );
         }
 
-        [HttpPost("/image")]
+        [HttpPost("image")]
         [Authorize]
-        public async Task<IActionResult> UpdateUserImage([FromForm] IFormFile fileDto)
+        [Consumes("multipart/form-data")]
+        public async Task<IActionResult> UpdateUserImage([FromForm] UpdateUserImageDto fileDto)
         {
             var userId = HttpContext.User.FindFirstValue("UserId");
-            var uploadFileResult = await _service.CloudinaryService.UploadUserImageAsync(fileDto);
+            var uploadFileResult = await _service.CloudinaryService.UploadUserImageAsync(fileDto.File);
             if (!uploadFileResult.IsSuccess)
                 return ProcessError(uploadFileResult);
             var imageEntity = uploadFileResult.GetValue<(string? publicId, string? absoluteUrl)>();

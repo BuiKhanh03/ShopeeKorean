@@ -6,6 +6,8 @@ namespace ShopeeKorean.Contracts
     {
         IUserRepository UserRepository { get; }
         ICategoryRepository CategoryRepository { get; }
+
+        IProductRepository ProductRepository { get; }
         Task SaveAsync();
     }
 }
