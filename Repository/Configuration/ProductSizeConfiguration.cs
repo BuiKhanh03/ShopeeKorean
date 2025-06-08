@@ -12,7 +12,9 @@ namespace ShopeeKorean.Repository.Configuration
 
             entity.ToTable("productsize");
             entity.Property(e => e.Id).ValueGeneratedOnAdd().HasDefaultValueSql("NEWID()");
-            entity.Property(e => e.size).HasMaxLength(255);
+            entity.Property(e => e.Size).HasMaxLength(255);
+
+            entity.HasOne(e => e.Product).WithMany(e => e.ProductSizes).HasForeignKey(p => p.ProductId).OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

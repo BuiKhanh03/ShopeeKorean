@@ -7,5 +7,7 @@
         IUserService UserService { get; }
         ICloudinaryService CloudinaryService { get; }
         ICategoryService CategoryService { get; }
+
+        IProductService ProductService { get; }
     }
 }

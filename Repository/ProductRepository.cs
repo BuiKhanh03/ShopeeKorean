@@ -16,17 +16,28 @@ namespace ShopeeKorean.Repository
         public async Task CreateProduct(Product product) => await base.CreateAsync(product);
 
         public async Task<Product?> GetProduct(Guid productId, bool trackChanges = false, string? include = null)
-           => await base.FindByCondition(p => p.Id.Equals(productId), trackChanges).IsInclude(include).SingleOrDefaultAsync();
+        {
+            var product = await base.FindByCondition(p => p.Id.Equals(productId), trackChanges).IsInclude(include).SingleOrDefaultAsync();
+            return product;
+        }
         public async Task<PagedList<Product>> GetProducts(ProductParameters productPagameters, bool trackChanges = false, string? include = null)
         {
-            var products = await base.FindAll(trackChanges)
-                                               .SearchByName(productPagameters.Name)
-                                               .SearchByBrand(productPagameters.Brand)
-                                               .SearchByPrice(productPagameters.Price)
-                                               .SearchByUser(new Guid (productPagameters.SellerId!))
-                                               .SearchByCategory(new Guid(productPagameters.CategoryId!))
-                                               .IsInclude(include)
-                                               .ToListAsync();
+            Guid? sellerGuid = Guid.TryParse(productPagameters.SellerId, out var sId) ? sId : (Guid?)null;
+            Guid? categoryGuid = Guid.TryParse(productPagameters.CategoryId, out var cId) ? cId : (Guid?)null;
+
+            var query = base.FindAll(trackChanges)
+                            .SearchByName(productPagameters.Name)
+                            .SearchByBrand(productPagameters.Brand)
+                            .SearchByPrice(productPagameters.Price);
+
+            if (sellerGuid.HasValue)
+                query = query.SearchByUser(sellerGuid.Value);
+
+            if (categoryGuid.HasValue)
+                query = query.SearchByCategory(categoryGuid.Value);
+
+            var products = await query.IsInclude(include).ToListAsync();
+
             return PagedList<Product>.ToPagedList(
                 products,
                 productPagameters.PageNumber,
@@ -37,7 +48,7 @@ namespace ShopeeKorean.Repository
 
         public void UpdateProduct(Product product)
         {
-            throw new NotImplementedException();
+            base.Update(product);
         }
     }
 }

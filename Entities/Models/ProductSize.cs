@@ -3,8 +3,10 @@
     public class ProductSize
     {
         public Guid Id { get; set; }
-        public Guid productId { get; set; }
-        public string size { get; set; } = string.Empty;
+        public Guid ProductId { get; set; }
+        public string Size { get; set; } = string.Empty;
+
+        public Product Product { get; set; }
 
     }
 }

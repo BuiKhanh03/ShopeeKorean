@@ -3,6 +3,6 @@
     public enum SystemStatus
     {
         Active = 1,
-        InActi = 2,
+        Inactive = 2,
     }
 }

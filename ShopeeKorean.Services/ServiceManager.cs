@@ -11,15 +11,17 @@ namespace ShopeeKorean.Service
 {
     public sealed class ServiceManager : IServiceManager
     {
-        private readonly Lazy<IAuthenticationService> _authenticationService;
         private readonly Lazy<IMailService> _mailService;
-        private readonly Lazy<ICloudinaryService> _cloudinaryService;
         private readonly Lazy<IUserService> _userService;
+        private readonly Lazy<IProductService> _productService;
         private readonly Lazy<ICategoryService> _categoryService;
+        private readonly Lazy<ICloudinaryService> _cloudinaryService;
+        private readonly Lazy<IAuthenticationService> _authenticationService;
         public ServiceManager(IRepositoryManager repositoryManager, ILoggerManager loggerManager, IMapper mapper, IDataShaperManager dataShaper,UserManager<User> userManager, IOptions<JwtConfiguration> configuration, IOptions<MailConfiguration> mailConfiguration, IOptions<CloudinaryConfiguration> cloudinaryConfiguration)
         {
             _authenticationService = new Lazy<IAuthenticationService>(() =>
                                      new AuthenticationService(loggerManager, mapper, userManager, configuration));
+            _productService = new Lazy<IProductService> (() => new ProductService(mapper, loggerManager, repositoryManager, dataShaper));
             _mailService = new Lazy<IMailService>(() => new MailService(loggerManager, mailConfiguration, repositoryManager));
             _userService = new Lazy<IUserService>(() => new UserService(mapper, loggerManager, repositoryManager));
             _categoryService = new Lazy<ICategoryService>(() => new CategoryService(mapper, loggerManager, repositoryManager, dataShaper));
@@ -32,5 +34,6 @@ namespace ShopeeKorean.Service
         public IUserService UserService => _userService.Value;
 
         public ICloudinaryService CloudinaryService => _cloudinaryService.Value;
+        public IProductService ProductService => _productService.Value;
     }
 }

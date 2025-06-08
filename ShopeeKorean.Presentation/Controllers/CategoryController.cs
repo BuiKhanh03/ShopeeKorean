@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ShopeeKorean.Entities.Models;
 using ShopeeKorean.Service.Contracts;
 using ShopeeKorean.Shared.RequestFeatures;
 
