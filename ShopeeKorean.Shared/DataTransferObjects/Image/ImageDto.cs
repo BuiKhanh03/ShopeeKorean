@@ -2,7 +2,7 @@
 
 namespace ShopeeKorean.Shared.DataTransferObjects.Image
 {
-    public class UpdateUserImageDto
+    public class ImageDto
     {
         public IFormFile File { get; set; }
     }

@@ -19,6 +19,7 @@ namespace ShopeeKorean.Service
         private static readonly string[] _permittedmimeTypes = { "image/jpg", "image/jpeg", "image/png" };
 
         private const string _userFolder = "User";
+        private const string _productFolder = "Product";
         private const string _errorCode = "CloudiaryError";
 
         public CloudinaryService(IOptions<ShopeeKorean.Entities.ConfigurationModels.CloudinaryConfiguration> configuration)
@@ -34,6 +35,8 @@ namespace ShopeeKorean.Service
 
         public async Task<Result<(string? publicId, string? absoluteUrl)>> UploadUserImageAsync(IFormFile file)
          => await UploadImageAsync(file, _userFolder);
+        public async Task<Result<(string? publicId, string? absoluteUrl)>> UploadProductImageAsync(IFormFile file)
+            => await UploadImageAsync(file, _productFolder);
         private async Task<Result<(string? publicId, string? absoluteUrl)>> UploadImageAsync(IFormFile file, string folderName)
         {
             if (file == null || file.Length == 0) return Result<(string? publicId, string? absolutedId)>.BadRequest([RequestErrors.GetFileNotFoundErrors()]);

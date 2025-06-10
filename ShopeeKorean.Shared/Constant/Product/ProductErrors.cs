@@ -9,6 +9,8 @@ namespace ShopNoteeKorean.Shared.Constant.Product
 
         private const string Product_CategoryNotFound = "Category not found with id {0}";
         private const string Product_UerNotFound = "User not found with id {0}";
+
+        private const string Product_ImageNotFound = "Product Image not found with id {0}";
         #endregion
         #region Static Method
         public static ErrorsResult GetProductNotFound(Guid productId)
@@ -19,6 +21,12 @@ namespace ShopNoteeKorean.Shared.Constant.Product
 
         public static ErrorsResult GetProduct_UserNotFound(Guid sellerId)
             => new () { Code = Product_UerNotFound, Description = string.Format(Product_UerNotFound, sellerId) };
+
+        public static ErrorsResult GetProduct_ImageNotFound(Guid productImageId)
+            => new () { Code = Product_ImageNotFound, Description = string.Format(Product_ImageNotFound, productImageId) };
+
+        public static ErrorsResult GetProduct_ImageNotFoundImageId(string imageId)
+            => new() { Code = Product_ImageNotFound, Description = string.Format(Product_ImageNotFound, imageId) };
         #endregion
     }
 }

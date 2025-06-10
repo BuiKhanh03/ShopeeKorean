@@ -43,7 +43,7 @@ namespace ShopeeKorean.Presentation.Controllers
         [HttpPost("image")]
         [Authorize]
         [Consumes("multipart/form-data")]
-        public async Task<IActionResult> UpdateUserImage([FromForm] UpdateUserImageDto fileDto)
+        public async Task<IActionResult> UpdateUserImage([FromForm] ImageDto fileDto)
         {
             var userId = HttpContext.User.FindFirstValue("UserId");
             var uploadFileResult = await _service.CloudinaryService.UploadUserImageAsync(fileDto.File);

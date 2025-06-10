@@ -1,8 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Security.Claims;
+using Microsoft.AspNetCore.Mvc;
 using ShopeeKorean.Service.Contracts;
 using ShopeeKorean.Shared.RequestFeatures;
 using ShopeeKorean.Shared.DataTransferObjects.Product;
-using System.Security.Claims;
 
 namespace ShopeeKorean.Presentation.Controllers
 {
@@ -15,7 +15,7 @@ namespace ShopeeKorean.Presentation.Controllers
             
         }
 
-        [HttpGet("{productId:Guid}")]
+        [HttpGet("{productId:guid}")]
         public async Task<IActionResult> GetProduct(Guid productId) {
             var isInclude = "Category, Seller";
             var productResult = await _service.ProductService.GetProduct(productId, trackChanges: false, isInclude);
@@ -47,7 +47,7 @@ namespace ShopeeKorean.Presentation.Controllers
                 );
         }
 
-        [HttpPut("{productId}")]
+        [HttpPut("{productId:guid}")]
         public async Task<IActionResult> UpdateProduct(Guid productId,[FromBody] ProductDtoForUpdate productDto)
         {
             var updatedProductResult = await _service.ProductService.UpdateProduct(productId, productDto);
