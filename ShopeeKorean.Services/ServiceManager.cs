@@ -16,6 +16,7 @@ namespace ShopeeKorean.Service
         private readonly Lazy<IProductService> _productService;
         private readonly Lazy<ICategoryService> _categoryService;
         private readonly Lazy<ICloudinaryService> _cloudinaryService;
+        private readonly Lazy<IProductSizeService> _productSizeService;
         private readonly Lazy<IProductImageService> _productImageService;
         private readonly Lazy<IAuthenticationService> _authenticationService;
         public ServiceManager(IRepositoryManager repositoryManager, ILoggerManager loggerManager, IMapper mapper, IDataShaperManager dataShaper,UserManager<User> userManager, IOptions<JwtConfiguration> configuration, IOptions<MailConfiguration> mailConfiguration, IOptions<CloudinaryConfiguration> cloudinaryConfiguration)
@@ -23,10 +24,11 @@ namespace ShopeeKorean.Service
             _authenticationService = new Lazy<IAuthenticationService>(() =>
                                      new AuthenticationService(loggerManager, mapper, userManager, configuration));
             _productService = new Lazy<IProductService> (() => new ProductService(mapper, loggerManager, repositoryManager, dataShaper));
-            _mailService = new Lazy<IMailService>(() => new MailService(loggerManager, mailConfiguration, repositoryManager));
-            _userService = new Lazy<IUserService>(() => new UserService(mapper, loggerManager, repositoryManager));
-            _categoryService = new Lazy<ICategoryService>(() => new CategoryService(mapper, loggerManager, repositoryManager, dataShaper));
             _cloudinaryService = new Lazy<ICloudinaryService>(() => new CloudinaryService(cloudinaryConfiguration));
+            _userService = new Lazy<IUserService>(() => new UserService(mapper, loggerManager, repositoryManager));
+            _mailService = new Lazy<IMailService>(() => new MailService(loggerManager, mailConfiguration, repositoryManager));
+            _categoryService = new Lazy<ICategoryService>(() => new CategoryService(mapper, loggerManager, repositoryManager, dataShaper));
+            _productSizeService = new Lazy<IProductSizeService>(() => new ProductSizeService(mapper, loggerManager, repositoryManager, dataShaper));
             _productImageService = new Lazy<IProductImageService>(() => new ProductImageService(mapper, loggerManager, repositoryManager, dataShaper));
         }
         public IMailService MailService => _mailService.Value;
@@ -34,6 +36,7 @@ namespace ShopeeKorean.Service
         public IProductService ProductService => _productService.Value;
         public ICategoryService CategoryService => _categoryService.Value;
         public ICloudinaryService CloudinaryService => _cloudinaryService.Value;
+        public IProductSizeService ProductSizeService => _productSizeService.Value;
         public IProductImageService ProductImageService => _productImageService.Value;
         public IAuthenticationService AuthenticationService => _authenticationService.Value;
 

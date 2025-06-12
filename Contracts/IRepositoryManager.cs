@@ -5,10 +5,10 @@ namespace ShopeeKorean.Contracts
     public interface IRepositoryManager
     {
         IUserRepository UserRepository { get; }
-        ICategoryRepository CategoryRepository { get; }
-
-        IProductImageRepository ProductImageRepository { get; }
         IProductRepository ProductRepository { get; }
+        ICategoryRepository CategoryRepository { get; }
+        IProductSizeRepository ProductSizeRepository { get; }
+        IProductImageRepository ProductImageRepository { get; }
         Task SaveAsync();
     }
 }

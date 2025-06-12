@@ -58,7 +58,7 @@ namespace Repository
         public DbSet<CartItem> CartItems { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }
-        public DbSet<ProductSize> ProductSize { get; set; }
+        public DbSet<ProductSize> ProductSizes { get; set; }
         public DbSet<PaymentRecord> PaymentRecord { get; set; }
         public DbSet<ProductImage> ProductImages {  get; set; }
     }

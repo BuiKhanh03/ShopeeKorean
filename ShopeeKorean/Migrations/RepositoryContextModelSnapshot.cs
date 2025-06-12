@@ -520,10 +520,6 @@ namespace ShopeeKorean.Application.Migrations
                     b.Property<Guid>("SellerId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Size")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
@@ -574,6 +570,29 @@ namespace ShopeeKorean.Application.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("ProductImage", (string)null);
+                });
+
+            modelBuilder.Entity("ShopeeKorean.Entities.Models.ProductSize", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier")
+                        .HasDefaultValueSql("NEWID()");
+
+                    b.Property<Guid>("ProductId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Size")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.HasKey("Id")
+                        .HasName("productsize_id_primary");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("productsize", (string)null);
                 });
 
             modelBuilder.Entity("ShopeeKorean.Entities.Models.Review", b =>
@@ -960,6 +979,17 @@ namespace ShopeeKorean.Application.Migrations
                     b.Navigation("Product");
                 });
 
+            modelBuilder.Entity("ShopeeKorean.Entities.Models.ProductSize", b =>
+                {
+                    b.HasOne("ShopeeKorean.Entities.Models.Product", "Product")
+                        .WithMany("ProductSizes")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("ShopeeKorean.Entities.Models.Review", b =>
                 {
                     b.HasOne("ShopeeKorean.Entities.Models.Product", "Product")
@@ -1013,6 +1043,8 @@ namespace ShopeeKorean.Application.Migrations
                         .IsRequired();
 
                     b.Navigation("ProductImages");
+
+                    b.Navigation("ProductSizes");
 
                     b.Navigation("Reviews");
                 });
