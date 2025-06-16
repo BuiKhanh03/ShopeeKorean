@@ -15,6 +15,9 @@ namespace ShopeeKorean.Repository
         public async Task<User?> GetUser(Guid userId, bool trackChanges, string? include = null)
                      => await FindByCondition(u => u.Id.Equals(userId), trackChanges).SingleOrDefaultAsync();
 
+        public async Task<User?> GetUser(string mail, bool trackChanges = true, string? include = null)
+               => await FindByCondition(u => u.Email.Equals(mail), trackChanges).SingleOrDefaultAsync();
+
         public void UpdateUser(User user)
         {
             Update(user);

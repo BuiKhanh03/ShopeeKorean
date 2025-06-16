@@ -22,7 +22,7 @@ namespace ShopeeKorean.Service
         public ServiceManager(IRepositoryManager repositoryManager, ILoggerManager loggerManager, IMapper mapper, IDataShaperManager dataShaper,UserManager<User> userManager, IOptions<JwtConfiguration> configuration, IOptions<MailConfiguration> mailConfiguration, IOptions<CloudinaryConfiguration> cloudinaryConfiguration)
         {
             _authenticationService = new Lazy<IAuthenticationService>(() =>
-                                     new AuthenticationService(loggerManager, mapper, userManager, configuration));
+                                     new AuthenticationService(loggerManager, mapper, userManager, configuration, repositoryManager));
             _productService = new Lazy<IProductService> (() => new ProductService(mapper, loggerManager, repositoryManager, dataShaper));
             _cloudinaryService = new Lazy<ICloudinaryService>(() => new CloudinaryService(cloudinaryConfiguration));
             _userService = new Lazy<IUserService>(() => new UserService(mapper, loggerManager, repositoryManager));

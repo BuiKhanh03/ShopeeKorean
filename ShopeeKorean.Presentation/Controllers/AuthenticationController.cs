@@ -29,6 +29,7 @@ namespace ShopeeKorean.Presentation.Controllers
             }
 
             var resultUrl = await _service.AuthenticationService.CreateConfirmEmailUrl(userForRegistration.Email);
+           
             var url = resultUrl.GetValue<string>();
             await _service.MailService.SendConfirmEmail(userForRegistration.Email, url);
             return StatusCode(201);

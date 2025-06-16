@@ -6,6 +6,7 @@ namespace ShopeeKorean.Repository.Contracts
     {
         //string => default = null
         public Task<User?> GetUser(Guid userId, bool trackChanges, string? include = default);
+        public Task<User?> GetUser(string mail, bool trackChanges = true, string? include = default);
         public void UpdateUser(User user);
     }
 }

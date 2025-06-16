@@ -15,6 +15,7 @@ using ShopeeKorean.Shared.DataTransferObjects.User;
 using ShopeeKorean.Application.Extensions.Exceptions;
 using ShopeeKorean.Shared.Constant.Authentication;
 using ShopeeKorean.Service.Extensions;
+using ShopeeKorean.Contracts;
 
 namespace ShopeeKorean.Service
 {
@@ -24,33 +25,44 @@ namespace ShopeeKorean.Service
         private readonly ILoggerManager _loggerManager;
         private readonly UserManager<User> _userManager;
         private readonly JwtConfiguration _jwtConfiguration;
+        private readonly IRepositoryManager _repository;
         private readonly IOptions<JwtConfiguration> _configuration;
 
         private User? _user;
 
 
-        public AuthenticationService(ILoggerManager loggerManager, IMapper mapper, UserManager<User> userManager, IOptions<JwtConfiguration> configuration)
+        public AuthenticationService(ILoggerManager loggerManager, IMapper mapper, UserManager<User> userManager, IOptions<JwtConfiguration> configuration, IRepositoryManager repository)
         {
             _loggerManager = loggerManager;
             _mapper = mapper;
             _userManager = userManager;
             _configuration = configuration;
             _jwtConfiguration = _configuration.Value;
+            _repository = repository;
         }
 
         public async Task<IdentityResult> RegisterUser(UserForRegistrationDto userForRegistration)
         {
             var user = _mapper.Map<User>(userForRegistration);
             var result = await _userManager.CreateAsync(user, userForRegistration.Password);
-            if (result.Succeeded) await _userManager.AddToRolesAsync(user, userForRegistration.Roles);
+            if (result.Succeeded)
+            {
+                await _userManager.AddToRolesAsync(user, userForRegistration.Roles!);
+                var userEntity = await _repository.UserRepository.GetUser(userForRegistration.Email, trackChanges: false, include: default);
+                var userId = userEntity!.Id;
+                Cart cart = new Cart();
+                cart.UserId = userId;
+                await _repository.CartRepository.CreateCart(cart);
+                await _repository.SaveAsync();
+            }
             return result;
         }
 
         public async Task<bool> ValidateUser(UserForAuthenticationDto userForAuthentication)
         {
-            _user = await _userManager.FindByNameAsync(userForAuthentication.Username);
+            _user = await _userManager.FindByNameAsync(userForAuthentication.Username!);
 
-            var result = (_user != null && await _userManager.CheckPasswordAsync(_user, userForAuthentication.Password));
+            var result = (_user != null && await _userManager.CheckPasswordAsync(_user, userForAuthentication.Password!));
             if (!result) _loggerManager.LogWarn($"{nameof(ValidateUser)}: Authentication failed. Wrong username or password.");
             return result;
         }

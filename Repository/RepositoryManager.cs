@@ -9,6 +9,7 @@ namespace ShopeeKorean.Repository
     {
         private readonly RepositoryContext _repositoryContext;
         private readonly Lazy<IUserRepository> _userRepository;
+        private readonly Lazy<ICartRepository> _cartRepository;
         private readonly Lazy<IProductRepository> _productRepository;
         private readonly Lazy<ICategoryRepository> _categoryRepository;
         private readonly Lazy<IProductSizeRepository> _productSizeRepository;
