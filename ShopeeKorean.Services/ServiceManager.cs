@@ -13,6 +13,7 @@ namespace ShopeeKorean.Service
     {
         private readonly Lazy<IMailService> _mailService;
         private readonly Lazy<IUserService> _userService;
+        private readonly Lazy<ICartService> _cartService;
         private readonly Lazy<IProductService> _productService;
         private readonly Lazy<ICategoryService> _categoryService;
         private readonly Lazy<ICloudinaryService> _cloudinaryService;
@@ -26,6 +27,7 @@ namespace ShopeeKorean.Service
             _productService = new Lazy<IProductService> (() => new ProductService(mapper, loggerManager, repositoryManager, dataShaper));
             _cloudinaryService = new Lazy<ICloudinaryService>(() => new CloudinaryService(cloudinaryConfiguration));
             _userService = new Lazy<IUserService>(() => new UserService(mapper, loggerManager, repositoryManager));
+            _cartService = new Lazy<ICartService>(() => new CartService(mapper, loggerManager, repositoryManager, dataShaper));
             _mailService = new Lazy<IMailService>(() => new MailService(loggerManager, mailConfiguration, repositoryManager));
             _categoryService = new Lazy<ICategoryService>(() => new CategoryService(mapper, loggerManager, repositoryManager, dataShaper));
             _productSizeService = new Lazy<IProductSizeService>(() => new ProductSizeService(mapper, loggerManager, repositoryManager, dataShaper));
@@ -33,6 +35,7 @@ namespace ShopeeKorean.Service
         }
         public IMailService MailService => _mailService.Value;
         public IUserService UserService => _userService.Value;
+        public ICartService CartService => _cartService.Value;
         public IProductService ProductService => _productService.Value;
         public ICategoryService CategoryService => _categoryService.Value;
         public ICloudinaryService CloudinaryService => _cloudinaryService.Value;

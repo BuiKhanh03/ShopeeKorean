@@ -4,6 +4,7 @@
     {
         IMailService MailService { get; }
         IUserService UserService { get; }
+        ICartService CartService { get; }
         IProductService ProductService { get; }
         ICategoryService CategoryService { get; }
         ICloudinaryService CloudinaryService { get; }

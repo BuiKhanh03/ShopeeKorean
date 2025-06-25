@@ -48,10 +48,10 @@ namespace ShopeeKorean.Service
             if (result.Succeeded)
             {
                 await _userManager.AddToRolesAsync(user, userForRegistration.Roles!);
-                var userEntity = await _repository.UserRepository.GetUser(userForRegistration.Email, trackChanges: false, include: default);
-                var userId = userEntity!.Id;
-                Cart cart = new Cart();
-                cart.UserId = userId;
+                Cart cart = new Cart
+                {
+                    UserId = user.Id
+                };
                 await _repository.CartRepository.CreateCart(cart);
                 await _repository.SaveAsync();
             }

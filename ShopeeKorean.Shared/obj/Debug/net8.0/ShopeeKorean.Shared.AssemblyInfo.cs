@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ShopeeKorean.Shared")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f496753c0332024737c9ceac4c0e55da3d6fd753")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+44af47c746f9b6dae8be6e934f647cb8fb200063")]
 [assembly: System.Reflection.AssemblyProductAttribute("ShopeeKorean.Shared")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ShopeeKorean.Shared")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
