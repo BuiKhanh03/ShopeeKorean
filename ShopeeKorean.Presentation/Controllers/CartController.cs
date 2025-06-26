@@ -23,7 +23,8 @@ namespace ShopeeKorean.Presentation.Controllers
         [HttpGet]
         public async Task<IActionResult> GetCart() {
             var userId = HttpContext.User.FindFirstValue("UserId");
-            var cartResult = await _service.CartService.GetCart(new Guid(userId!), trackChanges: false, null);
+            string include = "CartItems";
+            var cartResult = await _service.CartService.GetCart(new Guid(userId!), trackChanges: false, include);
             return cartResult.Map(
                 onSuccess: Ok,
                 onFailure: ProcessError

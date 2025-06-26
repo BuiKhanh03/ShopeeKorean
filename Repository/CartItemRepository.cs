@@ -16,6 +16,12 @@ namespace ShopeeKorean.Repository
         public async Task CreateCartItem(CartItem cartItem)
         => await base.CreateAsync(cartItem);
 
+        public async Task<CartItem?> GetCartItem(Guid cartItemId, bool trackChanges, string? include = null)
+        {
+            var cartItem = await base.FindByCondition(ci => ci.Id.Equals(cartItemId), trackChanges).SingleOrDefaultAsync();
+            return cartItem;
+        }
+
         public async Task<PagedList<CartItem>> GetCartItems(Guid cartId, CartItemParameters cartItemParameters, bool trackChanges, string include)
         {
           var cartItems = await base.FindByCondition(c => c.CartId.Equals(cartId), trackChanges).IsInclude(include).ToListAsync();
@@ -26,6 +32,11 @@ namespace ShopeeKorean.Repository
                 cartItemParameters.PageSize
 
                 );
+        }
+
+        public void UpdateCartItem(CartItem cartItem)
+        {
+            base.Update(cartItem);
         }
     }
 }

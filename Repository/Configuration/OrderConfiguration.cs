@@ -19,15 +19,24 @@ namespace ShopeeKorean.Repository.Configuration
             entity.Property(e => e.ShippingAddress).HasMaxLength(255);
 
 
-            entity.HasOne(e => e.PaymentRecord)
-                  .WithOne(e => e.Order)
-                  .HasForeignKey<Order>(e => e.PaymentRecordId)
+            entity.HasOne(o => o.PaymentRecord)
+                  .WithMany()
+                  .HasForeignKey(o => o.PaymentRecordId)
+                  .IsRequired(false)
+                  .OnDelete(DeleteBehavior.NoAction)
                   .HasConstraintName("FK_Order_PaymentRecord");
 
-            entity.HasOne(e => e.Shipping)
-                  .WithOne(e => e.Order)
-                  .HasForeignKey<Order>(e => e.ShippingId)
+            entity.HasOne(o => o.Shipping)
+                  .WithMany()
+                  .HasForeignKey(o => o.ShippingId)
+                  .IsRequired(false)
+                    .OnDelete(DeleteBehavior.NoAction)
                   .HasConstraintName("FK_Order_Shipping");
+            entity.HasOne(e => e.User)
+                  .WithMany(e => e.Orders)
+                  .HasForeignKey(e => e.UserId)
+                    .OnDelete(DeleteBehavior.NoAction)
+                  .HasConstraintName("FK_Order_User");
         }
     }
 }

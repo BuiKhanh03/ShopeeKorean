@@ -10,8 +10,11 @@ namespace ShopeeKorean.Repository
         private readonly RepositoryContext _repositoryContext;
         private readonly Lazy<IUserRepository> _userRepository;
         private readonly Lazy<ICartRepository> _cartRepository;
+        private readonly Lazy<IOrderRepository> _orderRepository;
         private readonly Lazy<IProductRepository> _productRepository;
+        private readonly Lazy<ICartItemRepository> _cartItemRepository;
         private readonly Lazy<ICategoryRepository> _categoryRepository;
+        private readonly Lazy<IOrderItemRepository> _orderItemRepository;
         private readonly Lazy<IProductSizeRepository> _productSizeRepository;
         private readonly Lazy<IProductImageRepository> _productImageRepository;
         public RepositoryManager(RepositoryContext repositoryContext)
@@ -19,8 +22,11 @@ namespace ShopeeKorean.Repository
             _repositoryContext = repositoryContext;
             _userRepository = new Lazy<IUserRepository>(() => new UserRepository(repositoryContext));
             _cartRepository = new Lazy<ICartRepository>(() => new CartRepository(repositoryContext));
+            _orderRepository = new Lazy<IOrderRepository>(() => new OrderRepository(repositoryContext));
             _productRepository = new Lazy<IProductRepository>(() => new ProductRepository(repositoryContext));
+            _cartItemRepository = new Lazy<ICartItemRepository>(() => new CartItemRepository(repositoryContext));
             _categoryRepository = new Lazy<ICategoryRepository>(() => new CategoryRepository(repositoryContext));
+            _orderItemRepository = new Lazy<IOrderItemRepository>(() => new OrderItemRepository(repositoryContext));
             _productSizeRepository = new Lazy<IProductSizeRepository>(() => new ProductSizeRepository(repositoryContext));
             _productImageRepository = new Lazy<IProductImageRepository> (() => new ProductImageRepository(repositoryContext));
         }
@@ -28,8 +34,11 @@ namespace ShopeeKorean.Repository
         //UserRepository chỉ được tạo khi bạn gọi RepositoryManager.User
         public IUserRepository UserRepository => _userRepository.Value;
         public ICartRepository CartRepository => _cartRepository.Value;
+        public IOrderRepository OrderRepository => _orderRepository.Value;
         public IProductRepository ProductRepository => _productRepository.Value;
+        public ICartItemRepository CartItemRepository => _cartItemRepository.Value;
         public ICategoryRepository CategoryRepository => _categoryRepository.Value;
+        public IOrderItemRepository OrderItemRepository => _orderItemRepository.Value;
         public IProductSizeRepository ProductSizeRepository => _productSizeRepository.Value;
         public IProductImageRepository ProductImageRepository => _productImageRepository.Value;
 

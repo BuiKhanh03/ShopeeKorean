@@ -18,7 +18,7 @@ namespace ShopeeKorean.Entities.Models
 
         public virtual ICollection<Review> Reviews { get; set; } = new List<Review>();
         public virtual ICollection<Roles> Roles { get; set; } = new List<Roles>();
-
+        public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
         public virtual ICollection<Product> Products { get; set; } = new List<Product>();
     }
 }

@@ -16,7 +16,7 @@ namespace ShopeeKorean.Repository
 
         public async Task<Cart?> GetCart(Guid userId, bool trackChanges, string include)
         {
-            return await base.FindByCondition(c => c.UserId.Equals(userId), trackChanges).SingleOrDefaultAsync();
+            return await base.FindByCondition(c => c.UserId.Equals(userId), trackChanges).Include(c => c.CartItems).SingleOrDefaultAsync();
         }
     }
 }

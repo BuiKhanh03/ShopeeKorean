@@ -9,6 +9,8 @@ namespace ShopeeKorean.Application.MappingProfile
         public CartItemMappingProfile()
         {
             CreateMap<CartItem, CartItemForGetDto>();
+            CreateMap<CartItemForCreationDto, CartItem>();
+            CreateMap<CartItemForUpdateDto, CartItem>();
         }
     }
 }
