@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ShopeeKorean.Application.Migrations
 {
     /// <inheritdoc />
-    public partial class InitDatabase : Migration
+    public partial class InitDb : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -18,7 +18,9 @@ namespace ShopeeKorean.Application.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false, defaultValueSql: "NEWID()"),
-                    Name = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false)
+                    Name = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
+                    ImageLink = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ImageId = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -77,6 +79,8 @@ namespace ShopeeKorean.Application.Migrations
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false, defaultValueSql: "NEWID()"),
                     FirstName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     LastName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    ImageLink = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ImageId = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     RefreshToken = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     RefreshTokenExpiryTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: true),
@@ -121,37 +125,6 @@ namespace ShopeeKorean.Application.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Order",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false, defaultValueSql: "NEWID()"),
-                    PaymentRecordId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    ShippingId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    TotalAmount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Status = table.Column<int>(type: "int", maxLength: 255, nullable: false),
-                    ShippingFee = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    ShippingAddress = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
-                    CreateAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdateAt = table.Column<DateTime>(type: "datetime2", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("order_id_primary", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Order_PaymentRecord",
-                        column: x => x.PaymentRecordId,
-                        principalTable: "paymentrecord",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Order_Shipping",
-                        column: x => x.ShippingId,
-                        principalTable: "Shipping",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Cart",
                 columns: table => new
                 {
@@ -170,6 +143,53 @@ namespace ShopeeKorean.Application.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Order",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false, defaultValueSql: "NEWID()"),
+                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    PaymentRecordId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ShippingId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    TotalAmount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Status = table.Column<int>(type: "int", maxLength: 255, nullable: false),
+                    ShippingFee = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    ShippingAddress = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
+                    CreateAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdateAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    PaymentRecordId1 = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    ShippingId1 = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("order_id_primary", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Order_PaymentRecord",
+                        column: x => x.PaymentRecordId,
+                        principalTable: "paymentrecord",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Order_Shipping",
+                        column: x => x.ShippingId,
+                        principalTable: "Shipping",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Order_Shipping_ShippingId1",
+                        column: x => x.ShippingId1,
+                        principalTable: "Shipping",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Order_User",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Order_paymentrecord_PaymentRecordId1",
+                        column: x => x.PaymentRecordId1,
+                        principalTable: "paymentrecord",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Product",
                 columns: table => new
                 {
@@ -180,7 +200,10 @@ namespace ShopeeKorean.Application.Migrations
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     StockQuantity = table.Column<int>(type: "int", nullable: false),
-                    Brand = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Brand = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreatedAt = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
+                    UpdatedAt = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
+                    Status = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -291,7 +314,9 @@ namespace ShopeeKorean.Application.Migrations
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false, defaultValueSql: "NEWID()"),
                     CartId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     ProductId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Quantity = table.Column<int>(type: "int", nullable: false)
+                    Quantity = table.Column<int>(type: "int", nullable: false),
+                    CreatedAt = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
+                    UpdatedAt = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -324,7 +349,9 @@ namespace ShopeeKorean.Application.Migrations
                     ValidFrom = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ValidUntil = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UsageLimit = table.Column<int>(type: "int", nullable: false),
-                    UsedCount = table.Column<int>(type: "int", nullable: false)
+                    UsedCount = table.Column<int>(type: "int", nullable: false),
+                    ImageLink = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ImageId = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -370,7 +397,8 @@ namespace ShopeeKorean.Application.Migrations
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false, defaultValueSql: "NEWID()"),
                     ProductId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    ImageUrl = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
+                    ImageLink = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
+                    ImageId = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsMain = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
@@ -378,6 +406,25 @@ namespace ShopeeKorean.Application.Migrations
                     table.PrimaryKey("productimage_id_primary", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Product_Image",
+                        column: x => x.ProductId,
+                        principalTable: "Product",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "productsize",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false, defaultValueSql: "NEWID()"),
+                    ProductId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Size = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("productsize_id_primary", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_productsize_Product_ProductId",
                         column: x => x.ProductId,
                         principalTable: "Product",
                         principalColumn: "Id",
@@ -413,6 +460,32 @@ namespace ShopeeKorean.Application.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "Category",
+                columns: new[] { "Id", "ImageId", "ImageLink", "Name" },
+                values: new object[,]
+                {
+                    { new Guid("2bad4a96-6dff-4fa3-9c2e-6899264fb711"), "N/A", "N/A", "Thiết bị gia dụng" },
+                    { new Guid("2bad4a96-6dff-4fa3-9c2e-6899264fb712"), "N/A", "N/A", "Pet - Đồ dùng thú cưng" },
+                    { new Guid("2bad4a96-6dff-4fa3-9c2e-6899264fb721"), "N/A", "N/A", "Đồng hồ & Trang sức" },
+                    { new Guid("2bad4a96-6dff-4fa3-9c2e-6899264fb723"), "N/A", "N/A", "Thể thao & Dã ngoại" },
+                    { new Guid("2bad4a96-6dff-4fa3-9c2e-6899264fb724"), "N/A", "N/A", "Sách & Văn phòng phẩm" },
+                    { new Guid("2bad4a96-6dff-4fa3-9c2e-6899264fb725"), "N/A", "N/A", "Thực phẩm & Đồ uống" },
+                    { new Guid("2bad4a96-6dff-4fa3-9c2e-6899264fb727"), "N/A", "N/A", "Game & Console" },
+                    { new Guid("2bad4a96-6dff-4fa3-9c2e-6899264fb728"), "N/A", "N/A", "Sức khỏe & Làm đẹp" },
+                    { new Guid("2bad4a96-6dff-4fa3-9c2e-6899264fb729"), "N/A", "N/A", "Ô tô - Xe máy - Xe đạp" },
+                    { new Guid("2bad4a96-6dff-4fa3-9c2e-6899264fb730"), "N/A", "N/A", "Túi xách / Balo" },
+                    { new Guid("2bad4a96-6dff-4fa3-9c2e-6899264fb731"), "N/A", "N/A", "Giày dép Nam / Nữ" },
+                    { new Guid("2bad4a96-6dff-4fa3-9c2e-6899264fb732"), "N/A", "N/A", "Nhà cửa & Đời sống" },
+                    { new Guid("2bad4a96-6dff-4fa3-9c2e-6899264fb733"), "N/A", "N/A", "Mẹ & Bé" },
+                    { new Guid("2bad4a96-6dff-4fa3-9c2e-6899264fb734"), "N/A", "N/A", "Thời trang Nữ" },
+                    { new Guid("2bad4a96-6dff-4fa3-9c2e-6899264fb735"), "N/A", "N/A", "Thời trang Nam" },
+                    { new Guid("2bad4a96-6dff-4fa3-9c2e-6899264fb736"), "N/A", "N/A", "Máy ảnh & Máy quay phim" },
+                    { new Guid("2bad4a96-6dff-4fa3-9c2e-6899264fb737"), "N/A", "N/A", "Thiết bị điện tử" },
+                    { new Guid("2bad4a96-6dff-4fa3-9c2e-6899264fb738"), "N/A", "N/A", "Máy tính & Laptop" },
+                    { new Guid("2bad4a96-6dff-4fa3-9c2e-6899264fb739"), "N/A", "N/A", "Điện thoại & Phụ kiện" }
+                });
+
+            migrationBuilder.InsertData(
                 table: "Roles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
@@ -445,14 +518,31 @@ namespace ShopeeKorean.Application.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Order_PaymentRecordId",
                 table: "Order",
-                column: "PaymentRecordId",
-                unique: true);
+                column: "PaymentRecordId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Order_PaymentRecordId1",
+                table: "Order",
+                column: "PaymentRecordId1",
+                unique: true,
+                filter: "[PaymentRecordId1] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Order_ShippingId",
                 table: "Order",
-                column: "ShippingId",
-                unique: true);
+                column: "ShippingId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Order_ShippingId1",
+                table: "Order",
+                column: "ShippingId1",
+                unique: true,
+                filter: "[ShippingId1] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Order_UserId",
+                table: "Order",
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_OrderItem_OrderId",
@@ -489,6 +579,11 @@ namespace ShopeeKorean.Application.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_ProductImage_ProductId",
                 table: "ProductImage",
+                column: "ProductId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_productsize_ProductId",
+                table: "productsize",
                 column: "ProductId");
 
             migrationBuilder.CreateIndex(
@@ -570,6 +665,9 @@ namespace ShopeeKorean.Application.Migrations
 
             migrationBuilder.DropTable(
                 name: "ProductImage");
+
+            migrationBuilder.DropTable(
+                name: "productsize");
 
             migrationBuilder.DropTable(
                 name: "Review");

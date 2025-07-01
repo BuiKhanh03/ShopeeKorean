@@ -5,8 +5,7 @@ namespace ShopeeKorean.Entities.Models
     public class Shipping : BaseEntity<Shipping>
     {
         public Guid Id { get; set; }
-        public string TrackingNumber {  get; set; } = string.Empty;
-        public string Carrier { get; set; } = string.Empty;
+        public CarrierStatus Carrier { get; set; } = CarrierStatus.ShopeeExpress;
         public DateTime ShippedAt {  get; set; } = DateTime.UtcNow;
         public DateTime DeliveredAt {  get; set; } = DateTime.UtcNow;
         public ShippingStatus ShippingStatus { get; set; } = ShippingStatus.Pending;

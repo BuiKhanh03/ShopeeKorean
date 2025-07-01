@@ -12,8 +12,8 @@ using Repository;
 namespace ShopeeKorean.Application.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    [Migration("20250611051608_UpdateProductSize")]
-    partial class UpdateProductSize
+    [Migration("20250701144449_RemoveCode")]
+    partial class RemoveCode
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -159,11 +159,17 @@ namespace ShopeeKorean.Application.Migrations
                     b.Property<Guid>("CartId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<DateTimeOffset>("CreatedAt")
+                        .HasColumnType("datetimeoffset");
+
                     b.Property<Guid>("ProductId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
+
+                    b.Property<DateTimeOffset>("UpdatedAt")
+                        .HasColumnType("datetimeoffset");
 
                     b.HasKey("Id")
                         .HasName("cartitem_id_primary");
@@ -401,6 +407,9 @@ namespace ShopeeKorean.Application.Migrations
                     b.Property<Guid>("PaymentRecordId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid?>("PaymentRecordId1")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("ShippingAddress")
                         .IsRequired()
                         .HasMaxLength(255)
@@ -410,6 +419,9 @@ namespace ShopeeKorean.Application.Migrations
                         .HasColumnType("decimal(18, 2)");
 
                     b.Property<Guid>("ShippingId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("ShippingId1")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Status")
@@ -422,14 +434,25 @@ namespace ShopeeKorean.Application.Migrations
                     b.Property<DateTime>("UpdateAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("Id")
                         .HasName("order_id_primary");
 
-                    b.HasIndex("PaymentRecordId")
-                        .IsUnique();
+                    b.HasIndex("PaymentRecordId");
 
-                    b.HasIndex("ShippingId")
-                        .IsUnique();
+                    b.HasIndex("PaymentRecordId1")
+                        .IsUnique()
+                        .HasFilter("[PaymentRecordId1] IS NOT NULL");
+
+                    b.HasIndex("ShippingId");
+
+                    b.HasIndex("ShippingId1")
+                        .IsUnique()
+                        .HasFilter("[ShippingId1] IS NOT NULL");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Order", (string)null);
                 });
@@ -517,8 +540,8 @@ namespace ShopeeKorean.Application.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
-                    b.Property<double>("Price")
-                        .HasColumnType("float");
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<Guid>("SellerId")
                         .HasColumnType("uniqueidentifier");
@@ -683,10 +706,9 @@ namespace ShopeeKorean.Application.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasDefaultValueSql("NEWID()");
 
-                    b.Property<string>("Carrier")
-                        .IsRequired()
+                    b.Property<int>("Carrier")
                         .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("DeliveredAt")
                         .HasColumnType("datetime2");
@@ -697,11 +719,6 @@ namespace ShopeeKorean.Application.Migrations
                     b.Property<int>("ShippingStatus")
                         .HasMaxLength(255)
                         .HasColumnType("int");
-
-                    b.Property<string>("TrackingNumber")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
 
                     b.HasKey("Id")
                         .HasName("shipping_id_primary");
@@ -910,22 +927,37 @@ namespace ShopeeKorean.Application.Migrations
             modelBuilder.Entity("ShopeeKorean.Entities.Models.Order", b =>
                 {
                     b.HasOne("ShopeeKorean.Entities.Models.PaymentRecord", "PaymentRecord")
-                        .WithOne("Order")
-                        .HasForeignKey("ShopeeKorean.Entities.Models.Order", "PaymentRecordId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
+                        .WithMany()
+                        .HasForeignKey("PaymentRecordId")
+                        .OnDelete(DeleteBehavior.NoAction)
                         .HasConstraintName("FK_Order_PaymentRecord");
 
-                    b.HasOne("ShopeeKorean.Entities.Models.Shipping", "Shipping")
+                    b.HasOne("ShopeeKorean.Entities.Models.PaymentRecord", null)
                         .WithOne("Order")
-                        .HasForeignKey("ShopeeKorean.Entities.Models.Order", "ShippingId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
+                        .HasForeignKey("ShopeeKorean.Entities.Models.Order", "PaymentRecordId1");
+
+                    b.HasOne("ShopeeKorean.Entities.Models.Shipping", "Shipping")
+                        .WithMany()
+                        .HasForeignKey("ShippingId")
+                        .OnDelete(DeleteBehavior.NoAction)
                         .HasConstraintName("FK_Order_Shipping");
+
+                    b.HasOne("ShopeeKorean.Entities.Models.Shipping", null)
+                        .WithOne("Order")
+                        .HasForeignKey("ShopeeKorean.Entities.Models.Order", "ShippingId1");
+
+                    b.HasOne("ShopeeKorean.Entities.Models.User", "User")
+                        .WithMany("Orders")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired()
+                        .HasConstraintName("FK_Order_User");
 
                     b.Navigation("PaymentRecord");
 
                     b.Navigation("Shipping");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("ShopeeKorean.Entities.Models.OrderItem", b =>
@@ -1062,6 +1094,8 @@ namespace ShopeeKorean.Application.Migrations
                 {
                     b.Navigation("Cart")
                         .IsRequired();
+
+                    b.Navigation("Orders");
 
                     b.Navigation("Products");
 

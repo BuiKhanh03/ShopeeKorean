@@ -10,6 +10,7 @@ namespace ShopeeKorean.Contracts
         IProductRepository ProductRepository { get; }
         ICategoryRepository CategoryRepository { get; }
         ICartItemRepository CartItemRepository { get; }
+        IShippingRepository ShippingRepository { get; }
         IOrderItemRepository OrderItemRepository { get; }
         IProductSizeRepository ProductSizeRepository { get; }
         IProductImageRepository ProductImageRepository { get; }

@@ -6,8 +6,8 @@ namespace ShopeeKorean.Entities.Models
     {
         public Guid Id { get; set; }
         public Guid UserId { get; set; }
-        public Guid? PaymentRecordId { get; set; }
-        public Guid? ShippingId { get; set; }
+        public Guid PaymentRecordId { get; set; }
+        public Guid ShippingId { get; set; }
         public decimal TotalAmount {  get; set; }
         public OrderStatus Status { get; set; } = OrderStatus.Pending;
         public decimal ShippingFee { get; set; }

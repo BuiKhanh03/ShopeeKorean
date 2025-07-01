@@ -401,7 +401,7 @@ namespace ShopeeKorean.Application.Migrations
                     b.Property<DateTime>("CreateAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid?>("PaymentRecordId")
+                    b.Property<Guid>("PaymentRecordId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid?>("PaymentRecordId1")
@@ -415,7 +415,7 @@ namespace ShopeeKorean.Application.Migrations
                     b.Property<decimal>("ShippingFee")
                         .HasColumnType("decimal(18, 2)");
 
-                    b.Property<Guid?>("ShippingId")
+                    b.Property<Guid>("ShippingId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid?>("ShippingId1")
@@ -537,8 +537,8 @@ namespace ShopeeKorean.Application.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
-                    b.Property<double>("Price")
-                        .HasColumnType("float");
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<Guid>("SellerId")
                         .HasColumnType("uniqueidentifier");
@@ -703,10 +703,9 @@ namespace ShopeeKorean.Application.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasDefaultValueSql("NEWID()");
 
-                    b.Property<string>("Carrier")
-                        .IsRequired()
+                    b.Property<int>("Carrier")
                         .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("DeliveredAt")
                         .HasColumnType("datetime2");
@@ -717,11 +716,6 @@ namespace ShopeeKorean.Application.Migrations
                     b.Property<int>("ShippingStatus")
                         .HasMaxLength(255)
                         .HasColumnType("int");
-
-                    b.Property<string>("TrackingNumber")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
 
                     b.HasKey("Id")
                         .HasName("shipping_id_primary");

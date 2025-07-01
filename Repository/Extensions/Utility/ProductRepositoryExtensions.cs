@@ -18,7 +18,7 @@ namespace ShopeeKorean.Repository.Extensions.Utility
             return products.Where(p => p.Brand.ToLower().Equals(brand.ToLower().Trim()));
         }
 
-        public static IQueryable<Product> SearchByPrice(this IQueryable<Product> products, double price = 0)
+        public static IQueryable<Product> SearchByPrice(this IQueryable<Product> products, decimal price = 0)
         {
             if (price == 0) return products;
             return products.Where(p => p.Price == price); 
