@@ -16,6 +16,7 @@ namespace ShopeeKorean.Repository
         private readonly Lazy<ICartItemRepository> _cartItemRepository;
         private readonly Lazy<ICategoryRepository> _categoryRepository;
         private readonly Lazy<IOrderItemRepository> _orderItemRepository;
+        private readonly Lazy<IPaymentRecordRepository> _paymentRepository;
         private readonly Lazy<IProductSizeRepository> _productSizeRepository;
         private readonly Lazy<IProductImageRepository> _productImageRepository;
         public RepositoryManager(RepositoryContext repositoryContext)
@@ -29,6 +30,7 @@ namespace ShopeeKorean.Repository
             _categoryRepository = new Lazy<ICategoryRepository>(() => new CategoryRepository(repositoryContext));
             _shippingRepository = new Lazy<IShippingRepository>(() => new ShippingRepository(repositoryContext));
             _orderItemRepository = new Lazy<IOrderItemRepository>(() => new OrderItemRepository(repositoryContext));
+            _paymentRepository = new Lazy<IPaymentRecordRepository>(() => new PaymentRepository(repositoryContext));
             _productSizeRepository = new Lazy<IProductSizeRepository>(() => new ProductSizeRepository(repositoryContext));
             _productImageRepository = new Lazy<IProductImageRepository> (() => new ProductImageRepository(repositoryContext));
         }
@@ -42,6 +44,8 @@ namespace ShopeeKorean.Repository
         public IShippingRepository ShippingRepository => _shippingRepository.Value;
         public ICategoryRepository CategoryRepository => _categoryRepository.Value;
         public IOrderItemRepository OrderItemRepository => _orderItemRepository.Value;
+        public IPaymentRecordRepository PaymentRecordRepository => _paymentRepository.Value;
+
         public IProductSizeRepository ProductSizeRepository => _productSizeRepository.Value;
         public IProductImageRepository ProductImageRepository => _productImageRepository.Value;
 

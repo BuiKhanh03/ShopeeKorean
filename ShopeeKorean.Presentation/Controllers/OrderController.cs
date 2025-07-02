@@ -2,9 +2,12 @@
 using Microsoft.AspNetCore.Mvc;
 using ShopeeKorean.Service.Contracts;
 namespace ShopeeKorean.Presentation.Controllers;
-using ShopeeKorean.Shared.DataTransferObjects.Order;
 
-    [ApiController]
+using Microsoft.AspNetCore.Authorization;
+using ShopeeKorean.Shared.DataTransferObjects.Order;
+using ShopeeKorean.Shared.RequestFeatures;
+
+[ApiController]
     [Route("api/order")]
     public class OrderController : ApiControllerBase
     {
@@ -13,6 +16,7 @@ using ShopeeKorean.Shared.DataTransferObjects.Order;
 
         }
 
+    [Authorize]
         [HttpPost]
         public async Task<IActionResult> CreateOrder(OrderForCreationDto orderDto)
         {
@@ -23,5 +27,17 @@ using ShopeeKorean.Shared.DataTransferObjects.Order;
                 onFailure: ProcessError
                 );
         }
+
+    [HttpGet]
+    public async Task<IActionResult> GetOrder([FromQuery] OrderParameters orderParameters)
+    {
+        var userId = HttpContext.User.FindFirstValue("UserId");
+        var include = "OrderItems,Shipping,PaymentRecord";
+        var productResult = await _service.OrderService.GetOrders(new Guid(userId!), orderParameters, trackChanges: false, isInclude: include);
+        return productResult.Map(
+            onSuccess: Ok,
+            onFailure: ProcessError
+            );
+    }
     }
 

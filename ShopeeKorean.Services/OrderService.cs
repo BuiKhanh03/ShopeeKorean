@@ -8,6 +8,7 @@ using ShopeeKorean.Shared.ResultModel;
 using ShopeeKorean.Shared.RequestFeatures;
 using ShopNoteeKorean.Shared.Constant.Product;
 using ShopeeKorean.Shared.DataTransferObjects.Order;
+using System.Dynamic;
 
 namespace ShopeeKorean.Service
 {
@@ -49,7 +50,6 @@ namespace ShopeeKorean.Service
 
 
             await _repositoryManager.OrderRepository.CreateOrder(orderEntity);
-            
             await _repositoryManager.SaveAsync();
 
             var resultDto = _mapper.Map<OrderDto>(orderEntity);
@@ -61,9 +61,12 @@ namespace ShopeeKorean.Service
             throw new NotImplementedException();
         }
 
-        public Task<Result<IEnumerable<OrderDto>>> GetOrders(Guid userId, OrderParameters orderParameters, bool trackChanges)
+        public async Task<Result<IEnumerable<ExpandoObject>>> GetOrders(Guid userId, OrderParameters orderParameters, bool trackChanges, string? isInclude = null)
         {
-            throw new NotImplementedException();
+           var orders = await _repositoryManager.OrderRepository.GetOrders(userId, orderParameters, trackChanges, isInclude);
+           var orderDtos =  _mapper.Map<IEnumerable<OrderDto>>(orders);
+            var orderShappers = _dataShaper.Order.ShapeData(orderDtos, orderParameters.Field);
+            return Result<IEnumerable<ExpandoObject>>.Ok(orderShappers, orders.MetaData);
         }
 
         public Task<Result> UpdateOrder(OrderForUpdateDto orderDto)

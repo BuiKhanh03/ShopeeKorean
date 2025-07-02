@@ -491,8 +491,17 @@ namespace ShopeeKorean.Application.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasDefaultValueSql("NEWID()");
 
-                    b.Property<decimal>("AmountPaid")
+                    b.Property<decimal>("Amount")
                         .HasColumnType("decimal(18, 2)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OrderDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OrderType")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("PaidAt")
                         .HasColumnType("datetime2");

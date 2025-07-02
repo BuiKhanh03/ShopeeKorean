@@ -4,6 +4,7 @@ namespace ShopeeKorean.Shared.DataTransferObjects.Shipping
 {
     public record ShippingDto : BaseDto<ShippingDto>
     {
+        public Guid Id { get; set; }
         public CarrierStatus Carrier { get; set; } = CarrierStatus.ShopeeExpress;
         public DateTime ShippedAt { get; set; } = DateTime.UtcNow;
         public DateTime DeliveredAt { get; set; } = DateTime.UtcNow;

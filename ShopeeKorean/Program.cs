@@ -24,6 +24,7 @@ builder.Services.ConfigureIdentity();
 builder.Services.ConfigureLoggerService();
 builder.Services.ConfigureIISIntegration();
 builder.Services.ConfigureServiceManager();
+builder.Services.ConfigureJsonSerializer();
 builder.Services.ConfigureRepositoryManager();
 builder.Services.ConfigureDataShaperManager();
 builder.Services.AddAutoMapper(typeof(Program));

@@ -22,6 +22,7 @@ namespace ShopeeKorean.Service
         private readonly Lazy<ICloudinaryService> _cloudinaryService;
         private readonly Lazy<IProductSizeService> _productSizeService;
         private readonly Lazy<IProductImageService> _productImageService;
+        private readonly Lazy<IPaymentRecordService> _paymentRecordService;
         private readonly Lazy<IAuthenticationService> _authenticationService;
         public ServiceManager(IRepositoryManager repositoryManager, ILoggerManager loggerManager, IMapper mapper, IDataShaperManager dataShaper,UserManager<User> userManager, IOptions<JwtConfiguration> configuration, IOptions<MailConfiguration> mailConfiguration, IOptions<CloudinaryConfiguration> cloudinaryConfiguration)
         {
@@ -35,6 +36,7 @@ namespace ShopeeKorean.Service
             _productService = new Lazy<IProductService> (() => new ProductService(mapper, loggerManager, repositoryManager, dataShaper));
             _categoryService = new Lazy<ICategoryService>(() => new CategoryService(mapper, loggerManager, repositoryManager, dataShaper));
             _cartItemService = new Lazy<ICartItemService>(() => new CartItemService(mapper, loggerManager, repositoryManager, dataShaper));
+            _paymentRecordService = new Lazy<IPaymentRecordService>(() => new PaymentRecordService(mapper, loggerManager, repositoryManager, dataShaper));
             _orderItemService = new Lazy<IOrderItemService>(() => new OrderItemService(mapper, loggerManager, repositoryManager, dataShaper));
             _productSizeService = new Lazy<IProductSizeService>(() => new ProductSizeService(mapper, loggerManager, repositoryManager, dataShaper));
             _productImageService = new Lazy<IProductImageService>(() => new ProductImageService(mapper, loggerManager, repositoryManager, dataShaper));
@@ -50,6 +52,7 @@ namespace ShopeeKorean.Service
         public ICloudinaryService CloudinaryService => _cloudinaryService.Value;
         public IProductSizeService ProductSizeService => _productSizeService.Value;
         public IProductImageService ProductImageService => _productImageService.Value;
+        public IPaymentRecordService PaymentRecordService => _paymentRecordService.Value;
         public IAuthenticationService AuthenticationService => _authenticationService.Value;
 
     }

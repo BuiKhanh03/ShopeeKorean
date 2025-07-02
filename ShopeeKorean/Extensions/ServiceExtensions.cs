@@ -15,6 +15,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using ShopeeKorean.Entities.ConfigurationModels;
 using GarageManagementAPI.Service.DataShaping;
 using ShopeeKorean.Service.DataShapping;
+using System.Text.Json.Serialization;
 
 namespace ShopeeKorean.Application.Extensions
 {
@@ -46,6 +47,14 @@ namespace ShopeeKorean.Application.Extensions
         public static void ConfigureRepositoryManager(this IServiceCollection services) => services.AddScoped<IRepositoryManager, RepositoryManager>();
         public static void ConfigureServiceManager(this IServiceCollection services) => services.AddScoped<IServiceManager, ServiceManager>();
         public static void ConfigureDataShaperManager(this IServiceCollection services) => services.AddScoped<IDataShaperManager, DataShaperManager>();
+
+        public static void ConfigureJsonSerializer(this IServiceCollection services)
+        {
+            services.AddControllers().AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+            });
+        }
 
         public static void ConfigureIdentity(this IServiceCollection services)
         {

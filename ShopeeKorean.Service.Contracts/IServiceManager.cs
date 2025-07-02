@@ -12,6 +12,7 @@
         IOrderItemService OrderItemService { get; }
         ICloudinaryService CloudinaryService { get; }
         IProductSizeService ProductSizeService { get; }
+        IPaymentRecordService PaymentRecordService { get; }
         IProductImageService ProductImageService { get; }
         IAuthenticationService AuthenticationService { get; }
     }

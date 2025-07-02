@@ -14,6 +14,7 @@ namespace ShopeeKorean.Contracts
         IOrderItemRepository OrderItemRepository { get; }
         IProductSizeRepository ProductSizeRepository { get; }
         IProductImageRepository ProductImageRepository { get; }
+        IPaymentRecordRepository PaymentRecordRepository { get; }
         Task SaveAsync();
     }
 }

@@ -15,7 +15,7 @@ namespace ShopeeKorean.Repository.Configuration
             entity.Property(e => e.Id).ValueGeneratedOnAdd().HasDefaultValueSql("NEWID()");
             entity.Property(e => e.PaymentRecordMethod).HasMaxLength(255);
             entity.Property(e => e.PaymentRecordStatus).HasMaxLength(255);
-            entity.Property(e => e.AmountPaid).HasColumnType("decimal(18, 2)");
+            entity.Property(e => e.Amount).HasColumnType("decimal(18, 2)");
         }
     }
 }

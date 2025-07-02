@@ -54,18 +54,18 @@ namespace ShopeeKorean.Repository.Extensions.Utility
                 /*
                  StringComparison.InvariantCultureIgnoreCase là một giá trị enum thuộc System.StringComparison dùng để so sánh chuỗi không phân biệt hoa thường dựa trên quy tắc văn hóa bất biến (invariant culture).
                 */
-                var property = Category.PropertyInfos.FirstOrDefault(ctg => ctg.Name.Equals(field.Trim(), StringComparison.InvariantCultureIgnoreCase));
+                var property = Order.PropertyInfos.FirstOrDefault(ctg => ctg.Name.Equals(field.Trim(), StringComparison.InvariantCultureIgnoreCase));
                 if (property != null)
                     order = order.Include(field);
             }
             return order;
         }
 
-        public static IQueryable<Category> Sort(this IQueryable<Category> categories, string? orderByQueryString)
+        public static IQueryable<Order> Sort(this IQueryable<Order> categories, string? orderByQueryString)
         {
-            if (string.IsNullOrWhiteSpace(orderByQueryString)) return categories.OrderBy(p => p.Name);
-            var orderQuery = QueryBuilder.CreateOrderQuery<Category>(orderByQueryString, Category.PropertyInfos);
-            if (string.IsNullOrWhiteSpace(orderQuery)) return categories.OrderBy(ctg => ctg.Name);
+            if (string.IsNullOrWhiteSpace(orderByQueryString)) return categories.OrderBy(p => p.CreateAt);
+            var orderQuery = QueryBuilder.CreateOrderQuery<Order>(orderByQueryString, Order.PropertyInfos);
+            if (string.IsNullOrWhiteSpace(orderQuery)) return categories.OrderBy(ctg => ctg.CreateAt);
             return categories.OrderBy(orderQuery);
         }
     }
