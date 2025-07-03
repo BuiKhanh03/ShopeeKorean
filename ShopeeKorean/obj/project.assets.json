@@ -107,6 +107,30 @@
           "lib/netcoreapp2.2/EDennis.NetCore.LinqTools.dll": {}
         }
       },
+      "FluentEmail.Core/3.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "3.1.11"
+        },
+        "compile": {
+          "lib/netstandard2.0/FluentEmail.Core.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/FluentEmail.Core.dll": {}
+        }
+      },
+      "FluentEmail.Smtp/3.0.0": {
+        "type": "package",
+        "dependencies": {
+          "FluentEmail.Core": "3.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/FluentEmail.Smtp.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/FluentEmail.Smtp.dll": {}
+        }
+      },
       "Humanizer.Core/2.14.1": {
         "type": "package",
         "compile": {
@@ -458,18 +482,19 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Http.Features/2.3.0": {
+      "Microsoft.AspNetCore.Http.Features/3.1.17": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.Primitives": "8.0.0"
+          "Microsoft.Extensions.Primitives": "3.1.17",
+          "System.IO.Pipelines": "4.7.4"
         },
         "compile": {
-          "lib/netstandard2.0/Microsoft.AspNetCore.Http.Features.dll": {
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.Http.Features.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/netstandard2.0/Microsoft.AspNetCore.Http.Features.dll": {
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.Http.Features.dll": {
             "related": ".xml"
           }
         }
@@ -1147,6 +1172,23 @@
           "build/net8.0/Microsoft.EntityFrameworkCore.Design.props": {}
         }
       },
+      "Microsoft.EntityFrameworkCore.DynamicLinq/3.2.11": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "3.1.0",
+          "System.Linq.Dynamic.Core": "1.2.11"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.EntityFrameworkCore.DynamicLinq.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.EntityFrameworkCore.DynamicLinq.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "Microsoft.EntityFrameworkCore.Relational/9.0.5": {
         "type": "package",
         "dependencies": {
@@ -1245,6 +1287,24 @@
         },
         "build": {
           "buildTransitive/net8.0/_._": {}
+        }
+      },
+      "Microsoft.Extensions.Caching.SqlServer/3.1.17": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Data.SqlClient": "1.0.19239.1",
+          "Microsoft.Extensions.Caching.Abstractions": "3.1.17",
+          "Microsoft.Extensions.Options": "3.1.17"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Extensions.Caching.SqlServer.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Extensions.Caching.SqlServer.dll": {
+            "related": ".xml"
+          }
         }
       },
       "Microsoft.Extensions.Configuration.Abstractions/9.0.5": {
@@ -1793,7 +1853,7 @@
       "Microsoft.Win32.SystemEvents/6.0.0": {
         "type": "package",
         "compile": {
-          "lib/net6.0/_._": {
+          "lib/net6.0/Microsoft.Win32.SystemEvents.dll": {
             "related": ".xml"
           }
         },
@@ -1934,6 +1994,27 @@
         },
         "runtime": {
           "lib/net8.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "OpenIddict.Abstractions/3.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "3.1.16",
+          "Microsoft.Extensions.Primitives": "3.1.16",
+          "System.Collections.Immutable": "1.7.1",
+          "System.ComponentModel.Annotations": "4.7.0",
+          "System.Text.Encodings.Web": "4.7.2",
+          "System.Text.Json": "4.7.2"
+        },
+        "compile": {
+          "lib/netstandard2.1/OpenIddict.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/OpenIddict.Abstractions.dll": {
             "related": ".xml"
           }
         }
@@ -2102,6 +2183,105 @@
           }
         }
       },
+      "Sek.Module.Base.AspNetCore/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Features": "3.1.17",
+          "Microsoft.Extensions.Caching.Memory": "3.1.17",
+          "Microsoft.Extensions.Caching.SqlServer": "3.1.17",
+          "Sek.Module.Base.Core": "1.0.0",
+          "Swashbuckle.AspNetCore.Swagger": "6.1.4",
+          "Swashbuckle.AspNetCore.SwaggerGen": "6.1.4",
+          "Swashbuckle.AspNetCore.SwaggerUI": "6.1.4"
+        },
+        "compile": {
+          "lib/netcoreapp3.1/Sek.Module.Base.AspNetCore.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/Sek.Module.Base.AspNetCore.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
+      "Sek.Module.Base.Common/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.WebUtilities": "2.2.0",
+          "Newtonsoft.Json": "13.0.1",
+          "OpenIddict.Abstractions": "3.1.0",
+          "System.Drawing.Common": "5.0.2"
+        },
+        "compile": {
+          "lib/netstandard2.1/Sek.Module.Base.Common.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/Sek.Module.Base.Common.dll": {}
+        }
+      },
+      "Sek.Module.Base.Core/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "FluentEmail.Smtp": "3.0.0",
+          "Microsoft.EntityFrameworkCore.DynamicLinq": "3.2.11",
+          "Microsoft.EntityFrameworkCore.Relational": "3.1.17",
+          "Sek.Module.Base.Common": "1.0.0",
+          "Sek.Module.Base.Model": "1.0.0",
+          "TimeZoneConverter": "3.5.0"
+        },
+        "compile": {
+          "lib/netstandard2.1/Sek.Module.Base.Core.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/Sek.Module.Base.Core.dll": {}
+        }
+      },
+      "Sek.Module.Base.Model/1.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/Sek.Module.Base.Model.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/Sek.Module.Base.Model.dll": {}
+        }
+      },
+      "Sek.Module.Payment.VnPay.AspNetCore/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Sek.Module.Base.AspNetCore": "1.0.0",
+          "Sek.Module.Payment.VnPay.Core": "1.0.0"
+        },
+        "compile": {
+          "lib/netcoreapp3.1/Sek.Module.Payment.VnPay.AspNetCore.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/Sek.Module.Payment.VnPay.AspNetCore.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
+      "Sek.Module.Payment.VnPay.Common/1.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/Sek.Module.Payment.VnPay.Common.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/Sek.Module.Payment.VnPay.Common.dll": {}
+        }
+      },
+      "Sek.Module.Payment.VnPay.Core/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Sek.Module.Payment.VnPay.Common": "1.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.1/Sek.Module.Payment.VnPay.Core.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/Sek.Module.Payment.VnPay.Core.dll": {}
+        }
+      },
       "Swashbuckle.AspNetCore/8.1.2": {
         "type": "package",
         "dependencies": {
@@ -2249,7 +2429,7 @@
       "System.Collections.Immutable/7.0.0": {
         "type": "package",
         "compile": {
-          "lib/net7.0/_._": {
+          "lib/net7.0/System.Collections.Immutable.dll": {
             "related": ".xml"
           }
         },
@@ -2260,6 +2440,19 @@
         },
         "build": {
           "buildTransitive/net6.0/_._": {}
+        }
+      },
+      "System.ComponentModel.Annotations/4.7.0": {
+        "type": "package",
+        "compile": {
+          "ref/netstandard2.1/System.ComponentModel.Annotations.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/System.ComponentModel.Annotations.dll": {
+            "related": ".xml"
+          }
         }
       },
       "System.Composition/7.0.0": {
@@ -2440,7 +2633,7 @@
           "Microsoft.Win32.SystemEvents": "6.0.0"
         },
         "compile": {
-          "lib/net6.0/_._": {
+          "lib/net6.0/System.Drawing.Common.dll": {
             "related": ".xml"
           }
         },
@@ -3448,6 +3641,19 @@
           }
         }
       },
+      "TimeZoneConverter/3.5.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/TimeZoneConverter.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/TimeZoneConverter.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "TourmalineCore.AspNetCore.JwtAuthentication.ConfigurationAnalyzers/0.1.0-alpha.1": {
         "type": "package"
       },
@@ -3565,6 +3771,7 @@
           "CloudinaryDotNet": "1.27.5",
           "MailKit": "4.12.1",
           "MimeKit": "4.12.0",
+          "Sek.Module.Payment.VnPay.AspNetCore": "1.0.0",
           "ShopeeKorean.Entities": "1.0.0",
           "ShopeeKorean.LoggerService": "1.0.0",
           "ShopeeKorean.Service.Contracts": "1.0.0",
@@ -3710,6 +3917,32 @@
         "edennis.netcore.linqtools.1.3.2.nupkg.sha512",
         "edennis.netcore.linqtools.nuspec",
         "lib/netcoreapp2.2/EDennis.NetCore.LinqTools.dll"
+      ]
+    },
+    "FluentEmail.Core/3.0.0": {
+      "sha512": "aR81GYqWS5qATQh1300BmnRnUukgB89THcYXOHs7YGuSHc827qZtWqrGJlV8k9Jk60hlcmm/O/9Vmoaw2ytD3g==",
+      "type": "package",
+      "path": "fluentemail.core/3.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "fluentemail.core.3.0.0.nupkg.sha512",
+        "fluentemail.core.nuspec",
+        "fluentemail_logo_64x64.png",
+        "lib/netstandard2.0/FluentEmail.Core.dll"
+      ]
+    },
+    "FluentEmail.Smtp/3.0.0": {
+      "sha512": "/Oc/OeWavbdNcMsEDoQljw7QAkAMm67xil+RG/JwJct5i6/cdl8jHzNSsSSzTRskxMDydIoUk/1DYFGgM7AqmQ==",
+      "type": "package",
+      "path": "fluentemail.smtp/3.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "fluentemail.smtp.3.0.0.nupkg.sha512",
+        "fluentemail.smtp.nuspec",
+        "fluentemail_logo_64x64.png",
+        "lib/netstandard2.0/FluentEmail.Smtp.dll"
       ]
     },
     "Humanizer.Core/2.14.1": {
@@ -4018,16 +4251,20 @@
         "microsoft.aspnetcore.http.extensions.nuspec"
       ]
     },
-    "Microsoft.AspNetCore.Http.Features/2.3.0": {
-      "sha512": "f10WUgcsKqrkmnz6gt8HeZ7kyKjYN30PO7cSic1lPtH7paPtnQqXPOveul/SIPI43PhRD4trttg4ywnrEmmJpA==",
+    "Microsoft.AspNetCore.Http.Features/3.1.17": {
+      "sha512": "U+VM5fyEWYLIsSd1gm3gaau1WlCVTn4Z10jL1sMrfvDWjCd3dj164R5uk51Z2MKoRpqdSBnN31hNjBqpfudmng==",
       "type": "package",
-      "path": "microsoft.aspnetcore.http.features/2.3.0",
+      "path": "microsoft.aspnetcore.http.features/3.1.17",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/netcoreapp3.1/Microsoft.AspNetCore.Http.Features.dll",
+        "lib/netcoreapp3.1/Microsoft.AspNetCore.Http.Features.xml",
         "lib/netstandard2.0/Microsoft.AspNetCore.Http.Features.dll",
         "lib/netstandard2.0/Microsoft.AspNetCore.Http.Features.xml",
-        "microsoft.aspnetcore.http.features.2.3.0.nupkg.sha512",
+        "microsoft.aspnetcore.http.features.3.1.17.nupkg.sha512",
         "microsoft.aspnetcore.http.features.nuspec"
       ]
     },
@@ -5360,6 +5597,20 @@
         "microsoft.entityframeworkcore.design.nuspec"
       ]
     },
+    "Microsoft.EntityFrameworkCore.DynamicLinq/3.2.11": {
+      "sha512": "Zw9na0RAj7EPOEPKy5OeNgpaJ2gFU35Bj8uRmcdnzCj89/XzYgbJB6UUJ9guYLbIeqLgmpZ0BysXQuP8vsseRA==",
+      "type": "package",
+      "path": "microsoft.entityframeworkcore.dynamiclinq/3.2.11",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/Microsoft.EntityFrameworkCore.DynamicLinq.dll",
+        "lib/netstandard2.0/Microsoft.EntityFrameworkCore.DynamicLinq.pdb",
+        "lib/netstandard2.0/Microsoft.EntityFrameworkCore.DynamicLinq.xml",
+        "microsoft.entityframeworkcore.dynamiclinq.3.2.11.nupkg.sha512",
+        "microsoft.entityframeworkcore.dynamiclinq.nuspec"
+      ]
+    },
     "Microsoft.EntityFrameworkCore.Relational/9.0.5": {
       "sha512": "6eErbrZFd9yNnncemtDdmHZ3KC792OQCIYITuMsjK2oh4CLzlYo8mzNsozgUzQ+utHnne11/3eV8zMWbYF5Puw==",
       "type": "package",
@@ -5700,6 +5951,20 @@
         "microsoft.extensions.caching.memory.9.0.5.nupkg.sha512",
         "microsoft.extensions.caching.memory.nuspec",
         "useSharedDesignerContext.txt"
+      ]
+    },
+    "Microsoft.Extensions.Caching.SqlServer/3.1.17": {
+      "sha512": "z1iNsEPcFhe4JlRfmUXxKVtVfA/VV/s6QRjlwOylFuQZz8OO05zsz9kn9kBkNI2m844y/GESg6y76oDiIFqe9A==",
+      "type": "package",
+      "path": "microsoft.extensions.caching.sqlserver/3.1.17",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "lib/netstandard2.0/Microsoft.Extensions.Caching.SqlServer.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Caching.SqlServer.xml",
+        "microsoft.extensions.caching.sqlserver.3.1.17.nupkg.sha512",
+        "microsoft.extensions.caching.sqlserver.nuspec"
       ]
     },
     "Microsoft.Extensions.Configuration.Abstractions/9.0.5": {
@@ -6801,6 +7066,24 @@
         "postgresql.png"
       ]
     },
+    "OpenIddict.Abstractions/3.1.0": {
+      "sha512": "qbFyczUzcC3lxxcnU+5/mxEnuxsev1OslLSXqWlEHUg95jKfMxugfepFhvIh2l3t4bbUWybgnj8UfHbbH7Hpxw==",
+      "type": "package",
+      "path": "openiddict.abstractions/3.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "lib/net461/OpenIddict.Abstractions.dll",
+        "lib/net461/OpenIddict.Abstractions.xml",
+        "lib/netstandard2.0/OpenIddict.Abstractions.dll",
+        "lib/netstandard2.0/OpenIddict.Abstractions.xml",
+        "lib/netstandard2.1/OpenIddict.Abstractions.dll",
+        "lib/netstandard2.1/OpenIddict.Abstractions.xml",
+        "openiddict.abstractions.3.1.0.nupkg.sha512",
+        "openiddict.abstractions.nuspec"
+      ]
+    },
     "runtime.aot.System.Reflection/4.3.0": {
       "sha512": "RtPByBmixEVC003nTtg9rGk+hogh8u3Tjd2Ap9WtYchddErK+EfOWhWEWSNfrlfHSep0fPZyjLXye+bdDqeqyQ==",
       "type": "package",
@@ -7024,6 +7307,90 @@
         "runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl.4.3.2.nupkg.sha512",
         "runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl.nuspec",
         "runtimes/ubuntu.16.10-x64/native/System.Security.Cryptography.Native.OpenSsl.so"
+      ]
+    },
+    "Sek.Module.Base.AspNetCore/1.0.0": {
+      "sha512": "qS//8wccbMcieyw+Kd42nTpJjnZYGxT9c7yQSq4O8cBy73bfSPo6GDgvbk4ndz0ppyuw5+Tp49ak7KBX7nYwIw==",
+      "type": "package",
+      "path": "sek.module.base.aspnetcore/1.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netcoreapp3.1/Sek.Module.Base.AspNetCore.dll",
+        "sek.module.base.aspnetcore.1.0.0.nupkg.sha512",
+        "sek.module.base.aspnetcore.nuspec"
+      ]
+    },
+    "Sek.Module.Base.Common/1.0.0": {
+      "sha512": "H3K8M7rq94l9QUUVXC00sYiw77SoPVxxc3E+dRb35yx5A1nbYOdfhG/SXiPXHlBKE65KjLy1UDx1vxwqeC8z4w==",
+      "type": "package",
+      "path": "sek.module.base.common/1.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.1/Sek.Module.Base.Common.dll",
+        "sek.module.base.common.1.0.0.nupkg.sha512",
+        "sek.module.base.common.nuspec"
+      ]
+    },
+    "Sek.Module.Base.Core/1.0.0": {
+      "sha512": "6zPq8IZSiPnTSwzHeN6fjVcQSHXeykkMKHmvk9YJwx8KwMr2G4Wb9YFZEvQcjHpcCP9lwGuVx9TJSr2C2o3d3w==",
+      "type": "package",
+      "path": "sek.module.base.core/1.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.1/Sek.Module.Base.Core.dll",
+        "sek.module.base.core.1.0.0.nupkg.sha512",
+        "sek.module.base.core.nuspec"
+      ]
+    },
+    "Sek.Module.Base.Model/1.0.0": {
+      "sha512": "dYXBhICDKv8wJgL9bMx1cBaOLfWyf5fVyWG1J1SEOFMFYK1l1BqUw1EqlBMuqu5qNHI6FrHMvm3LaqObh6Ro0A==",
+      "type": "package",
+      "path": "sek.module.base.model/1.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.1/Sek.Module.Base.Model.dll",
+        "sek.module.base.model.1.0.0.nupkg.sha512",
+        "sek.module.base.model.nuspec"
+      ]
+    },
+    "Sek.Module.Payment.VnPay.AspNetCore/1.0.0": {
+      "sha512": "KQnDhWwtdLJs8fprsENkglsbJnWPWWwQKZFM+iJolBcxUrbnF/zIMwX0DeLK7Jt4iV/W6c4K2xJVkW5CecoIwg==",
+      "type": "package",
+      "path": "sek.module.payment.vnpay.aspnetcore/1.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netcoreapp3.1/Sek.Module.Payment.VnPay.AspNetCore.dll",
+        "sek.module.payment.vnpay.aspnetcore.1.0.0.nupkg.sha512",
+        "sek.module.payment.vnpay.aspnetcore.nuspec"
+      ]
+    },
+    "Sek.Module.Payment.VnPay.Common/1.0.0": {
+      "sha512": "L5YemKzJhEZh8Q2XFer5VgJ9UoDlZ1DpaOnb//HrBwkSpmHSEo8ARugztxebjZGEP/brTNHSyfa4EJ2hOo9rVg==",
+      "type": "package",
+      "path": "sek.module.payment.vnpay.common/1.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.1/Sek.Module.Payment.VnPay.Common.dll",
+        "sek.module.payment.vnpay.common.1.0.0.nupkg.sha512",
+        "sek.module.payment.vnpay.common.nuspec"
+      ]
+    },
+    "Sek.Module.Payment.VnPay.Core/1.0.0": {
+      "sha512": "V73pqvKklMzAZfsIJ1jbg9cXMxV8qPXtY9g2ZA7WM5vdKS4TeKqJMv4cPAK18cIxgoXMhlTxSQ3eBP1K35iVRw==",
+      "type": "package",
+      "path": "sek.module.payment.vnpay.core/1.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.1/Sek.Module.Payment.VnPay.Core.dll",
+        "sek.module.payment.vnpay.core.1.0.0.nupkg.sha512",
+        "sek.module.payment.vnpay.core.nuspec"
       ]
     },
     "Swashbuckle.AspNetCore/8.1.2": {
@@ -7326,6 +7693,95 @@
         "system.collections.immutable.7.0.0.nupkg.sha512",
         "system.collections.immutable.nuspec",
         "useSharedDesignerContext.txt"
+      ]
+    },
+    "System.ComponentModel.Annotations/4.7.0": {
+      "sha512": "0YFqjhp/mYkDGpU0Ye1GjE53HMp9UVfGN7seGpAMttAC0C40v5gw598jCgpbBLMmCo0E5YRLBv5Z2doypO49ZQ==",
+      "type": "package",
+      "path": "system.componentmodel.annotations/4.7.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net45/_._",
+        "lib/net461/System.ComponentModel.Annotations.dll",
+        "lib/netcore50/System.ComponentModel.Annotations.dll",
+        "lib/netstandard1.4/System.ComponentModel.Annotations.dll",
+        "lib/netstandard2.0/System.ComponentModel.Annotations.dll",
+        "lib/netstandard2.1/System.ComponentModel.Annotations.dll",
+        "lib/netstandard2.1/System.ComponentModel.Annotations.xml",
+        "lib/portable-net45+win8/_._",
+        "lib/win8/_._",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net45/_._",
+        "ref/net461/System.ComponentModel.Annotations.dll",
+        "ref/net461/System.ComponentModel.Annotations.xml",
+        "ref/netcore50/System.ComponentModel.Annotations.dll",
+        "ref/netcore50/System.ComponentModel.Annotations.xml",
+        "ref/netcore50/de/System.ComponentModel.Annotations.xml",
+        "ref/netcore50/es/System.ComponentModel.Annotations.xml",
+        "ref/netcore50/fr/System.ComponentModel.Annotations.xml",
+        "ref/netcore50/it/System.ComponentModel.Annotations.xml",
+        "ref/netcore50/ja/System.ComponentModel.Annotations.xml",
+        "ref/netcore50/ko/System.ComponentModel.Annotations.xml",
+        "ref/netcore50/ru/System.ComponentModel.Annotations.xml",
+        "ref/netcore50/zh-hans/System.ComponentModel.Annotations.xml",
+        "ref/netcore50/zh-hant/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.1/System.ComponentModel.Annotations.dll",
+        "ref/netstandard1.1/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.1/de/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.1/es/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.1/fr/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.1/it/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.1/ja/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.1/ko/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.1/ru/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.1/zh-hans/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.1/zh-hant/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.3/System.ComponentModel.Annotations.dll",
+        "ref/netstandard1.3/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.3/de/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.3/es/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.3/fr/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.3/it/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.3/ja/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.3/ko/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.3/ru/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.3/zh-hans/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.3/zh-hant/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.4/System.ComponentModel.Annotations.dll",
+        "ref/netstandard1.4/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.4/de/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.4/es/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.4/fr/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.4/it/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.4/ja/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.4/ko/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.4/ru/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.4/zh-hans/System.ComponentModel.Annotations.xml",
+        "ref/netstandard1.4/zh-hant/System.ComponentModel.Annotations.xml",
+        "ref/netstandard2.0/System.ComponentModel.Annotations.dll",
+        "ref/netstandard2.0/System.ComponentModel.Annotations.xml",
+        "ref/netstandard2.1/System.ComponentModel.Annotations.dll",
+        "ref/netstandard2.1/System.ComponentModel.Annotations.xml",
+        "ref/portable-net45+win8/_._",
+        "ref/win8/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "system.componentmodel.annotations.4.7.0.nupkg.sha512",
+        "system.componentmodel.annotations.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
       ]
     },
     "System.Composition/7.0.0": {
@@ -10203,6 +10659,33 @@
         "system.windows.extensions.6.0.0.nupkg.sha512",
         "system.windows.extensions.nuspec",
         "useSharedDesignerContext.txt"
+      ]
+    },
+    "TimeZoneConverter/3.5.0": {
+      "sha512": "ziTcQ5rVxRdtWJEnEqhKBukZGuUQregbf5G7QRrFKj6CwBLss5tSz0dlSHy9gzi5M5ES0PNQ0K2ACP/0XVT5Ow==",
+      "type": "package",
+      "path": "timezoneconverter/3.5.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net35/TimeZoneConverter.dll",
+        "lib/net35/TimeZoneConverter.xml",
+        "lib/net40/TimeZoneConverter.dll",
+        "lib/net40/TimeZoneConverter.xml",
+        "lib/net45/TimeZoneConverter.dll",
+        "lib/net45/TimeZoneConverter.xml",
+        "lib/net461/TimeZoneConverter.dll",
+        "lib/net461/TimeZoneConverter.xml",
+        "lib/net471/TimeZoneConverter.dll",
+        "lib/net471/TimeZoneConverter.xml",
+        "lib/netstandard1.1/TimeZoneConverter.dll",
+        "lib/netstandard1.1/TimeZoneConverter.xml",
+        "lib/netstandard1.3/TimeZoneConverter.dll",
+        "lib/netstandard1.3/TimeZoneConverter.xml",
+        "lib/netstandard2.0/TimeZoneConverter.dll",
+        "lib/netstandard2.0/TimeZoneConverter.xml",
+        "timezoneconverter.3.5.0.nupkg.sha512",
+        "timezoneconverter.nuspec"
       ]
     },
     "TourmalineCore.AspNetCore.JwtAuthentication.ConfigurationAnalyzers/0.1.0-alpha.1": {

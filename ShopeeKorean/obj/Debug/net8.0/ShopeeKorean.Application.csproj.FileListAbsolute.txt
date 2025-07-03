@@ -214,3 +214,16 @@ D:\Net\core\ShopeeKorean\ShopeeKorean\bin\Debug\net8.0\Microsoft.AspNetCore.Mvc.
 D:\Net\core\ShopeeKorean\ShopeeKorean\bin\Debug\net8.0\Newtonsoft.Json.Bson.dll
 D:\Net\core\ShopeeKorean\ShopeeKorean\bin\Debug\net8.0\System.Linq.Dynamic.Core.dll
 D:\Net\core\ShopeeKorean\ShopeeKorean\bin\Debug\net8.0\CloudinaryDotNet.dll
+D:\Net\core\ShopeeKorean\ShopeeKorean\bin\Debug\net8.0\FluentEmail.Core.dll
+D:\Net\core\ShopeeKorean\ShopeeKorean\bin\Debug\net8.0\FluentEmail.Smtp.dll
+D:\Net\core\ShopeeKorean\ShopeeKorean\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.DynamicLinq.dll
+D:\Net\core\ShopeeKorean\ShopeeKorean\bin\Debug\net8.0\Microsoft.Extensions.Caching.SqlServer.dll
+D:\Net\core\ShopeeKorean\ShopeeKorean\bin\Debug\net8.0\OpenIddict.Abstractions.dll
+D:\Net\core\ShopeeKorean\ShopeeKorean\bin\Debug\net8.0\Sek.Module.Base.AspNetCore.dll
+D:\Net\core\ShopeeKorean\ShopeeKorean\bin\Debug\net8.0\Sek.Module.Base.Common.dll
+D:\Net\core\ShopeeKorean\ShopeeKorean\bin\Debug\net8.0\Sek.Module.Base.Core.dll
+D:\Net\core\ShopeeKorean\ShopeeKorean\bin\Debug\net8.0\Sek.Module.Base.Model.dll
+D:\Net\core\ShopeeKorean\ShopeeKorean\bin\Debug\net8.0\Sek.Module.Payment.VnPay.AspNetCore.dll
+D:\Net\core\ShopeeKorean\ShopeeKorean\bin\Debug\net8.0\Sek.Module.Payment.VnPay.Common.dll
+D:\Net\core\ShopeeKorean\ShopeeKorean\bin\Debug\net8.0\Sek.Module.Payment.VnPay.Core.dll
+D:\Net\core\ShopeeKorean\ShopeeKorean\bin\Debug\net8.0\TimeZoneConverter.dll
