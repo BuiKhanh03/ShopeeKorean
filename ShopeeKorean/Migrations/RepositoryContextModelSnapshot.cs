@@ -494,17 +494,17 @@ namespace ShopeeKorean.Application.Migrations
                     b.Property<decimal>("Amount")
                         .HasColumnType("decimal(18, 2)");
 
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("OrderDescription")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("OrderType")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("PaidAt")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("PaidAt")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PaymentId")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("PaymentRecordMethod")
                         .HasMaxLength(255)
@@ -513,6 +513,9 @@ namespace ShopeeKorean.Application.Migrations
                     b.Property<int>("PaymentRecordStatus")
                         .HasMaxLength(255)
                         .HasColumnType("int");
+
+                    b.Property<string>("TransactionId")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id")
                         .HasName("paymentrecord_id_primary");

@@ -6,6 +6,7 @@
         IUserService UserService { get; }
         ICartService CartService { get; }
         IOrderService OrderService { get; }
+        IVnPayService VnPayService { get; }
         IProductService ProductService { get; }
         ICategoryService CategoryService { get; }
         ICartItemService CartItemService { get; }

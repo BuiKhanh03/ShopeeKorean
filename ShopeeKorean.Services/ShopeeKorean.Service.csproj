@@ -11,6 +11,7 @@
     <PackageReference Include="CloudinaryDotNet" Version="1.27.5" />
     <PackageReference Include="MailKit" Version="4.12.1" />
     <PackageReference Include="MimeKit" Version="4.12.0" />
+    <PackageReference Include="Sek.Module.Payment.VnPay.AspNetCore" Version="1.0.0" />
     <PackageReference Include="TourmalineCore.AspNetCore.JwtAuthentication.Identity" Version="0.1.1" />
   </ItemGroup>
 

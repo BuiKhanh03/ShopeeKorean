@@ -9,9 +9,10 @@ namespace ShopeeKorean.Entities.Models
         public string? OrderType { get; set; }
         public decimal Amount { get; set; }
         public string? OrderDescription { get; set; }
-        public string? Name { get; set; }
-        public DateTime PaidAt { get; set; } = DateTime.UtcNow;
-        public PaymentRecordType PaymentRecordMethod { get; set; } = PaymentRecordType.Cod;
+        public string? PaymentId { get; set; }
+        public string? TransactionId { get; set; } 
+        public string? PaidAt { get; set; } 
+        public PaymentRecordType PaymentRecordMethod { get; set; } = PaymentRecordType.VnPay;
         public PaymentRecordStatus PaymentRecordStatus { get; set; } = PaymentRecordStatus.Pending;
         public Order Order { get; set; }
     }
