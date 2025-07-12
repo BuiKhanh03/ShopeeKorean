@@ -11,6 +11,7 @@ namespace ShopeeKorean.Application.MappingProfile
         {
             CreateMap<Order, OrderForCreationDto>().ReverseMap();
            CreateMap<Order, OrderDto>().ReverseMap();
+            CreateMap<OrderDto, Order>();
             CreateMap<OrderItem, OrderItemDto>();
             CreateMap<OrderItemForCreationDto, OrderItem>();
         }

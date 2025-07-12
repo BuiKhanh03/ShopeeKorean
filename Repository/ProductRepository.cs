@@ -17,7 +17,8 @@ namespace ShopeeKorean.Repository
 
         public async Task<Product?> GetProduct(Guid productId, bool trackChanges = false, string? include = null)
         {
-            var product = await base.FindByCondition(p => p.Id.Equals(productId), trackChanges).IsInclude(include).SingleOrDefaultAsync();
+            var product = await base.FindByCondition(p => p.Id.Equals(productId), trackChanges).IsInclude(include).Include(p => p.Reviews)
+        .ThenInclude(r => r.User).SingleOrDefaultAsync();
             return product;
         }
         public async Task<PagedList<Product>> GetProducts(ProductParameters productPagameters, bool trackChanges = false, string? include = null)
@@ -36,7 +37,8 @@ namespace ShopeeKorean.Repository
             if (categoryGuid.HasValue)
                 query = query.SearchByCategory(categoryGuid.Value);
 
-            var products = await query.IsInclude(include).ToListAsync();
+            var products = await query.IsInclude(include).Include(p => p.Reviews)
+        .ThenInclude(r => r.User).ToListAsync();
 
             return PagedList<Product>.ToPagedList(
                 products,
@@ -44,6 +46,17 @@ namespace ShopeeKorean.Repository
                 productPagameters.PageSize
 
                 );
+        }
+
+        public async Task<PagedList<Product>> GetProducts(Guid userId, ProductParameters productPagameters, bool trackChanges = false, string? include = null)
+        {
+            var products = await FindByCondition(p => p.SellerId.Equals(userId), trackChanges).IsInclude(include).ToListAsync();
+            return PagedList<Product>.ToPagedList(
+               products,
+               productPagameters.PageNumber,
+               productPagameters.PageSize
+
+               );
         }
 
         public void UpdateProduct(Product product)

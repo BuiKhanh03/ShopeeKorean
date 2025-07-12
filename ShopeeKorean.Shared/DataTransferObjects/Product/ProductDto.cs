@@ -1,4 +1,8 @@
-﻿using ShopeeKorean.Shared.Enums.Status;
+﻿using ShopeeKorean.Shared.DataTransferObjects.ProductImage;
+using ShopeeKorean.Shared.DataTransferObjects.ProductSize;
+using ShopeeKorean.Shared.DataTransferObjects.Review;
+using ShopeeKorean.Shared.DataTransferObjects.User;
+using ShopeeKorean.Shared.Enums.Status;
 
 namespace ShopeeKorean.Shared.DataTransferObjects.Product
 {
@@ -17,5 +21,8 @@ namespace ShopeeKorean.Shared.DataTransferObjects.Product
         public DateTimeOffset CreatedAt { get; set; }
         public DateTimeOffset UpdatedAt { get; set; }
         public SystemStatus Status { get; set; } = SystemStatus.Inactive;
+        public ICollection<ReviewDto> Reviews { get; set; }
+        public ICollection<ProductImageDto> ProductImages { get; set; }
+        public ICollection<ProductSizeDto> ProductSizes { get; set; }
     }
 }

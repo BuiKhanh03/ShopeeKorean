@@ -6,6 +6,6 @@
         Credit_card = 2,
         Paypal = 3,
         Momo = 4,
-            VnPay = 5
+        VnPay = 5
     }
 }

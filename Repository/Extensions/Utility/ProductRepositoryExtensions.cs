@@ -9,7 +9,7 @@ namespace ShopeeKorean.Repository.Extensions.Utility
         public static IQueryable<Product> SearchByName(this IQueryable<Product> products, string? name)
         {
             if (string.IsNullOrEmpty(name)) return products;
-            return products.Where(p => p.Name.ToLower().Equals(name.ToLower().Trim()));
+            return products.Where(p => p.Name.ToLower().Contains(name.ToLower().Trim()));
         }
         
         public static IQueryable<Product> SearchByBrand(this IQueryable<Product> products, string? brand)
@@ -43,7 +43,10 @@ namespace ShopeeKorean.Repository.Extensions.Utility
             foreach (var item in fields)
             {
                 var property = Product.PropertyInfos.FirstOrDefault(cp => cp.Name.Equals(item.Trim(), StringComparison.InvariantCultureIgnoreCase));
-                if (property != null) product.Include(item.Trim());
+                if (property != null)
+                {
+                    product = product.Include(item.Trim());
+                }
             }
             return product; 
         }

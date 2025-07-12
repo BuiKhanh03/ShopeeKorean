@@ -10,8 +10,10 @@ namespace ShopeeKorean.Application.MappingProfile
         public PaymentRecordMappingProfile()
         {
             CreateMap<PaymentRecord, PaymentRecordDto>();
+            CreateMap<PaymentRecordDto, PaymentRecord>();
             CreateMap<PaymentRecordForCreationDto, PaymentRecord>();
             CreateMap<PaymentRecord, VnPayDto>();
+            CreateMap<VnPayDto, PaymentRecord>();
         }
     }
 }

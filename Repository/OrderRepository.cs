@@ -31,6 +31,7 @@ namespace ShopeeKorean.Repository
                                                   .SearchByStatus(orderParameters.Status)
                                                   .SearchByCreateAt(orderParameters.CreateAt)
                                                   .SearchByUpdatedAt(orderParameters.UpdateAt)
+                                                  .SearchByPayment(orderParameters.PaymentRecordId)
                                                   .IsInclude(include)
                                                   .ToListAsync();
             return PagedList<Order>.ToPagedList(

@@ -3,8 +3,13 @@ using ShopeeKorean.Shared.DataTransferObjects.ProductSize;
 
 namespace ShopeeKorean.Shared.DataTransferObjects.Product
 {
-    public record ProductDtoForCreation : ProductDtoForManipulation
+    public class  ProductDtoForCreation 
     {
-        IEnumerable<ProductSizeDto> ProductSizess { get; set; }
+        public Guid CategoryId { get; set; }
+        public string Name { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
+        public double Price { get; set; }
+        public string Brand { get; set; } = string.Empty;
+        public IEnumerable<ProductSizeDtoForCreation> ProductSizes { get; set; } 
     }
 }

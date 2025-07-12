@@ -19,6 +19,9 @@ namespace ShopeeKorean.Application.MappingProfile
                     otps.PreCondition(otp => otp.Category != null);
                     otps.MapFrom(src => src.Category.Name);
                 })
+                 .ForMember(dest => dest.ProductSizes, opt => opt.MapFrom(src => src.ProductSizes))
+                 .ForMember(dest => dest.ProductImages, opt => opt.MapFrom(src => src.ProductImages))
+                  .ForMember(dest => dest.Reviews, opt => opt.MapFrom(src => src.Reviews))
                 .ReverseMap();
             CreateMap<ProductDtoForUpdate, Product>();
             CreateMap<ProductDtoForCreation, Product>();

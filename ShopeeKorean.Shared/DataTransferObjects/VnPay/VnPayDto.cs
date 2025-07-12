@@ -3,7 +3,8 @@
     public class VnPayDto
     {
         public bool IsSuccess { get; set; }
-        public Guid OrderId { get; set; }
+        public string OrderId { get; set; }
+        public Guid PaymentIdR {  get; set; }
         public string PaymentMethod { get; set; } = "VnPay";
         public string OrderType { get; set; } = string.Empty;
         public decimal Amount { get; set; }

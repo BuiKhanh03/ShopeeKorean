@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ShopeeKorean.Service.Contracts;
+using Microsoft.AspNetCore.Cors;
 using ShopeeKorean.Shared.DataTransferObjects.VnPay;
 
 namespace ShopeeKorean.Presentation.Controllers
@@ -13,18 +14,24 @@ namespace ShopeeKorean.Presentation.Controllers
             
         }
         [HttpPost("create-payment-url")]
-
+        [EnableCors("AllowAllOrigins")]
         public IActionResult CreatePaymentUrl(VnPayForCreationDto model)
         {
-            var url = _service.VnPayService.CreatePaymentUrl(model, HttpContext);
+            var vnpayUrl = _service.VnPayService.CreatePaymentUrl(model, HttpContext);
 
-            return Redirect(url);
+            return Ok(new { url = vnpayUrl });
         }
         [HttpGet("payment-callback")]
-        public IActionResult PaymentCallback()
+        [EnableCors("AllowAllOrigins")]
+        public async Task<IActionResult> PaymentCallback()
         {
             var response = _service.VnPayService.PaymentExecute(Request.Query);
+            if (!response.IsSuccess || response.VnPayResponseCode != "00")
+                return BadRequest("Thanh toán thất bại");
 
+            var result = await _service.PaymentRecordService.SaveVnPayPament(response);
+            if (!result.IsSuccess)
+                return BadRequest(result.Errors);
             return new JsonResult(response);
         }
     }

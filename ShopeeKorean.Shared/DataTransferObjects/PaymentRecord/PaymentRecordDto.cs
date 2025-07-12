@@ -6,9 +6,9 @@ namespace ShopeeKorean.Shared.DataTransferObjects.PaymentRecord
     public class PaymentRecordDto
     {
         public Guid Id { get; set; }
-        public PaymentRecordType PaymentRecordMethod { get; set; } = PaymentRecordType.Cod;
+        public PaymentRecordType PaymentRecordMethod { get; set; } = PaymentRecordType.Momo;
         public decimal AmountPaid { get; set; }
-        public DateTime PaidAt { get; set; } = DateTime.UtcNow;
+        public string? PaidAt { get; set; }
         public PaymentRecordStatus PaymentRecordStatus { get; set; } = PaymentRecordStatus.Pending;
     }
 }

@@ -5,6 +5,6 @@ namespace ShopeeKorean.Shared.DataTransferObjects.PaymentRecord
 {
     public class PaymentRecordForCreationDto
     {
-        public PaymentRecordType PaymentRecordMethod { get; set; } = PaymentRecordType.Cod;
+        public PaymentRecordType PaymentRecordMethod { get; set; } = PaymentRecordType.Momo;
     }
 }

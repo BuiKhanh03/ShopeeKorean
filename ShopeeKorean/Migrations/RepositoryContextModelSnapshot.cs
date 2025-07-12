@@ -159,6 +159,9 @@ namespace ShopeeKorean.Application.Migrations
                     b.Property<DateTimeOffset>("CreatedAt")
                         .HasColumnType("datetimeoffset");
 
+                    b.Property<decimal>("PriceAtTime")
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<Guid>("ProductId")
                         .HasColumnType("uniqueidentifier");
 
@@ -478,8 +481,7 @@ namespace ShopeeKorean.Application.Migrations
 
                     b.HasIndex("OrderId");
 
-                    b.HasIndex("ProductId")
-                        .IsUnique();
+                    b.HasIndex("ProductId");
 
                     b.ToTable("OrderItem", (string)null);
                 });
@@ -979,8 +981,8 @@ namespace ShopeeKorean.Application.Migrations
                         .HasConstraintName("FK_OrderItem_Order");
 
                     b.HasOne("ShopeeKorean.Entities.Models.Product", "Product")
-                        .WithOne("OrderItem")
-                        .HasForeignKey("ShopeeKorean.Entities.Models.OrderItem", "ProductId")
+                        .WithMany("OrderItem")
+                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("FK_OrderItem_Product");
@@ -1083,8 +1085,7 @@ namespace ShopeeKorean.Application.Migrations
 
                     b.Navigation("Coupons");
 
-                    b.Navigation("OrderItem")
-                        .IsRequired();
+                    b.Navigation("OrderItem");
 
                     b.Navigation("ProductImages");
 

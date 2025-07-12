@@ -37,5 +37,15 @@ namespace ShopeeKorean.Presentation.Controllers
                onFailure: ProcessError
                );
         }
+        [Authorize]
+        [HttpDelete("{cartItemId}")]
+        public async Task<IActionResult> DeleteCartItem(Guid cartItemId)
+        {
+            var cartItemResult = await _service.CartItemService.DeleteCartItem(cartItemId, trackChanges: false);
+            return cartItemResult.Map(
+             onSuccess: Ok,
+             onFailure: ProcessError
+             );
+        }
     }
 }

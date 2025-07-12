@@ -9,6 +9,7 @@ namespace ShopeeKorean.Shared.RequestFeatures
         public decimal TotalAmount { get; set; } = 0;
         public OrderStatus Status { get; set; }
         public decimal ShippingFee { get; set; } = 0;
+        public Guid? PaymentRecordId { get; set; }
         public DateTime CreateAt { get; set; } = DateTime.UtcNow;
         public DateTime UpdateAt { get; set; } = DateTime.UtcNow;
     }

@@ -16,6 +16,7 @@ namespace ShopeeKorean.Service
         private readonly Lazy<ICartService> _cartService;
         private readonly Lazy<IVnPayService> _vnPayService;
         private readonly Lazy<IOrderService> _orderService;
+        private readonly Lazy<IReviewService> _reviewService;
         private readonly Lazy<IProductService> _productService;
         private readonly Lazy<ICategoryService> _categoryService;
         private readonly Lazy<ICartItemService> _cartItemService;
@@ -37,6 +38,7 @@ namespace ShopeeKorean.Service
             _productService = new Lazy<IProductService> (() => new ProductService(mapper, loggerManager, repositoryManager, dataShaper));
             _categoryService = new Lazy<ICategoryService>(() => new CategoryService(mapper, loggerManager, repositoryManager, dataShaper));
             _cartItemService = new Lazy<ICartItemService>(() => new CartItemService(mapper, loggerManager, repositoryManager, dataShaper));
+            _reviewService = new Lazy<IReviewService>(() => new ReviewService(mapper, loggerManager, repositoryManager, dataShaper));           
             _orderItemService = new Lazy<IOrderItemService>(() => new OrderItemService(mapper, loggerManager, repositoryManager, dataShaper));
             _vnPayService = new Lazy<IVnPayService>(() => new VnPayService(mapper, loggerManager, vnPayConfiguration, repositoryManager));
             _productSizeService = new Lazy<IProductSizeService>(() => new ProductSizeService(mapper, loggerManager, repositoryManager, dataShaper));
@@ -48,6 +50,7 @@ namespace ShopeeKorean.Service
         public ICartService CartService => _cartService.Value;
         public IOrderService OrderService => _orderService.Value;
         public IVnPayService VnPayService => _vnPayService.Value;
+        public IReviewService ReviewService => _reviewService.Value;
         public IProductService ProductService => _productService.Value;
         public ICategoryService CategoryService => _categoryService.Value;
         public ICartItemService CartItemService => _cartItemService.Value;

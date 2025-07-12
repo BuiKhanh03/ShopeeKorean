@@ -109,6 +109,8 @@ namespace ShopeeKorean.Application.Extensions
 
         public static void AddCloudinaryConfiguration(this IServiceCollection services, IConfiguration configuration)
             => services.Configure<CloudinaryConfiguration>(configuration.GetSection("CloudinarySettings"));
+        public static void AddVnPayConfiguration(this IServiceCollection services, IConfiguration configuration)
+            => services.Configure<VnPayConfiguration>(configuration.GetSection("VnPay"));
 
         public static void ConfigureSwagger(this IServiceCollection services) {
             services.AddSwaggerGen(c =>

@@ -7,5 +7,6 @@ namespace ShopeeKorean.Service.Contracts
     {
         public Task<Result> UpdateCartItem(CartItemForUpdateDto cartItemDto, Guid cartItemId, bool trackChanges, string? include = default);
         public Task<Result<CartItemForGetDto>> CreateCartItem(CartItemForCreationDto cartItemDto, Guid userId, bool trackChanges, string? include = default);
+        public Task<Result> DeleteCartItem(Guid cartItemId, bool trackChanges);
     }
 }

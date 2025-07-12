@@ -16,9 +16,19 @@ namespace ShopeeKorean.Repository
         public async Task CreateCartItem(CartItem cartItem)
         => await base.CreateAsync(cartItem);
 
+        public void DeleteCartItem(CartItem cartItem)
+        => Delete(cartItem);
+
         public async Task<CartItem?> GetCartItem(Guid cartItemId, bool trackChanges, string? include = null)
         {
             var cartItem = await base.FindByCondition(ci => ci.Id.Equals(cartItemId), trackChanges).SingleOrDefaultAsync();
+            return cartItem;
+        }
+
+        public async Task<CartItem?> GetCartItemByProduct(Guid productId, bool trackChanges, string? include = null)
+        {
+
+            var cartItem = await base.FindByCondition(ci => ci.ProductId.Equals(productId), trackChanges).SingleOrDefaultAsync();
             return cartItem;
         }
 

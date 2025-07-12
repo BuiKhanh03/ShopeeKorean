@@ -7,6 +7,7 @@ namespace ShopeeKorean.Repository.Contracts
     {
         public Task<Product?> GetProduct(Guid productId, bool trackChanges = false, string? include = default);
         public Task<PagedList<Product>> GetProducts(ProductParameters productPagameters, bool trackChanges = false, string? include = default);
+        public Task<PagedList<Product>> GetProducts(Guid userId,ProductParameters productPagameters, bool trackChanges = false, string? include = default);
         public Task CreateProduct(Product product);
         public void UpdateProduct(Product product);
 

@@ -34,22 +34,29 @@ namespace ShopeeKorean.Service
             return Result<PaymentRecordDto>.Ok(paymentResult);
         }
 
+        public async Task<Result<IEnumerable<PaymentRecordDto>>> GetPaymentByUser(Guid userId, bool trackChanges, string? include = null)
+        {
+            var payments = await _repositoryManager.PaymentRecordRepository.GetPaymentByUserId(userId, trackChanges: false, isInclude: "Order");
+            var paymentDtos = _mapper.Map<IEnumerable<PaymentRecordDto>>(payments);
+            return Result<IEnumerable<PaymentRecordDto>>.Ok(paymentDtos);
+        }
+
         public async Task<Result<PaymentRecordDto>> SaveVnPayPament(VnPayDto vnPayDto)
         {
             if (!vnPayDto.IsSuccess || vnPayDto.VnPayResponseCode != "00")
                 return Result<PaymentRecordDto>.BadRequest([PaymentRecordErrors.GetVnPayNotSuccess("Thanh toán không thành công hoặc chữ ký không hợp lệ.")]);
-            var orderResult = await this.GetAndCheckOrder(vnPayDto.OrderId);
-            var paymentResult = await this.GetAndCheckPaymentByOrder(vnPayDto.OrderId);
-            if (!paymentResult.IsSuccess) return Result<PaymentRecordDto>.BadRequest(paymentResult.Errors!);
-            if (!orderResult.IsSuccess) return Result<PaymentRecordDto>.BadRequest(orderResult.Errors!);
+            var paymentResult = await this.GetAndCheckPayment(vnPayDto.PaymentIdR);
+           if (!paymentResult.IsSuccess) return Result<PaymentRecordDto>.BadRequest(paymentResult.Errors!);
 
             var paymentRecordEntity = paymentResult.GetValue<PaymentRecord>();
-            var paymentRecordDto = _mapper.Map(vnPayDto, paymentResult);
-            paymentRecordEntity.PaymentRecordStatus = Shared.Enums.Status.PaymentRecordStatus.Completed;
+           var paymentRecordDto = _mapper.Map(vnPayDto, paymentRecordEntity);
+          paymentRecordEntity.PaymentRecordStatus = Shared.Enums.Status.PaymentRecordStatus.Completed;
+            paymentRecordEntity.PaidAt = DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss");
             _repositoryManager.PaymentRecordRepository.UpdatePaymentRecord(paymentRecordEntity);
             await _repositoryManager.SaveAsync();
-            var paymentRecordRetured = _mapper.Map<PaymentRecordDto>(paymentRecordDto);
-            return Result<PaymentRecordDto>.Ok(paymentRecordRetured);
+           var paymentRecordRetured = _mapper.Map<PaymentRecordDto>(paymentRecordDto);
+           return Result<PaymentRecordDto>.Ok(paymentRecordRetured);
+            throw new NotImplementedException();
         }
 
         private async Task<Result<Order>> GetAndCheckOrder(Guid orderId)
@@ -63,6 +70,13 @@ namespace ShopeeKorean.Service
         {
             var paymentRecord = await _repositoryManager.PaymentRecordRepository.GetPaymentRecordByOrder(orderId, true, null);
             if (paymentRecord == null) return Result<PaymentRecord>.BadRequest([PaymentRecordErrors.GetPaymentRecordByOrderNotFound(orderId)]);
+            return Result<PaymentRecord>.Ok(paymentRecord);
+        }
+
+        private async Task<Result<PaymentRecord>> GetAndCheckPayment(Guid paymentRecordId)
+        {
+            var paymentRecord = await _repositoryManager.PaymentRecordRepository.GetPaymentRecord(paymentRecordId, true, null);
+            if (paymentRecord == null) return Result<PaymentRecord>.BadRequest([PaymentRecordErrors.GetPaymentRecordByOrderNotFound(paymentRecordId)]);
             return Result<PaymentRecord>.Ok(paymentRecord);
         }
     }

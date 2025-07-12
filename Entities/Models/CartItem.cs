@@ -6,6 +6,7 @@
         public Guid CartId { get; set; }
         public Guid ProductId { get; set; }
         public int Quantity { get; set; }
+        public decimal PriceAtTime { get; set; }
         public DateTimeOffset CreatedAt { get; set; }
         public DateTimeOffset UpdatedAt { get; set; }
         public Cart Cart { get; set; }

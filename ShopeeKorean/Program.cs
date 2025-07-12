@@ -33,6 +33,7 @@ builder.Services.ConfigureJWT(builder.Configuration);
 builder.Services.ConfigureSqlContext(builder.Configuration);
 builder.Services.AddJwtConfiguration(builder.Configuration);
 builder.Services.AddMailConfiguration(builder.Configuration);
+builder.Services.AddVnPayConfiguration(builder.Configuration);
 builder.Services.AddCloudinaryConfiguration(builder.Configuration);
 builder.Services.AddControllers(config =>
 {

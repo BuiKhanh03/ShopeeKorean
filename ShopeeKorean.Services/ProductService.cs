@@ -72,6 +72,17 @@ namespace ShopeeKorean.Service
             return Result<IEnumerable<ExpandoObject>>.Ok(productShapped, products.MetaData);
         }
 
+        public async Task<Result<IEnumerable<ExpandoObject>>> GetProducts(Guid userId, ProductParameters productParameters, bool trackChanges = false, string? isInclude = null)
+        {
+            var products = await _repositoryManager.ProductRepository.GetProducts(userId, productParameters, trackChanges, isInclude);
+
+            var productDtos = _mapper.Map<IEnumerable<ProductDto>>(products);
+
+            var productShapped = _dataShaper.Product.ShapeData(productDtos, productParameters.Field);
+
+            return Result<IEnumerable<ExpandoObject>>.Ok(productShapped, products.MetaData);
+        }
+
         [Authorize]
         public async Task<Result> UpdateProduct(Guid productId, ProductDtoForUpdate product)
         {

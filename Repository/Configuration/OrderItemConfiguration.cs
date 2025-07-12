@@ -19,8 +19,8 @@ namespace ShopeeKorean.Repository.Configuration
                   .HasForeignKey(e => e.OrderId)
                   .HasConstraintName("FK_OrderItem_Order");
             entity.HasOne(e => e.Product)
-                  .WithOne(e => e.OrderItem)
-                  .HasForeignKey<OrderItem>(e => e.ProductId)
+                   .WithMany(p => p.OrderItem)
+                  .HasForeignKey(e => e.ProductId)
                   .HasConstraintName("FK_OrderItem_Product");
         }
     }

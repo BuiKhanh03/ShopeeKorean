@@ -13,6 +13,12 @@ namespace ShopeeKorean.Repository.Extensions.Utility
             return order.Where(x => x.TotalAmount == totalAmount);
         }
 
+        public static IQueryable<Order> SearchByPayment(this IQueryable<Order> order, Guid? paymentId)
+        {
+            if (paymentId == null) return order;
+            return order.Where(x => x.PaymentRecord.Id.Equals(paymentId));
+        }
+
         public static IQueryable<Order> SearchByStatus(this IQueryable<Order> order, OrderStatus status)
         {
             if (status == null || status == 0)

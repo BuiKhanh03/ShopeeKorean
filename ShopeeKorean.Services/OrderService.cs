@@ -44,7 +44,8 @@ namespace ShopeeKorean.Service
 
             var orderEntity = _mapper.Map<Order>(orderDto);
             orderEntity.UserId = userId;
-            orderEntity.TotalAmount = totalAmount + orderDto.ShippingFee;
+            orderEntity.ShippingFee = 10000;
+            orderEntity.TotalAmount = totalAmount + 10000;
             orderEntity.CreateAt = DateTime.Now;
             orderEntity.UpdateAt = DateTime.Now;
 

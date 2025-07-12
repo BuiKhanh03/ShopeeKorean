@@ -17,7 +17,7 @@ namespace ShopeeKorean.Presentation.Controllers
 
         [HttpGet("{productId:guid}")]
         public async Task<IActionResult> GetProduct(Guid productId) {
-            var isInclude = "Category, Seller";
+            var isInclude = "Category,Seller,Reviews,ProductImages,ProductSizes";
             var productResult = await _service.ProductService.GetProduct(productId, trackChanges: false, isInclude);
             return productResult.Map(
                 onSuccess: Ok,
@@ -28,8 +28,20 @@ namespace ShopeeKorean.Presentation.Controllers
         [HttpGet]
         public async Task<IActionResult> GetProducts([FromQuery] ProductParameters productParameters)
         {
-            var isInclude = "Category, Seller";
+            var isInclude = "Category,Seller,Reviews,ProductImages,ProductSizes";
             var productResult = await _service.ProductService.GetProducts(productParameters, trackChanges: false, isInclude);
+            return productResult.Map(
+                onSuccess: Ok,
+                onFailure: ProcessError
+                );
+        }
+
+        [HttpGet("user")]
+        public async Task<IActionResult> GetProductUsers([FromQuery] ProductParameters productParameters)
+        {
+            var userId = HttpContext.User.FindFirstValue("UserId");
+            var isInclude = "Category,Seller,Reviews,ProductImages,ProductSizes";
+            var productResult = await _service.ProductService.GetProducts(new Guid(userId!), productParameters, trackChanges: false, isInclude);
             return productResult.Map(
                 onSuccess: Ok,
                 onFailure: ProcessError

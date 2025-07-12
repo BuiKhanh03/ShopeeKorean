@@ -28,16 +28,41 @@ namespace ShopeeKorean.Service
         public async Task<Result<CartItemForGetDto>> CreateCartItem(CartItemForCreationDto cartItemDto, Guid userId, bool trackChanges, string? include = null)
         {
             var productResultCheck = await this.GetAndCheckProduct(cartItemDto.ProductId, trackChanges);
-            if (!productResultCheck.IsSuccess) return Result<CartItemForGetDto>.BadRequest(productResultCheck.Errors!);
-            var cartItemEntity = _mapper.Map<CartItem>(cartItemDto);
+            if (!productResultCheck.IsSuccess)
+                return Result<CartItemForGetDto>.BadRequest(productResultCheck.Errors!);
+
             var cart = await _repositoryManager.CartRepository.GetCart(userId, trackChanges, include);
+
+            var productEntity = productResultCheck.GetValue<Product>();
+
+            var cartItemResultCheck = await this.GetAndCheckCartItemByProduct(cartItemDto.ProductId, true, null); 
+            if (cartItemResultCheck.IsSuccess)
+            {
+                // Nếu sản phẩm đã có trong giỏ hàng, thì tăng số lượng và cập nhật
+                var existingCartItem = cartItemResultCheck.GetValue<CartItem>();
+                existingCartItem.Quantity += cartItemDto.Quantity;
+                existingCartItem.UpdatedAt = DateTimeOffset.UtcNow;
+
+                _repositoryManager.CartItemRepository.UpdateCartItem(existingCartItem);
+                await _repositoryManager.SaveAsync();
+
+                var updatedDto = _mapper.Map<CartItemForGetDto>(existingCartItem);
+                return Result<CartItemForGetDto>.Ok(updatedDto);
+            }
+
+            // Nếu chưa có thì thêm mới
+            var cartItemEntity = _mapper.Map<CartItem>(cartItemDto);
             cartItemEntity.CreatedAt = DateTimeOffset.UtcNow;
             cartItemEntity.CartId = cart!.Id;
+            cartItemEntity.PriceAtTime = productEntity.Price;
+
             await _repositoryManager.CartItemRepository.CreateCartItem(cartItemEntity);
             await _repositoryManager.SaveAsync();
+
             var cartItemReturned = _mapper.Map<CartItemForGetDto>(cartItemEntity);
             return Result<CartItemForGetDto>.Ok(cartItemReturned);
         }
+
 
         public async Task<Result> UpdateCartItem(CartItemForUpdateDto cartItemDto, Guid cartItemId, bool trackChanges, string? include = null)
         {
@@ -57,11 +82,27 @@ namespace ShopeeKorean.Service
             return Result<Product>.Ok(productResult);
         }
 
+        public async Task<Result<CartItem>> GetAndCheckCartItemByProduct(Guid productId, bool trackChanges, string? include = null)
+        {
+            var cartItem = await _repositoryManager.CartItemRepository.GetCartItemByProduct(productId, trackChanges, include);
+            if (cartItem == null) return Result<CartItem>.BadRequest([CartErrors.GetCartItemNotFoundWithId(productId)]);
+            return Result<CartItem>.Ok(cartItem);
+        }
+
         public async Task<Result<CartItem>> GetAndCheckCartItem(Guid cartItemId, bool trackChanges, string? include = null)
         {
             var cartItem = await _repositoryManager.CartItemRepository.GetCartItem(cartItemId, trackChanges, include);
             if (cartItem == null) return Result<CartItem>.BadRequest([CartErrors.GetCartItemNotFoundWithId(cartItemId)]);
             return Result<CartItem>.Ok(cartItem);
+        }
+
+        public async Task<Result> DeleteCartItem(Guid cartItemId, bool trackChanges)
+        {
+             var cartItemResult = await this.GetAndCheckCartItem(cartItemId, trackChanges);
+            if(!cartItemResult.IsSuccess) return Result.BadRequest(cartItemResult.Errors!);
+            _repositoryManager.CartItemRepository.DeleteCartItem(cartItemResult.GetValue<CartItem>());
+            await _repositoryManager.SaveAsync();
+            return Result.NoContent();
         }
     }
 }

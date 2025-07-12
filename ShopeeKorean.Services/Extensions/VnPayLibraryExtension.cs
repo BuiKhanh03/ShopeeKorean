@@ -5,6 +5,7 @@ using System.Net;
 using System.Security.Cryptography;
 using System.Text;
 using ShopeeKorean.Shared.DataTransferObjects.VnPay;
+using Org.BouncyCastle.Asn1.Ocsp;
 
 namespace ShopeeKorean.Service.Extensions
 {
@@ -12,7 +13,6 @@ namespace ShopeeKorean.Service.Extensions
     {
         private readonly SortedList<string, string> _requestData = new SortedList<string, string>(new VnPayCompare());
         private readonly SortedList<string, string> _responseData = new SortedList<string, string>(new VnPayCompare());
-
         public VnPayDto GetFullResponseData(IQueryCollection collection, string hashSecret)
         {
             var vnPay = new VnPayLibraryExtension();
@@ -24,16 +24,15 @@ namespace ShopeeKorean.Service.Extensions
                     vnPay.AddResponseData(key, value);
                 }
             }
+            var orderInfo = vnPay.GetResponseData("vnp_OrderInfo");
 
-            var orderId = vnPay.GetResponseData("vnp_OrderId");
+            var orderIdR = orderInfo.Split(' ').Last();
+
+            var orderId = Convert.ToInt64(vnPay.GetResponseData("vnp_TxnRef"));
             var vnPayTranId = Convert.ToInt64(vnPay.GetResponseData("vnp_TransactionNo"));
             var vnpResponseCode = vnPay.GetResponseData("vnp_ResponseCode");
             var vnpSecureHash =
                 collection.FirstOrDefault(k => k.Key == "vnp_SecureHash").Value; //hash của dữ liệu trả về
-            var orderInfo = vnPay.GetResponseData("vnp_OrderInfo");
-            var orderDate = vnPay.GetResponseData("vnp_CreateDate");
-            var amount = vnPay.GetResponseData("vnp_Amount");
-            var orderType = vnPay.GetResponseData("vnp_OrderType");
 
             var checkSignature =
                 vnPay.ValidateSignature(vnpSecureHash, hashSecret); //check Signature
@@ -46,17 +45,15 @@ namespace ShopeeKorean.Service.Extensions
 
             return new VnPayDto()
             {
-                IsSuccess = true,
+                IsSuccess = vnpResponseCode.Equals("00"),
                 PaymentMethod = "VnPay",
                 OrderDescription = orderInfo,
-                OrderId = new Guid(orderId),
+                OrderId = orderId.ToString(),
+                PaymentIdR = Guid.Parse(orderIdR),
                 PaymentId = vnPayTranId.ToString(),
                 TransactionId = vnPayTranId.ToString(),
                 Token = vnpSecureHash,
-                PaidAt = orderDate,
-                OrderType = orderType,
-                Amount = decimal.TryParse(amount, out var amt) ? amt : 0,
-                VnPayResponseCode = vnpResponseCode 
+                VnPayResponseCode = vnpResponseCode
             };
         }
         public string GetIpAddress(HttpContext context)
@@ -110,7 +107,7 @@ namespace ShopeeKorean.Service.Extensions
         public string CreateRequestUrl(string baseUrl, string vnpHashSecret)
         {
             var data = new StringBuilder();
-
+            
             foreach (var (key, value) in _requestData.Where(kv => !string.IsNullOrEmpty(kv.Value)))
             {
                 data.Append(WebUtility.UrlEncode(key) + "=" + WebUtility.UrlEncode(value) + "&");
@@ -125,7 +122,7 @@ namespace ShopeeKorean.Service.Extensions
                 signData = signData.Remove(data.Length - 1, 1);
             }
 
-            var vnpSecureHash = HmacSha512(vnpHashSecret, signData);
+            var vnpSecureHash = HmacSHA512(vnpHashSecret, signData);
             baseUrl += "vnp_SecureHash=" + vnpSecureHash;
 
             return baseUrl;
@@ -134,18 +131,18 @@ namespace ShopeeKorean.Service.Extensions
         public bool ValidateSignature(string inputHash, string secretKey)
         {
             var rspRaw = GetResponseData();
-            var myChecksum = HmacSha512(secretKey, rspRaw);
+            var myChecksum = HmacSHA512(secretKey, rspRaw);
             return myChecksum.Equals(inputHash, StringComparison.InvariantCultureIgnoreCase);
         }
 
-        private string HmacSha512(string key, string inputData)
+        public static String HmacSHA512(string key, String inputData)
         {
             var hash = new StringBuilder();
-            var keyBytes = Encoding.UTF8.GetBytes(key);
-            var inputBytes = Encoding.UTF8.GetBytes(inputData);
+            byte[] keyBytes = Encoding.UTF8.GetBytes(key);
+            byte[] inputBytes = Encoding.UTF8.GetBytes(inputData);
             using (var hmac = new HMACSHA512(keyBytes))
             {
-                var hashValue = hmac.ComputeHash(inputBytes);
+                byte[] hashValue = hmac.ComputeHash(inputBytes);
                 foreach (var theByte in hashValue)
                 {
                     hash.Append(theByte.ToString("x2"));
@@ -154,7 +151,6 @@ namespace ShopeeKorean.Service.Extensions
 
             return hash.ToString();
         }
-
         private string GetResponseData()
         {
             var data = new StringBuilder();

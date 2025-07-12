@@ -17,7 +17,7 @@ namespace ShopeeKorean.Entities.Models
         public SystemStatus Status { get; set; } = SystemStatus.Active;
         public virtual User Seller { get; set; }
         public Category Category { get; set; }
-        public OrderItem OrderItem { get; set; }
+        public ICollection<OrderItem> OrderItem { get; set; } = new List<OrderItem> { };
         public ICollection<CartItem> CartItems { get; set; } = new List<CartItem> { };
         public ICollection<Review> Reviews { get; set; } = new List<Review>();
         public ICollection<ProductImage> ProductImages { get; set; } = new List<ProductImage>();
